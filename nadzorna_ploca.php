@@ -42,6 +42,12 @@
 
               </div>
             </div>
+            <form>
+              <div class="form-group">
+                <textarea name="text" cols="50" rows="1" maxlength="255" class="form-control" id="username" placeholder="Napiši komentar"></textarea>
+                <button type="submit" class="btn btn-default">Komentiraj</button>
+              </div>
+            </form>
     
             <!-- <?php endforeach; ?> -->
 
