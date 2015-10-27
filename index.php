@@ -39,10 +39,10 @@
             <input type="checkbox"> Check me out
           </label>
         </div> -->
-        
+
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-  </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
