@@ -10,6 +10,11 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,29 +25,24 @@
   </head>
   <body>
     <div class="container">
-      <form>
-        <div class="form-group">
-          <label for="korisnickoIme">Korisničko ime</label>
-          <input type="text" class="form-control" id="username" placeholder="Korisničko ime">
+      <div class="row">
+        <div class="col-md-6" id="logo">
+          <h1 style="margin-top:150px;">OMS</h1>
+          <h1>društvena<br>mreža</h1>
         </div>
-        <div class="form-group">
-          <label for="lozinka">Lozinka</label>
-          <input type="password" class="form-control" id="lozinka" placeholder="Lozinka">
-        </div>
-
-        <!-- <div class="form-group">
-          <label for="exampleInputFile">File input</label>
-          <input type="file" id="exampleInputFile">
-          <p class="help-block">Example block-level help text here.</p>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"> Check me out
-          </label>
-        </div> -->
-
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+        <div class="col-md-6" id="forma">
+          <form>
+            <h2>Prijava</h2>
+            <div class="form-group">
+              <input type="text" class="form-control" id="korisnickoIme" placeholder="Korisničko ime">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="lozinka" placeholder="Lozinka">
+            </div>
+            <button type="submit" class="btn btn-default">Prijavi se</button>
+          </form>
+      </div>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

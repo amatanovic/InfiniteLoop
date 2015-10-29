@@ -9,6 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,7 +22,24 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-md-2">.col-md-4</div>
+        <div class="col-md-2">
+          <!--<div id="sidebar-wrapper">-->
+            <ul class="sidebar-nav">
+              <li>
+                <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+              </li>
+              <li>
+                <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>Zadaće</a>
+              </li>
+              <li>
+                <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Moj profil</a>
+              </li>
+              <li>
+                <a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Odjava</a>
+              </li>
+            </ul>
+          <!--</div>-->
+        </div>
         <div class="col-md-8">
           <form>
             <div class="form-group">
