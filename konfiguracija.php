@@ -1,6 +1,6 @@
 <?php
 $server="localhost";
-$baza="omsdrustvenamreza";
+$baza="omsdm";
 $korisnik="root";
 $lozinka="admin";
 $putanja="/InfiniteLoop/";

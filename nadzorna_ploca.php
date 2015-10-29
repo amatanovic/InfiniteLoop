@@ -11,6 +11,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/style_nadzorna.css" rel="stylesheet">
+    <!-- Font -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,7 +23,10 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
+      <header>
+        <h2>OMS</h2>
+      </header>
       <div class="row">
         <div class="col-md-2">
           <!--<div id="sidebar-wrapper">-->
@@ -28,8 +34,12 @@
               <li>
                 <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
               </li>
-              <li>
-                <a href="#"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>Zadaće</a>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>Zadaće <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Postavljene zadaće</a></li>
+                  <li><a href="#">Nova zadaća</a></li>
+                </ul>
               </li>
               <li>
                 <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Moj profil</a>

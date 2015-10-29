@@ -1,0 +1,23 @@
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+.btn-default {
+	color: #fff;
+	background-color: #00796B;
+	border-radius: 0;
+	margin-top: 20px;
+	border: 0;
+}
+
+.btn {
+	padding: 10px 60px;
+}
+
+.form-control {
+	border-radius: 0;
+}
+
+header {
+	background-color: #00796B;
+}

@@ -34,12 +34,12 @@
           <form>
             <h2>Prijava</h2>
             <div class="form-group">
-              <input type="text" class="form-control" id="korisnickoIme" placeholder="Korisničko ime">
+              <input type="text" class="form-control" id="korisnicko_ime" placeholder="Korisničko ime">
             </div>
             <div class="form-group">
               <input type="password" class="form-control" id="lozinka" placeholder="Lozinka">
             </div>
-            <button type="submit" class="btn btn-default">Prijavi se</button>
+            <button type="submit" class="btn btn-default"><a href="nadzorna_ploca.php">Prijavi se</a></button>
           </form>
       </div>
       </div>
