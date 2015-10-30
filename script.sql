@@ -1,6 +1,6 @@
-drop database if exists omsdm;
 create database omsdm character set utf8 collate utf8_general_ci;
 use omsdm;
+drop table if exists korisnik;
 create table korisnik (
 sifra int not null primary key auto_increment,
 ime varchar(250),
@@ -18,14 +18,14 @@ korisnik int,
 vrijeme datetime
 )engine=innodb;
 
-create table like_status (
+create table likestatus (
 sifra int not null primary key auto_increment,
 liked boolean,
 korisnik int,
 status int
 )engine=innodb;
 
-create table komentar_status (
+create table komentarstatus (
 sifra int not null primary key auto_increment,
 naziv text,
 korisnik int,
@@ -36,44 +36,42 @@ vrijeme datetime
 create table zadaca (
 sifra int not null primary key auto_increment,
 naziv varchar(250),
-opis_zadatka text,
+opiszadatka text,
 pocetak datetime,
 kraj datetime
 )engine=innodb;
 
-create table upload_zadaca (
+create table uploadzadaca (
 sifra int not null primary key auto_increment,
 zadaca int,
 korisnik int,
 putanja varchar(250)
 )engine=innodb;
 
-create table komentar_zadaca (
+create table komentarzadaca (
 sifra int not null primary key auto_increment,
 naziv text,
-upload_zadaca int,
+uploadzadaca int,
 korisnik int,
 vrijeme datetime
 )engine=innodb;
 
-create table like_zadaca (
+create table likezadaca (
 sifra int not null primary key auto_increment,
-upload_zadaca int,
+uploadzadaca int,
 korisnik int
 )engine=innodb;
 
 alter table status add foreign key(korisnik) references korisnik(sifra);
-alter table like_status add foreign key(korisnik) references korisnik(sifra);
-alter table status add foreign key(korisnik) references korisnik(sifra);
-alter table like_status add foreign key(korisnik) references korisnik(sifra);
-alter table like_status add foreign key(status) references status(sifra);
-alter table komentar_status add foreign key(korisnik) references korisnik(sifra);
-alter table komentar_status add foreign key(status) references status(sifra);
-alter table upload_zadaca add foreign key(korisnik) references korisnik(sifra);
-alter table komentar_zadaca add foreign key(korisnik) references korisnik(sifra);
-alter table komentar_zadaca add foreign key(upload_zadaca) references upload_zadaca(sifra);
-alter table like_zadaca add foreign key(korisnik) references korisnik(sifra);
-alter table like_zadaca add foreign key(upload_zadaca) references upload_zadaca(sifra);
+alter table likestatus add foreign key(korisnik) references korisnik(sifra);
+alter table likestatus add foreign key(status) references status(sifra);
+alter table komentarstatus add foreign key(korisnik) references korisnik(sifra);
+alter table komentarstatus add foreign key(status) references status(sifra);
+alter table uploadzadaca add foreign key(korisnik) references korisnik(sifra);
+alter table komentarzadaca add foreign key(korisnik) references korisnik(sifra);
+alter table komentarzadaca add foreign key(uploadzadaca) references uploadzadaca(sifra);
+alter table likezadaca add foreign key(korisnik) references korisnik(sifra);
+alter table likezadaca add foreign key(uploadzadaca) references uploadzadaca(sifra);
 
 insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Manuela", "Mikulecki", "slike/avatar_1.png", md5("123"), "mmikulecki");
 insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Tena", "Vilček", "slike/avatar_2.png", md5("123"), "tvilcek");

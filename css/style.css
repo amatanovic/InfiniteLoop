@@ -1,5 +1,9 @@
-body {
+.bodyIndex {
 	background-color: #009688;
+	font-family: 'Roboto', sans-serif;
+}
+
+.bodyNadzorna {
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -20,7 +24,7 @@ body {
 	height: 530px;
 }
 
-h2 {
+.indexH2 {
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 	color: #00796B;
@@ -43,23 +47,30 @@ h2 {
 	padding: 10px 60px;
 }
 
-form {
+.indexForma {
 	margin-right: 50px;
 	margin-left: 50px;
 }
 
-.row {
+.rowIndex{
 	margin-top: 70px;
 	margin-left: 80px;
 	margin-right: 80px;
 }
 
 .form-control {
-	border: #fff;
 	border-radius: 0;
+}
+
+.form-controlIndex {
+	border: #fff;
 	border-bottom: 1px solid #B6B6B6!important;
 }
 
 a {
 	color: #B6B6B6;
+}
+
+header {
+	background-color: #00796B;
 }

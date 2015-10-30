@@ -1,4 +1,5 @@
 <?php
+$title = "OMS Društvena mreža";
 $server="localhost";
 $baza="omsdm";
 $korisnik="root";
