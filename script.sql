@@ -1,6 +1,6 @@
 create database omsdm character set utf8 collate utf8_general_ci;
 use omsdm;
-drop table if exists korisnik;
+
 create table korisnik (
 sifra int not null primary key auto_increment,
 ime varchar(250),
