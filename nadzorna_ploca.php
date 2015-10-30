@@ -7,7 +7,8 @@ if(!isset($_SESSION['autoriziran'])){
   <body class="bodyNadzorna">
     <div class="container-fluid">
       <header>
-        <h2>OMS <?php echo $_SESSION['autoriziran']->ime . " " . $_SESSION['autoriziran']->prezime; ?></h2>
+        <h2>OMS</h2>
+        <h3 class="nadzornaH3"><?php echo $_SESSION['autoriziran']->ime . " " . $_SESSION['autoriziran']->prezime; ?></h3>
       </header>
       <div class="row">
         <div class="col-md-2">
@@ -36,7 +37,7 @@ if(!isset($_SESSION['autoriziran'])){
           <form>
             <div class="form-group">
               <textarea name="text" cols="50" rows="2" maxlength="255" class="form-control" id="username" placeholder="Na umu mi je..."></textarea>
-              <button type="submit" class="btn btn-default">Objavi</button>
+              <button type="submit" class="btn btn-default pull-right nadzornaBtn">Objavi</button>
             </div>
           </form>
           <div class="row">
