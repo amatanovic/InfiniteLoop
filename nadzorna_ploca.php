@@ -7,7 +7,7 @@ if(!isset($_SESSION['autoriziran'])){
   <body class="bodyNadzorna">
     <div class="container-fluid">
       <header>
-        <h2>OMS</h2>
+        <h2>OMS <?php echo $_SESSION['autoriziran']->ime . " " . $_SESSION['autoriziran']->prezime; ?></h2>
       </header>
       <div class="row">
         <div class="col-md-2">
@@ -64,7 +64,17 @@ if(!isset($_SESSION['autoriziran'])){
 
           </div>
         </div>
-        <div class="col-md-2">.col-md-4</div>
+        <div class="col-md-2">
+          <?php
+$izraz=$veza->prepare("select * from korisnik");
+$izraz->execute();
+$korisnici=$izraz->fetchALL(PDO::FETCH_OBJ);
+foreach ($korisnici as $korisnik): ?>
+<p>
+<img src="<?php echo $korisnik->avatar; ?>" style="width:20%" />
+</p>
+<?php endforeach; ?>
+</div>
       </div>
     </div>
 
