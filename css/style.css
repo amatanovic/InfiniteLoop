@@ -105,3 +105,10 @@ h2 {
 img {
 	border-radius: 100%;
 }
+
+.status {
+	cursor: pointer;
+}
+.statusLiked {
+	color: green;
+}

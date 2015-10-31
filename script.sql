@@ -74,8 +74,24 @@ alter table komentarzadaca add foreign key(uploadzadaca) references uploadzadaca
 alter table likezadaca add foreign key(korisnik) references korisnik(sifra);
 alter table likezadaca add foreign key(uploadzadaca) references uploadzadaca(sifra);
 
+#korisnici
 insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Manuela", "Mikulecki", "slike/avatar_1.png", md5("123"), "mmikulecki");
 insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Tena", "Vilček", "slike/avatar_2.png", md5("123"), "tvilcek");
 insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Andrea", "Mihaljević", "slike/avatar_3.png", md5("123"), "amihaljevic");
 insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Antun", "Matanović", "slike/avatar_4.png", md5("123"), "amatanovic");
-insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime, admin) values ("Tomislav", "jakopec", "slike/avatar_5.jpg", md5("123"), "tjakopec", 1);
+insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime, admin) values ("Tomislav", "Jakopec", "slike/avatar_5.jpg", md5("123"), "tjakopec", 1);
+
+#statusi
+insert into status (tekst, korisnik, vrijeme) values ("Ovotjedna zadaća iz OMS-a zahtijeva puno vremena i truda pa vam predlažem da ju počnete što prije raditi.", 1, "2015-10-30 15:30:00");
+insert into status (tekst, korisnik, vrijeme) values ("Kako se napravi ono kad upisuješ lozinku da ti budu točkice?", 2, "2015-10-29 14:00:00");
+
+#like statusa 
+insert into likestatus (liked, korisnik, status) values (1, 2, 1);
+insert into likestatus (liked, korisnik, status) values (1, 3, 1);
+insert into likestatus (liked, korisnik, status) values (1, 4, 1);
+insert into likestatus (liked, korisnik, status) values (1, 1, 2);
+
+#komentar statusa
+insert into komentarstatus (naziv, korisnik, status, vrijeme) values ("hehe imaš pravo, zato sam ja svoju prošli tjedan napravila.", 2, 1, "2015-10-30 16:00:00");
+insert into komentarstatus (naziv, korisnik, status, vrijeme) values ("dobro pa si rekla!", 3, 1, "2015-10-30 16:10:00");
+insert into komentarstatus (naziv, korisnik, status, vrijeme) values ("na input staviš type da je password", 4, 2, "2015-10-29 14:15:00");
