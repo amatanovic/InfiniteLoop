@@ -26,7 +26,7 @@ if(!isset($_SESSION['autoriziran'])){
                 </ul>
               </li>
               <li>
-                <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Moj profil</a>
+                <a href="<?php echo $putanja; ?>mojProfil.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Moj profil</a>
               </li>
               <li>
                 <a href="<?php echo $putanja; ?>odjava.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Odjava</a>
