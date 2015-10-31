@@ -99,10 +99,9 @@ foreach ($statusi as $status):
            </div>
               <div class="form-group input-group">
                 <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:100px" /></span>
-                <input type="hidden" id="korisnik" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
-                <input type="hidden" id="status" value="<?php echo $statusID; ?>">
-                <textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar" placeholder="Napiši komentar"></textarea>
-                <button class="btn btn-default" id="komentiraj">Komentiraj</button>
+                <input type="hidden" id="korisnik_<?php echo $statusID; ?>" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
+                <textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_<?php echo $statusID; ?>" placeholder="Napiši komentar"></textarea>
+                <button class="btn btn-default komentiraj" id="<?php echo $statusID; ?>">Komentiraj</button>
               </div>
           </div>
 <?php endforeach; ?>
@@ -169,10 +168,10 @@ endforeach; ?>
         return false;
       });
 
-       $("#komentiraj").click(function(){
-       var status = $("#status").val();
-       var korisnik = $("#korisnik").val();
-       var naziv = $("#komentar").val();
+       $(".komentiraj").click(function(){
+       var status = $(this).attr("id");
+       var korisnik = $("#korisnik_" + status).val();
+       var naziv = $("#komentar_" + status).val();
         $.ajax({
         type: "POST",
         url: "komentiraj.php",
