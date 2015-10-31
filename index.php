@@ -25,17 +25,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
- $("#lozinka").keypress(function(e) {
-    if(e.which == 13) {
-        $("#poruka").html("");
-      $.ajax({
-        type: "POST",
-        url: "prijava.php",
-        data: "korisnicko_ime=" + $("#korisnicko_ime").val() + "&lozinka=" + $("#lozinka").val(),
-        success: function(msg){
-            if(msg=="true"){
-              window.location="nadzorna_ploca.php";
+       $("#lozinka").keypress(function(e) {
+          if(e.which == 13) {
+            $("#poruka").html("");
+            $.ajax({
+              type: "POST",
+              url: "prijava.php",
+              data: "korisnicko_ime=" + $("#korisnicko_ime").val() + "&lozinka=" + $("#lozinka").val(),
+              success: function(msg){
+                if(msg=="true"){
+                  window.location="nadzorna_ploca.php";
+                }
+                else{
+                  $("#poruka").html("Neispravno uneseno korisničko ime i lozinka.<br /> Molimo unesite ponovno.");
+                }                
+              }
+            });
+          }
+        });
+        $("#prijava").click(function(){
+          console.log("here");
+          $("#poruka").html("");
+          $.ajax({
+            type: "POST",
+            url: "prijava.php",
+            data: "korisnicko_ime=" + $("#korisnicko_ime").val() + "&lozinka=" + $("#lozinka").val(),
+            success: function(msg){
+              if(msg=="true"){
+                window.location="nadzorna_ploca.php";
+              }
+              else{
+                $("#poruka").html("Neispravno uneseno korisničko ime i lozinka.<br /> Molimo unesite ponovno.");
+              }            
             }
+          });          
+            return false;
+        });      
             else{
               $("#poruka").html("Neispravno uneseno korisničko ime i lozinka.<br /> Molimo unesite ponovno.");
             }
@@ -66,7 +91,6 @@
 
         return false;
       });
-      
-    </script>
+      </script>
   </body>
 </html>
