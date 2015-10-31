@@ -8,7 +8,8 @@ prezime varchar(250),
 avatar varchar(250),
 lozinka varchar(250),
 korisnicko_ime varchar(250),
-device varchar(500) default "Unknown"
+device varchar(500) default "Unknown",
+admin boolean
 )engine=innodb;
 
 create table status (
@@ -77,4 +78,4 @@ insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Ma
 insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Tena", "Vilček", "slike/avatar_2.png", md5("123"), "tvilcek");
 insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Andrea", "Mihaljević", "slike/avatar_3.png", md5("123"), "amihaljevic");
 insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime) values ("Antun", "Matanović", "slike/avatar_4.png", md5("123"), "amatanovic");
-
+insert into korisnik (ime, prezime, avatar, lozinka, korisnicko_ime, admin) values ("Tomislav", "jakopec", "slike/avatar_5.jpg", md5("123"), "tjakopec", 1);

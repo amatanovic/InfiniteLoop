@@ -15,7 +15,7 @@
             <div class="form-group">
               <input type="password" class="form-control form-controlIndex" id="lozinka" placeholder="Lozinka">
             </div>
-            <button class="btn btn-default"><a href="#" id="prijava">Prijavi se</a></button>
+            <a href="#" id="prijava" class="btn btn-default">Prijavi se</a>
           </form>
           <p id="poruka"></p>
       </div>
@@ -46,7 +46,6 @@
     }
 });
     $("#prijava").click(function(){
-      console.log("here");
       $("#poruka").html("");
       $.ajax({
         type: "POST",
