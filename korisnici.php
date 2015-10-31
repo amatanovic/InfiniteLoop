@@ -7,7 +7,9 @@ foreach ($korisnici as $korisnik):
 if ($korisnik->admin != 1 and $korisnik->sifra != $_SESSION['autoriziran']->sifra):
 ?>
 <p>
+<a href="<?php echo $putanja; ?>privatniProfil.php?sifra=<?php echo $korisnik->sifra; ?>"> 
 <img src="<?php echo $korisnik->avatar; ?>" style="width:20%" />
+</a>
 </p>
 <?php 
 endif;
