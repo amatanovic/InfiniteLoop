@@ -1,9 +1,4 @@
 <?php 
-include "head.php";
-session_start();
-if(!isset($_SESSION['autoriziran'])){
-  header("location: odjava.php");  
-}
 if(isset($_POST['objava'])){
 $izraz = $veza->prepare("insert into status (tekst, korisnik, vrijeme) values (:status, :korisnik, now())");
 $izraz->bindValue(':korisnik', $_POST['korisnik']);
@@ -13,35 +8,7 @@ header("location: nadzorna_ploca.php");
 }
 ?>
 
-  <body class="bodyNadzorna">
-    <div class="container-fluid">
-      <header>
-        <h2>OMS</h2>
-        <h3 class="nadzornaH3"><?php echo $_SESSION['autoriziran']->ime . " " . $_SESSION['autoriziran']->prezime; ?></h3>
-      </header>
-      <div class="row">
-        <div class="col-md-2">
-          <!--<div id="sidebar-wrapper">-->
-            <ul class="sidebar-nav">
-              <li>
-                <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>Zadaće <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Postavljene zadaće</a></li>
-                  <li><a href="#">Nova zadaća</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Moj profil</a>
-              </li>
-              <li>
-                <a href="<?php echo $putanja; ?>odjava.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Odjava</a>
-              </li>
-            </ul>
-          <!--</div>-->
-        </div>
+<?php include "header_navigation.php"; ?>
         <div class="col-md-8">
           <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="from-group input-group">
@@ -106,23 +73,7 @@ foreach ($statusi as $status):
           </div>
 <?php endforeach; ?>
         </div>
-        <div class="col-md-2">
-          <?php
-$izraz=$veza->prepare("select * from korisnik");
-$izraz->execute();
-$korisnici=$izraz->fetchALL(PDO::FETCH_OBJ);
-foreach ($korisnici as $korisnik): 
-if ($korisnik->admin != 1):
-?>
-<p>
-<img src="<?php echo $korisnik->avatar; ?>" style="width:20%" />
-</p>
-<?php 
-endif;
-endforeach; ?>
-</div>
-      </div>
-    </div>
+<?php include "korisnici.php"; ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
