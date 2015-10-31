@@ -15,7 +15,7 @@
             <div class="form-group">
               <input type="password" class="form-control form-controlIndex" id="lozinka" placeholder="Lozinka">
             </div>
-            <button class="btn btn-default"><a href="#" id="prijava">Prijavi se</a></button>
+            <a href="#" id="prijava" class="btn btn-default">Prijavi se</a>
           </form>
           <p id="poruka"></p>
       </div>
@@ -58,9 +58,43 @@
                 $("#poruka").html("Neispravno uneseno korisničko ime i lozinka.<br /> Molimo unesite ponovno.");
               }            
             }
+<<<<<<< HEAD
           });          
             return false;
         });      
+=======
+            else{
+              $("#poruka").html("Neispravno uneseno korisničko ime i lozinka.<br /> Molimo unesite ponovno.");
+            }
+
+          
+        }
+      });
+    }
+});
+    $("#prijava").click(function(){
+      $("#poruka").html("");
+      $.ajax({
+        type: "POST",
+        url: "prijava.php",
+        data: "korisnicko_ime=" + $("#korisnicko_ime").val() + "&lozinka=" + $("#lozinka").val(),
+        success: function(msg){
+            if(msg=="true"){
+              window.location="nadzorna_ploca.php";
+            }
+            else{
+              $("#poruka").html("Neispravno uneseno korisničko ime i lozinka.<br /> Molimo unesite ponovno.");
+            }
+
+          
+        }
+      });
+        
+
+        return false;
+      });
+      
+>>>>>>> origin/master
     </script>
   </body>
 </html>
