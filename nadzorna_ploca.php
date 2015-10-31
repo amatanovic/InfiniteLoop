@@ -1,3 +1,4 @@
+<?php include "header_navigation.php"; ?>
 <?php 
 if(isset($_POST['objava'])){
 $izraz = $veza->prepare("insert into status (tekst, korisnik, vrijeme) values (:status, :korisnik, now())");
@@ -8,7 +9,6 @@ header("location: nadzorna_ploca.php");
 }
 ?>
 
-<?php include "header_navigation.php"; ?>
         <div class="col-md-8">
           <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="from-group input-group">

@@ -16,7 +16,7 @@ if(!isset($_SESSION['autoriziran'])){
           <!--<div id="sidebar-wrapper">-->
             <ul class="sidebar-nav">
               <li>
-                <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+                <a href="<?php echo $putanja; ?>nadzorna_ploca.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>Zadaće <span class="caret"></span></a>
