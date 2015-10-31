@@ -73,6 +73,7 @@ a {
 
 header {
 	background-color: #00796B;
+	margin-bottom: 10px;
 }
 
 .nadzornaH3 {
@@ -104,4 +105,48 @@ h2 {
 
 img {
 	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+}
+
+.panel-default {
+	border-radius: 0;
+	margin-top: 50px;
+	margin-bottom: 0;
+	margin-right: auto;
+	margin-left: auto;
+	width: 97%;
+}
+
+.panel-heading {
+	background-color: #00796B!important;
+	border-radius: 0;
+	color: #B6B6B6!important;
+}
+
+.nadzornaForm {
+	padding-top: 0;
+	margin-right: auto;
+	margin-left: auto;
+	width: 97%;
+}
+
+.nadzornaKomBtn {
+	text-align: right;
+	margin-bottom: 0;
+	color: #B6B6B6
+}
+
+.panel-body {
+	padding-bottom: 10px;
+}
+
+hr {
+	margin-bottom: 10px;
+}
+
+.glyphicon-heart {
+	padding-left: 12px;
+	color: red;
+	font-size: 20px;
 }

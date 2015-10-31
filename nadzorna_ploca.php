@@ -36,46 +36,40 @@ if(!isset($_SESSION['autoriziran'])){
         <div class="col-md-8">
           <form>
             <div class="form-group">
-              <textarea name="text" cols="50" rows="2" maxlength="255" class="form-control" id="username" placeholder="Na umu mi je..."></textarea>
+              <textarea name="text" cols="50" rows="2" maxlength="255" class="form-control" id="username" placeholder="Napiši status"></textarea>
               <button type="submit" class="btn btn-default pull-right nadzornaBtn">Objavi</button>
             </div>
           </form>
-          <div class="row">
-            <!-- 
-            <h3>KOMENTARI:</h3>
-
-              <?php foreach($komentari as $komentar):
-              echo $komentar->operater; ?>
-            -->
+          <div class="row">            
             <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $_SESSION['autoriziran']->ime . " " . $_SESSION['autoriziran']->prezime; ?></h3>
+              </div>
               <div class="panel-body">
-
-                <!-- <?php echo $komentar->tekst; ?> -->
-
+                Ovdje status
+                <hr>
+                <p class="nadzornaKomBtn">Komentari<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></p>
               </div>
             </div>
             <form>
-              <div class="form-group">
+              <div class="form-group nadzornaForm">
                 <textarea name="text" cols="50" rows="1" maxlength="255" class="form-control" id="username" placeholder="Napiši komentar"></textarea>
-                <button type="submit" class="btn btn-default">Komentiraj</button>
+                <button type="submit" class="btn btn-default pull-right nadzornaBtn">Komentiraj</button>
               </div>
             </form>
-    
-            <!-- <?php endforeach; ?> -->
-
           </div>
         </div>
         <div class="col-md-2">
           <?php
-$izraz=$veza->prepare("select * from korisnik");
-$izraz->execute();
-$korisnici=$izraz->fetchALL(PDO::FETCH_OBJ);
-foreach ($korisnici as $korisnik): ?>
-<p>
-<img src="<?php echo $korisnik->avatar; ?>" style="width:20%" />
-</p>
-<?php endforeach; ?>
-</div>
+            $izraz=$veza->prepare("select * from korisnik");
+            $izraz->execute();
+            $korisnici=$izraz->fetchALL(PDO::FETCH_OBJ);
+            foreach ($korisnici as $korisnik): ?>
+            <p>
+            <img src="<?php echo $korisnik->avatar; ?>" />
+            </p>
+            <?php endforeach; ?>
+        </div>
       </div>
     </div>
 
