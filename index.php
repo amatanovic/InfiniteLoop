@@ -59,16 +59,8 @@
               }            
             }
           });          
-            return false;
-        });      
-            else{
-              $("#poruka").html("Neispravno uneseno korisničko ime i lozinka.<br /> Molimo unesite ponovno.");
-            }
-
-          
-        }
-      });
-    }
+     return false;
+       
 });
     $("#prijava").click(function(){
       $("#poruka").html("");
@@ -87,8 +79,6 @@
           
         }
       });
-        
-
         return false;
       });
       </script>
