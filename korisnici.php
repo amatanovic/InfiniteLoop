@@ -8,7 +8,7 @@ if ($korisnik->admin != 1 and $korisnik->sifra != $_SESSION['autoriziran']->sifr
 ?>
 <p>
 <a href="<?php echo $putanja; ?>privatniProfil.php?sifra=<?php echo $korisnik->sifra; ?>"> 
-<img src="<?php echo $korisnik->avatar; ?>" style="width:20%" />
+<img src="<?php echo $korisnik->avatar; ?>" class="korisniciSlike" />
 </a>
 </p>
 <?php 

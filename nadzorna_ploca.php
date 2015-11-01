@@ -11,10 +11,12 @@
 
 <div class="col-md-8">
   <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <div class="from-group input-group">
-      <span class="input-group-addon" style="height:54px"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:54px height:54px" /></span>
+    <div class="form-group input-group">
+      <div class="input-group">
+      <span class="input-group-addon" style="height:54px"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:54px height:54px" class="slikaAvatara"/></span>
       <input type="hidden" name="korisnik" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
       <textarea name="status" cols="50" rows="2" maxlength="255" class="form-control" id="username" placeholder="Napiši status"></textarea>
+    </div>
       <button type="submit" class="btn btn-default pull-right nadzornaBtn" name="objava">Objavi</button>
     </div>
   </form>
@@ -66,9 +68,11 @@
     </div>
     <div class="izlistaniKomentari" id="izlistani_<?php echo $statusID; ?>"></div>
     <div class="form-group input-group">
-      <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:40px height:40px" /></span>
+      <div class="input-group">
+      <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" class="slikaAvatara" /></span>
       <input type="hidden" id="korisnik_<?php echo $statusID; ?>" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
       <textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_<?php echo $statusID; ?>" placeholder="Napiši komentar"></textarea>
+    </div>
       <button class="btn btn-default pull-right komentiraj" id="<?php echo $statusID; ?>">Komentiraj</button>
     </div>
   </div>

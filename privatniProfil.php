@@ -59,8 +59,8 @@ $izraz=$veza->prepare("select * from korisnik where sifra=$korisnikID");
 $izraz->execute();
 $korisnik=$izraz->fetch(PDO::FETCH_OBJ);
 ?>
-<p>
-<img src="<?php echo $korisnik->avatar; ?>" style="width:20%" />
+<p style="text-align:center">
+<img src="<?php echo $korisnik->avatar; ?>" style="width:30%" class="profilAvatar" />
 <?php 
 if ($korisnikID == $_SESSION['autoriziran']->sifra) {
 include "updateProfila.php";

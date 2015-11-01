@@ -38,6 +38,18 @@
     margin-left: auto;
 }
 
+.input-group {
+	padding-top: 20px;
+	width: 98.7%;
+	margin-right: auto;
+    margin-left: auto;
+}
+
+.promjeniSliku {
+	margin-right: auto;
+    margin-left: auto;
+}
+
 .btn-default {
 	color: #fff;
 	background-color: #00796B;
@@ -106,10 +118,22 @@ h2 {
 	margin-top: 10px;
 }
 
-img {
+.korisniciSlike {
 	border-radius: 100%;
 	width: 40px;
 	height: 40px;
+}
+
+.slikaAvatara {
+	border-radius: 100%;
+	width: 40px;
+	height: 40px;
+}
+
+.profilAvatar {
+	border-radius: 100%;
+	width: 300px;
+	height: 300px;
 }
 
 .status {
@@ -165,6 +189,30 @@ hr {
 	margin-bottom: 0;
 }
 
-.status {
-	height: 100px;
+.odaberi-avatar {
+	width: 200px;
+}
+
+.promjena {
+	margin-left: 350px;
+	margin-top: -41px;
+}
+
+.komentiraj {
+	height: 34px;
+}
+
+.profil {
+	background-color: #00796B;
+	color: #B6B6B6;
+	width: 137px;
+}
+
+.odustani {
+	background-color: #ff5252;
+}
+
+.profilBtn {
+	margin-left: 30%;
+	margin-right: auto;
 }
