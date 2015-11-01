@@ -100,6 +100,7 @@ insert into komentarstatus (naziv, korisnik, status, vrijeme) values ("na input 
 insert into zadaca (naziv, opiszadatka, pocetak, kraj) values ("Zadatak 1", "U ovom zadatku je potrebno napraviti web stranicu o vašem talentu", "2015-10-19", "2015-10-25");
 insert into zadaca (naziv, opiszadatka, pocetak, kraj) values ("Zadatak 2", "U ovom zadatku je potrebno napraviti web stranicu u kojem ćete koristiti liste", "2015-10-26", "2015-11-01");
 insert into zadaca (naziv, opiszadatka, pocetak, kraj) values ("Zadatak 3", "Napravite mrežno mjesto po vašem izboru", "2015-11-02", "2015-11-08");
+insert into zadaca (naziv, opiszadatka, pocetak, kraj) values ("Zadatak 4", "Napravite mrežno mjesto sa svim do sada naučenim CSS svojstvima", "2015-11-09", "2015-11-15");
 
 #upload zadace 
 insert into uploadzadaca (zadaca, korisnik, putanja) values (1, 1, "http://oziz.ffos.hr/z1");

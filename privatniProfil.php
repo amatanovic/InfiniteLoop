@@ -71,6 +71,9 @@ include "updateProfila.php";
   endforeach; 
   endif;
 }
+else {
+  echo $korisnik->ime . " " . $korisnik->prezime;
+}
 ?>
 </p>
 <?php 
@@ -83,8 +86,10 @@ if ($korisnikID == $_SESSION['autoriziran']->sifra and $korisnik->admin == 1) {
   endforeach; 
   endif;
   }
+if ($korisnik->admin != 1) {
+include "zadacePrivatniProfil.php";
+}
   ?> 
-
 </div>
 <?php include "korisnici.php"; ?>
 
