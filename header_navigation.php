@@ -21,7 +21,7 @@ if(!isset($_SESSION['autoriziran'])){
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>Zadaće <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Postavljene zadaće</a></li>
+                  <li><a href="postavljeneZadace.php">Postavljene zadaće</a></li>
                   <?php if($_SESSION['autoriziran']->admin!=1): ?>
                   <li><a href="<?php echo $putanja; ?>uploadZadace.php">Nova zadaća</a></li>
                 <?php endif; ?>
