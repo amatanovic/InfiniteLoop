@@ -32,7 +32,10 @@
 
 .form-group {
 	padding-bottom: 20px;
-	padding-top: 10px;
+	padding-top: 0;
+	width: 97%;
+	margin-right: auto;
+    margin-left: auto;
 }
 
 .btn-default {
@@ -105,6 +108,8 @@ h2 {
 
 img {
 	border-radius: 100%;
+	width: 40px;
+	height: 40px;
 }
 
 .status {
@@ -136,12 +141,6 @@ img {
 	width: 97%;
 }
 
-.nadzornaKomBtn {
-	text-align: right;
-	margin-bottom: 0;
-	color: #B6B6B6
-}
-
 .panel-body {
 	padding-bottom: 10px;
 }
@@ -158,4 +157,14 @@ hr {
 
 .oznacenaZadaca {
 	font-weight: bold;
+}
+
+.komentari {
+	text-align: right;
+	color: #B6B6B6;
+	margin-bottom: 0;
+}
+
+.status {
+	height: 100px;
 }
