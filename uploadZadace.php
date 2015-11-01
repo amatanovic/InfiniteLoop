@@ -24,7 +24,7 @@ header("location: uploadZadace.php");
         $izraz->execute();
         $zadace=$izraz->fetchALL(PDO::FETCH_OBJ);
         foreach ($zadace as $zadaca):
-        if ($zadaca->pocetak < $vrijeme && $zadaca->kraj > $vrijeme):
+        if ($zadaca->pocetak <= $vrijeme && $zadaca->kraj >= $vrijeme):
         ?>
       <p>
         <?php echo $zadaca->naziv; ?>

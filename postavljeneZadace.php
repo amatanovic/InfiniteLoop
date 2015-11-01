@@ -61,7 +61,7 @@
           $zadace=$izraz->fetchALL(PDO::FETCH_OBJ);
           $i = 0;
           foreach ($zadace as $zadaca):
-          if ($zadaca->pocetak < $vrijeme):
+          if ($zadaca->pocetak <= $vrijeme):
           if ($i == 0) {
          echo "<p class='naziviZadaca oznacenaZadaca' id='" . $zadaca->sifra . "'>" . $zadaca->naziv . "</p>";
         }
