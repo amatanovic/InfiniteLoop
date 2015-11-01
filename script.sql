@@ -38,8 +38,8 @@ create table zadaca (
 sifra int not null primary key auto_increment,
 naziv varchar(250),
 opiszadatka text,
-pocetak datetime,
-kraj datetime
+pocetak date,
+kraj date
 )engine=innodb;
 
 create table uploadzadaca (
@@ -95,3 +95,16 @@ insert into likestatus (liked, korisnik, status) values (1, 1, 2);
 insert into komentarstatus (naziv, korisnik, status, vrijeme) values ("hehe imaš pravo, zato sam ja svoju prošli tjedan napravila.", 2, 1, "2015-10-30 16:00:00");
 insert into komentarstatus (naziv, korisnik, status, vrijeme) values ("dobro pa si rekla!", 3, 1, "2015-10-30 16:10:00");
 insert into komentarstatus (naziv, korisnik, status, vrijeme) values ("na input staviš type da je password", 4, 2, "2015-10-29 14:15:00");
+
+#zadace
+insert into zadaca (naziv, opiszadatka, pocetak, kraj) values ("Zadatak 1", "U ovom zadatku je potrebno napraviti web stranicu o vašem talentu", "2015-10-19", "2015-10-25");
+insert into zadaca (naziv, opiszadatka, pocetak, kraj) values ("Zadatak 2", "U ovom zadatku je potrebno napraviti web stranicu u kojem ćete koristiti liste", "2015-10-26", "2015-11-01");
+insert into zadaca (naziv, opiszadatka, pocetak, kraj) values ("Zadatak 3", "Napravite mrežno mjesto po vašem izboru", "2015-11-02", "2015-11-08");
+
+#upload zadace 
+insert into uploadzadaca (zadaca, korisnik, putanja) values (1, 1, "http://oziz.ffos.hr/z1");
+insert into uploadzadaca (zadaca, korisnik, putanja) values (1, 2, "http://oziz.ffos.hr/z1");
+insert into uploadzadaca (zadaca, korisnik, putanja) values (1, 3, "http://oziz.ffos.hr/z1");
+insert into uploadzadaca (zadaca, korisnik, putanja) values (1, 4, "http://oziz.ffos.hr/z1");
+insert into uploadzadaca (zadaca, korisnik, putanja) values (2, 1, "http://oziz.ffos.hr/z2");
+insert into uploadzadaca (zadaca, korisnik, putanja) values (2, 2, "http://oziz.ffos.hr/z2");
