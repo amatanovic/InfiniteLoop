@@ -83,6 +83,9 @@
     <script src="js/bootstrap.min.js"></script>
     <script>
       $(function(){
+    like();
+    komentari();
+    komentiraj();
     $(".naziviZadaca").click(function(){
     $(".popisZadaca").html("");
     $(".naziviZadaca").removeClass("oznacenaZadaca");
@@ -101,20 +104,27 @@
        $.ajax({
         type: "POST",
         url: "dohvatiLikes.php",
-        data: "uploadzadaca=" + item.sifra,
+        data: "uploadzadaca=" + item.sifra + "&korisnik=" + <?php echo $_SESSION['autoriziran']->sifra; ?>,
         success: function(msg){
         podatak=$.parseJSON(msg);
+          if (podatak.liked == true) {
           $("#likes_" + item.sifra).append($('<span class="zadaca statusLiked" id="liked">' + podatak.numberLikes + '</span>'));
+          }
+          else if (podatak.liked !== true) {
+          $("#likes_" + item.sifra).append($('<span class="zadaca statusNotLiked" id="' + item.sifra + '">' + podatak.numberLikes + '</span>'));
+          }
+        like();
         }
       });
 
           });
+    komentari();
+    komentiraj();
         }
       });
       });
 
-        });
-
+      function like () {
       $(".zadaca").click(function(){
        if ($(this).attr("id") !== "liked") {
        var ovajUpload = $(this);
@@ -135,7 +145,9 @@
        }
         return false;
       });
+      }
 
+      function komentari () {
       $(".komentari").click(function(){
         $(".izlistaniKomentari").html("");
        var ovajUpload = $(this);
@@ -154,7 +166,9 @@
       });
         return false;
       });
+      }
 
+      function komentiraj () {
       $(".komentiraj").click(function(){
        var upload = $(this).attr("id");
        var korisnik = $("#korisnik_" + upload).val();
@@ -175,7 +189,8 @@
       });
         return false;
       });
-
+      }
+  });
     </script>
   </body>
 </html>
