@@ -97,9 +97,18 @@
         $(".popisZadaca").append($('<p>Trenutno nitko nema postavljenu ovu zadaću!</p>'));
         }
         $.each(podaci, function(i, item){
-          $(".popisZadaca").append($('<p><img src="' + item.avatar + '" style="width:100px" />' + item.ime + ' ' + item.prezime + ' <a href="' + item.putanja + '">' + item.putanja + '</a></p>'));
-          });
+          $(".popisZadaca").append($('<div class="row"><div class="panel panel-default"><div class="panel-body"><p><img src="' + item.avatar + '" style="width:100px" />' + item.ime + ' ' + item.prezime + '<a href="' + item.putanja + '">' + item.putanja + '</a></p><p><span class="glyphicon glyphicon-heart" id="likes_' + item.sifra + '"></span> <span class="komentari" id="' + item.sifra + '"> Komentari </span></p></div></div><div class="izlistaniKomentari" id="izlistani_' + item.sifra +'"></div><div class="form-group input-group"> <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:100px" /></span><input type="hidden" id="korisnik_' + item.sifra + '" value="<?php echo $_SESSION['autoriziran']->sifra ?>"><textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_' + item.sifra + '" placeholder="Napiši komentar"></textarea><button class="btn btn-default komentiraj" id="' + item.sifra + '">Komentiraj</button></div></div>'));
+       $.ajax({
+        type: "POST",
+        url: "dohvatiLikes.php",
+        data: "uploadzadaca=" + item.sifra,
+        success: function(msg){
+        podatak=$.parseJSON(msg);
+          $("#likes_" + item.sifra).append($('<span class="zadaca statusLiked" id="liked">' + podatak.numberLikes + '</span>'));
+        }
+      });
 
+          });
         }
       });
       });
