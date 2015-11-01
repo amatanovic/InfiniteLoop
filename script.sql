@@ -59,6 +59,7 @@ vrijeme datetime
 
 create table likezadaca (
 sifra int not null primary key auto_increment,
+liked boolean,
 uploadzadaca int,
 korisnik int
 )engine=innodb;
@@ -109,3 +110,19 @@ insert into uploadzadaca (zadaca, korisnik, putanja) values (1, 3, "http://oziz.
 insert into uploadzadaca (zadaca, korisnik, putanja) values (1, 4, "http://oziz.ffos.hr/z1");
 insert into uploadzadaca (zadaca, korisnik, putanja) values (2, 1, "http://oziz.ffos.hr/z2");
 insert into uploadzadaca (zadaca, korisnik, putanja) values (2, 2, "http://oziz.ffos.hr/z2");
+
+#like zadace 
+insert into likezadaca (liked, uploadzadaca, korisnik) values (1, 1, 2);
+insert into likezadaca (liked, uploadzadaca, korisnik) values (1, 1, 3);
+insert into likezadaca (liked, uploadzadaca, korisnik) values (1, 1, 4);
+insert into likezadaca (liked, uploadzadaca, korisnik) values (1, 1, 5);
+insert into likezadaca (liked, uploadzadaca, korisnik) values (1, 2, 1);
+insert into likezadaca (liked, uploadzadaca, korisnik) values (1, 2, 3);
+insert into likezadaca (liked, uploadzadaca, korisnik) values (1, 5, 1);
+insert into likezadaca (liked, uploadzadaca, korisnik) values (1, 5, 5);
+insert into likezadaca (liked, uploadzadaca, korisnik) values (1, 6, 2);
+
+#komentari zadace
+insert into komentarzadaca (naziv, uploadzadaca, korisnik, vrijeme) values ("Predobra ti je ova zadaća", 1, 2, "2015-10-22 15:00:00");
+insert into komentarzadaca (naziv, uploadzadaca, korisnik, vrijeme) values ("Hvala :)", 1, 1, "2015-10-22 15:15:00");
+insert into komentarzadaca (naziv, uploadzadaca, korisnik, vrijeme) values ("Kolegice ovo ne liči ni na što", 2, 5, "2015-10-24 11:00:00");

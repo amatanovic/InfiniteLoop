@@ -102,6 +102,7 @@ foreach ($statusi as $status):
       });
 
        $(".komentari").click(function(){
+        $(".izlistaniKomentari").html("");
        var ovajStatus = $(this);
        var status = ovajStatus.attr("id");
         $.ajax({
