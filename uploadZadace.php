@@ -26,15 +26,21 @@ header("location: uploadZadace.php");
         foreach ($zadace as $zadaca):
         if ($zadaca->pocetak <= $vrijeme && $zadaca->kraj >= $vrijeme):
         ?>
-      <p>
-        <?php echo $zadaca->naziv; ?>
-      </p>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+      <h3 class="panel-title"><?php echo $zadaca->naziv; ?></h3>
+        </div>
+      <div class="panel-body">
       <p>
         <?php echo $zadaca->opiszadatka; ?>
       </p>
-      <p>
+    </div>
+    <div class="panel-footer">
+      
       Rok predaje: <?php echo $zadaca->pocetak; ?> - <?php echo $zadaca->kraj; ?>
-      </p>
+      
+    </div>
+    </div>
        <?php 
               $izraz=$veza->prepare("select * from uploadzadaca where korisnik=:korisnik and zadaca=:zadaca");
               $izraz->bindValue(':korisnik', $_SESSION['autoriziran']->sifra);
@@ -42,18 +48,20 @@ header("location: uploadZadace.php");
               $izraz->execute();
               $korisnikovaZadaca=$izraz->fetch(PDO::FETCH_OBJ);
               if ($korisnikovaZadaca==null): ?>
+              <div class="row">
               <form method="POST">
-              <div class="from-group input-group">
+              <div class="from-group input-group upload-zadace">
               <input type="hidden" name="korisnik" value="<?php echo $_SESSION['autoriziran']->sifra; ?>">
               <input type="hidden" name="zadaca" value="<?php echo $zadaca->sifra; ?>">
               <input type="text" name="putanja" cols="50" class="form-control" id="putanja" placeholder="Postavite URL do vaše zadaće">
               <button class="btn btn-default pull-right nadzornaBtn" name="predaj">Predaj</button>
               </div>
               </form>
+            </div>
             <?php endif;
             if ($korisnikovaZadaca!=null): ?>
              <form method="POST">
-              <div class="from-group input-group">
+              <div class="from-group input-group upload-zadace">
               <input type="hidden" name="sifra" value="<?php echo $korisnikovaZadaca->sifra; ?>">
               <input type="text" name="putanja" cols="50" class="form-control" id="putanja" value="<?php echo $korisnikovaZadaca->putanja; ?>">
               <button class="btn btn-default pull-right nadzornaBtn" name="promjena">Promjeni</button>
@@ -64,6 +72,7 @@ header("location: uploadZadace.php");
       endif;
       endforeach; ?>
       </div>
+
 <?php include "korisnici.php"; ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

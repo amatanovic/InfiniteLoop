@@ -72,7 +72,7 @@ include "updateProfila.php";
   endif;
 }
 else {
-  echo $korisnik->ime . " " . $korisnik->prezime;
+  echo "<h1 style='text-align:center'>" . $korisnik->ime . " " . $korisnik->prezime . "</h1>";
 }
 ?>
 </p>

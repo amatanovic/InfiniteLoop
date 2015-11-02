@@ -1,6 +1,6 @@
 <?php include "header_navigation.php"; ?>
-        <div class="col-md-8">
-        <div class="col-md-6 popisZadaca">
+        <!--<div class="col-md-8">-->
+        <div class="col-md-8 popisZadaca">
         <?php
           $izraz=$veza->prepare("select a.ime, a.prezime, a.avatar, b.* from korisnik a inner join uploadzadaca b on a.sifra=b.korisnik where b.zadaca=1");
           $izraz->execute();
@@ -8,11 +8,15 @@
           foreach ($korisnikoveZadace as $korisnikovaZadaca): ?>
           <div class="row">
           <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><?php echo $korisnikovaZadaca->ime . "" . $korisnikovaZadaca->prezime; ?></h3>
+            </div>
           <div class="panel-body">
           <p>
-          <img src="<?php echo $korisnikovaZadaca->avatar; ?>" style="width:100px" /> <?php echo $korisnikovaZadaca->ime . "" . $korisnikovaZadaca->prezime; ?> 
+          <img src="<?php echo $korisnikovaZadaca->avatar; ?>" style="width:100px; height:100px; border-radius:100%" />  
           <?php echo "<a href='" . $korisnikovaZadaca->putanja . "'>" . $korisnikovaZadaca->putanja ."</a>"?>
           </p>
+          <hr>
           <p>
               <span class="glyphicon glyphicon-heart">
               <?php
@@ -45,15 +49,20 @@
 
            </div>
               <div class="form-group input-group">
-                <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:100px" /></span>
+                <div class="input-group">
+                <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" class="slikaAvatara"/></span>
                 <input type="hidden" id="korisnik_<?php echo $uploadzadacaID; ?>" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
                 <textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_<?php echo $uploadzadacaID; ?>" placeholder="Napiši komentar"></textarea>
-                <button class="btn btn-default komentiraj" id="<?php echo $uploadzadacaID; ?>">Komentiraj</button>
+              </div>
+                <button class="btn btn-default pull-right komentiraj" id="<?php echo $uploadzadacaID; ?>">Komentiraj</button>
               </div>
           </div>
         <?php endforeach; ?>
       </div>
-       <div class="col-md-2">
+       
+
+      <!--</div>-->
+      <div class="col-md-2">
           <?php
           $vrijeme = date("Y-m-d");
           $izraz=$veza->prepare("select * from zadaca");
@@ -63,10 +72,10 @@
           foreach ($zadace as $zadaca):
           if ($zadaca->pocetak <= $vrijeme):
           if ($i == 0) {
-         echo "<p class='naziviZadaca oznacenaZadaca' id='" . $zadaca->sifra . "'>" . $zadaca->naziv . "</p>";
+         echo "<button class='btn btn-default naziviZadaca oznacenaZadaca' id='" . $zadaca->sifra . "'>" . $zadaca->naziv . "</button>";
         }
         else if ($i != 0) {
-          echo "<p class='naziviZadaca' id='" . $zadaca->sifra . "'>" . $zadaca->naziv . "</p>";
+          echo "<button class='btn btn-default naziviZadaca' id='" . $zadaca->sifra . "'>" . $zadaca->naziv . "</button>";
         }
         $i++;
         endif;
@@ -74,8 +83,6 @@
         ?>
       </div>
 
-      </div>
-<?php include "korisnici.php"; ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -100,7 +107,7 @@
         $(".popisZadaca").append($('<p>Trenutno nitko nema postavljenu ovu zadaću!</p>'));
         }
         $.each(podaci, function(i, item){
-          $(".popisZadaca").append($('<div class="row"><div class="panel panel-default"><div class="panel-body"><p><img src="' + item.avatar + '" style="width:100px" />' + item.ime + ' ' + item.prezime + '<a href="' + item.putanja + '">' + item.putanja + '</a></p><p><span class="glyphicon glyphicon-heart" id="likes_' + item.sifra + '"></span> <span class="komentari" id="' + item.sifra + '"> Komentari </span></p></div></div><div class="izlistaniKomentari" id="izlistani_' + item.sifra +'"></div><div class="form-group input-group"> <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:100px" /></span><input type="hidden" id="korisnik_' + item.sifra + '" value="<?php echo $_SESSION['autoriziran']->sifra ?>"><textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_' + item.sifra + '" placeholder="Napiši komentar"></textarea><button class="btn btn-default komentiraj" id="' + item.sifra + '">Komentiraj</button></div></div>'));
+          $(".popisZadaca").append($('<div class="row"><div class="panel panel-default"><div class="panel-body"><p><img src="' + item.avatar + '" style="width:100px; height:100px; border-radius:100%" />' + item.ime + ' ' + item.prezime + '<a href="' + item.putanja + '">' + item.putanja + '</a></p><p><span class="glyphicon glyphicon-heart" id="likes_' + item.sifra + '"></span> <span class="komentari" id="' + item.sifra + '"> Komentari </span></p></div></div><div class="izlistaniKomentari" id="izlistani_' + item.sifra +'"></div><div class="form-group input-group"> <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:100px" /></span><input type="hidden" id="korisnik_' + item.sifra + '" value="<?php echo $_SESSION['autoriziran']->sifra ?>"><textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_' + item.sifra + '" placeholder="Napiši komentar"></textarea><button class="btn btn-default komentiraj" id="' + item.sifra + '">Komentiraj</button></div></div>'));
        $.ajax({
         type: "POST",
         url: "dohvatiLikes.php",

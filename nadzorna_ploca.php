@@ -15,7 +15,7 @@
       <div class="input-group">
       <span class="input-group-addon" style="height:54px"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:54px height:54px" class="slikaAvatara"/></span>
       <input type="hidden" name="korisnik" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
-      <textarea name="status" cols="50" rows="2" maxlength="255" class="form-control" id="username" placeholder="Napiši status"></textarea>
+      <textarea name="status" cols="50" rows="2" maxlength="255" class="form-control" id="username" placeholder="Napiši status" style="border-left:0"></textarea>
     </div>
       <button type="submit" class="btn btn-default pull-right nadzornaBtn" name="objava">Objavi</button>
     </div>
@@ -37,7 +37,7 @@
         <p><?php echo $status->tekst; ?></p>
         <hr>
         <p>
-          <span class="komentari" id="<?php echo $statusID; ?>"> Komentari </span>
+          
           <span class="glyphicon glyphicon-heart">
 
             <?php
@@ -62,7 +62,8 @@
               }
             ?>
 
-          </span>           
+          </span> 
+          <span class="komentari" id="<?php echo $statusID; ?>"> Komentari </span>          
         </p>
       </div>
     </div>
@@ -71,7 +72,7 @@
       <div class="input-group">
       <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" class="slikaAvatara" /></span>
       <input type="hidden" id="korisnik_<?php echo $statusID; ?>" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
-      <textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_<?php echo $statusID; ?>" placeholder="Napiši komentar"></textarea>
+      <textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_<?php echo $statusID; ?>" placeholder="Napiši komentar" style="border-left:0"></textarea>
     </div>
       <button class="btn btn-default pull-right komentiraj" id="<?php echo $statusID; ?>">Komentiraj</button>
     </div>
