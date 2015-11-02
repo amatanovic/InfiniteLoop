@@ -10,19 +10,19 @@
 	<form method="POST" action="">
     <div class="form-group input-group">
 		<input type="hidden" name="sifra" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
-     	<div class="input-group">
+     	<div class="input-group privatni-profil">
   		<span class="input-group-addon profil">IME</span>
   		<input type="text" name="ime" class="form-control" value="<?php echo $korisnik->ime;?>" aria-describedby="basic-addon1" />
 		</div>
-		<div class="input-group">
+		<div class="input-group privatni-profil">
   		<span class="input-group-addon profil">PREZIME</span>
   		<input type="text" name="prezime" class="form-control" value="<?php echo $korisnik->prezime;?>" aria-describedby="basic-addon1" />
 		</div>
-		<div class="input-group">
+		<div class="input-group privatni-profil">
   		<span class="input-group-addon profil">LOZINKA</span>
   		<input type="password" name="lozinka" class="form-control" aria-describedby="basic-addon1" />
 		</div>
-		<div class="input-group">
+		<div class="input-group privatni-profil">
   		<span class="input-group-addon profil">PONOVI LOZINKU</span>
   		<input type="password" name="lozinka2" class="form-control" aria-describedby="basic-addon1" />
 		</div>
