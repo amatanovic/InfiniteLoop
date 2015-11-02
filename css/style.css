@@ -133,6 +133,12 @@ h2 {
 
 .slikaAvatara {
 	border-radius: 100%;
+	width: 32px;
+	height: 32px;
+}
+
+.slikaStatusa {
+	border-radius: 100%;
 	width: 40px;
 	height: 40px;
 }

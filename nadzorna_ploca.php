@@ -13,7 +13,7 @@
   <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <div class="form-group input-group">
       <div class="input-group">
-      <span class="input-group-addon" style="height:54px"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:54px height:54px" class="slikaAvatara"/></span>
+      <span class="input-group-addon" style="height:54px"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:54px height:54px" class="slikaStatusa"/></span>
       <input type="hidden" name="korisnik" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
       <textarea name="status" cols="50" rows="2" maxlength="255" class="form-control" id="username" placeholder="Napiši status" style="border-left:0"></textarea>
     </div>

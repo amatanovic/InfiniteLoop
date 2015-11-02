@@ -52,7 +52,7 @@
                 <div class="input-group">
                 <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" class="slikaAvatara"/></span>
                 <input type="hidden" id="korisnik_<?php echo $uploadzadacaID; ?>" value="<?php echo $_SESSION['autoriziran']->sifra ?>">
-                <textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_<?php echo $uploadzadacaID; ?>" placeholder="Napiši komentar"></textarea>
+                <textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_<?php echo $uploadzadacaID; ?>" placeholder="Napiši komentar" style="border-left:0"></textarea>
               </div>
                 <button class="btn btn-default pull-right komentiraj" id="<?php echo $uploadzadacaID; ?>">Komentiraj</button>
               </div>
@@ -107,7 +107,7 @@
         $(".popisZadaca").append($('<p>Trenutno nitko nema postavljenu ovu zadaću!</p>'));
         }
         $.each(podaci, function(i, item){
-          $(".popisZadaca").append($('<div class="row"><div class="panel panel-default"><div class="panel-body"><p><img src="' + item.avatar + '" style="width:100px; height:100px; border-radius:100%" />' + item.ime + ' ' + item.prezime + '<a href="' + item.putanja + '">' + item.putanja + '</a></p><p><span class="glyphicon glyphicon-heart" id="likes_' + item.sifra + '"></span> <span class="komentari" id="' + item.sifra + '"> Komentari </span></p></div></div><div class="izlistaniKomentari" id="izlistani_' + item.sifra +'"></div><div class="form-group input-group"> <span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" style="width:100px" /></span><input type="hidden" id="korisnik_' + item.sifra + '" value="<?php echo $_SESSION['autoriziran']->sifra ?>"><textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_' + item.sifra + '" placeholder="Napiši komentar"></textarea><button class="btn btn-default komentiraj" id="' + item.sifra + '">Komentiraj</button></div></div>'));
+          $(".popisZadaca").append($('<div class="row"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">' + item.ime + ' ' + item.prezime + '</h3></div><div class="panel-body"><p><img src="' + item.avatar + '" style="width:100px; height:100px; border-radius:100%" /><a href="' + item.putanja + '">' + item.putanja + '</a></p><hr><p><span class="glyphicon glyphicon-heart" id="likes_' + item.sifra + '"></span> <span class="komentari" id="' + item.sifra + '"> Komentari </span></p></div></div><div class="izlistaniKomentari" id="izlistani_' + item.sifra +'"></div><div class="form-group input-group"> <div class="input-group"><span class="input-group-addon"> <img src="<?php echo $_SESSION['autoriziran']->avatar; ?>" class="slikaAvatara"/></span><input type="hidden" id="korisnik_' + item.sifra + '" value="<?php echo $_SESSION['autoriziran']->sifra ?>"><textarea name="text" cols="50" rows="1" minlength="1" maxlength="255" class="form-control" id="komentar_' + item.sifra + '" placeholder="Napiši komentar" style="border-left:0"></textarea></div><button class="btn btn-default pull-right komentiraj" id="' + item.sifra + '">Komentiraj</button></div></div>'));
        $.ajax({
         type: "POST",
         url: "dohvatiLikes.php",
