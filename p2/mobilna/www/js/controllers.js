@@ -40,8 +40,6 @@ angular.module('starter.controllers', [])
 })
 
 
-
-
 .controller('LoginCtrl', function($scope,  $rootScope, $ionicLoading, $http, $state) {
 $scope.error = false;
 $scope.alert = false;
@@ -78,7 +76,6 @@ $scope.submit = function () {
 
 
 
-
 .controller('ProknjizeneUplateCtrl', function($scope) {
 
 })
@@ -86,6 +83,7 @@ $scope.submit = function () {
 .controller('NeproknjizeneUplateCtrl', function($scope) {
 
 });
+
 
 
 

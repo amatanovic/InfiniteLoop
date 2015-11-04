@@ -37,9 +37,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic.service.core',
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
-$stateProvider
+  $stateProvider
 
- .state('tab', {
+.state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html',
@@ -78,7 +78,7 @@ $stateProvider
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/login');
+ $urlRouterProvider.otherwise('/tab/login');
 
 });
 
