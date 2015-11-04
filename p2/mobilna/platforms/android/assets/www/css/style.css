@@ -1,1 +1,21 @@
-/* Empty. Add your own CSS if you like */
+.zuta{
+border-color: #faebcc !important;
+background-color: #fcf8e3 !important;
+color: #8a6d3b !important;
+}
+
+.crvena{
+border-color: #ebccd1;
+background-color: #f2dede;
+color: #a94442;
+}
+
+.card{
+border-radius: 10px;
+height: 50px;
+text-align: center;
+padding: 15px;
+}
+
+.naslov{color: silver !important;
+font-weight: normal !important;}
