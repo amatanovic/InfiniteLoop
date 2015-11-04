@@ -39,3 +39,53 @@ angular.module('starter.controllers', [])
   }
 })
 
+
+
+
+.controller('LoginCtrl', function($scope,  $rootScope, $ionicLoading, $http, $state) {
+$scope.error = false;
+$scope.alert = false;
+$scope.loginData = {};
+
+$scope.submit = function () {
+      $ionicLoading.show({
+          template: '<ion-spinner></ion-spinner><br />Please wait...'
+        });   
+        $http({
+          url: "http://oziz.ffos.hr/OMS20142015/0122215735/hackathon/android/login.php",
+          data: $scope.loginData,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }).success(function(data) {
+          $ionicLoading.hide();
+          if (data === false) {
+            $scope.alert = true;
+          }
+          else if (data !== false) {
+            $rootScope.userData = data;
+            $state.go("tab.proknjizene_uplate");
+          }
+
+        }).error(function(err) {
+          $ionicLoading.hide();
+          $scope.upozorenje = true;
+        });
+    }
+})
+
+
+
+
+
+.controller('ProknjizeneUplateCtrl', function($scope) {
+
+})
+
+.controller('NeproknjizeneUplateCtrl', function($scope) {
+
+});
+
+
+

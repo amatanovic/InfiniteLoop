@@ -37,15 +37,48 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic.service.core',
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
-  $stateProvider
-    .state('home', {
-      url: "/home",
-      templateUrl: "templates/home.html",
-      controller: 'AppCtrl'
-    });
+$stateProvider
+
+ .state('tab', {
+    url: '/tab',
+    abstract: true,
+    templateUrl: 'templates/tabs.html',
+    controller: 'AppCtrl'
+  })
+
+ .state('tab.login', {
+    url: '/login',
+    views: {
+      'tab-login': {
+        templateUrl: 'templates/tab-login.html',
+        controller: 'LoginCtrl'
+      }
+    }
+  })
+
+   .state('tab.proknjizene_uplate', {
+    url: '/proknjizene_uplate',
+    views: {
+      'tab-proknjizene_uplate': {
+        templateUrl: 'templates/tab-proknjizene_uplate.html',
+        controller: 'ProknjizeneUplateCtrl'
+      }
+    }
+  })
+
+.state('tab.neproknjizene_uplate', {
+    url: '/neproknjizene_uplate',
+    views: {
+      'tab-neproknjizene_uplate': {
+        templateUrl: 'templates/tab-neproknjizene_uplate.html',
+        controller: 'NeproknjizeneUplateCtrl'
+      }
+    }
+  });
+
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/tab/login');
 
 });
 
