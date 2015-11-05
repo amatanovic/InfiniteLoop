@@ -20,7 +20,7 @@ drop table IF EXISTS korisnikprofesorrazred;
 
 create table korisnikprofesorrazred (
 sifra int not null primary key auto_increment,
-korisnik int,
+ucenikroditelj int,
 profesorrazred int
 )engine=innodb;
 
@@ -33,16 +33,25 @@ odjeljenje int,
 profesor int
 )engine=innodb;
 
+drop table IF EXISTS ucenikroditelj;
 
-drop table IF EXISTS profesor;
+create table ucenikroditelj (
+sifra int not null primary key auto_increment,
+ucenik int,
+roditelj int
+)engine=innodb;
 
-create table profesor (
+drop table IF EXISTS korisnik;
+
+create table korisnik (
 sifra int not null primary key auto_increment,
 ime varchar(250),
 prezime varchar(250),
 lozinka varchar(250),
-korisnickoime varchar(250),
-skola int
+email varchar(250),
+skola int,
+status int,
+device varchar(500) default "Unknown"
 )engine=innodb;
 
 drop table IF EXISTS razred;
@@ -59,33 +68,11 @@ sifra int not null primary key auto_increment,
 odjeljenje varchar(5)
 )engine=innodb;
 
-drop table IF EXISTS korisnik;
-
-create table korisnik (
-sifra int not null primary key auto_increment,
-ime varchar(250),
-prezime varchar(250),
-lozinka varchar(250),
-email varchar(250),
-status int,
-skola int,
-device varchar(500) default "Unknown"
-)engine=innodb;
-
 drop table IF EXISTS status;
 
 create table status (
 sifra int not null primary key auto_increment,
 status varchar(250)
-)engine=innodb;
-
-drop table if exists ravnatelj;
-
-create table ravnatelj (
-sifra int not null PRIMARY KEY,
-ime varchar(250),
-prezime varchar(250),
-skola int
 )engine=innodb;
 
 drop table IF EXISTS cijena;
@@ -139,17 +126,19 @@ ALTER TABLE `grad`
 ALTER TABLE `skola`
   ADD CONSTRAINT `skola_ibfk_1` FOREIGN KEY (`grad`) REFERENCES `grad` (`sifra`);
 
-alter table ravnatelj add foreign key(skola) references skola(sifra);
 alter table cijena add foreign key(skola) references skola(sifra);
-alter table profesor add foreign key(skola) references skola(sifra);
+alter table korisnik add foreign key(status) references status(sifra);
+alter table korisnik add foreign key(skola) references skola(sifra);
 alter table profesorrazred add foreign key(razred) references razred(sifra);
 alter table profesorrazred add foreign key(odjeljenje) references odjeljenje(sifra);
-alter table profesorrazred add foreign key(profesor) references profesor(sifra);
-alter table korisnik add foreign key(status) references status(sifra);
-alter table korisnikprofesorrazred add foreign key(korisnik) references korisnik(sifra);
+alter table profesorrazred add foreign key(profesor) references korisnik(sifra);
+alter table korisnikprofesorrazred add foreign key(ucenikroditelj) references ucenikroditelj(sifra);
 alter table korisnikprofesorrazred add foreign key(profesorrazred) references profesorrazred(sifra);
 alter table uplatakorisnikprofesorrazred add foreign key(uplata) references uplata(sifra);
 alter table uplatakorisnikprofesorrazred add foreign key(korisnikprofesorrazred) references korisnikprofesorrazred(sifra);
+alter table ucenikroditelj add foreign key(ucenik) references korisnik(sifra);
+alter table ucenikroditelj add foreign key(roditelj) references korisnik(sifra);
+
 
 INSERT INTO `zupanija` (`sifra`, `naziv`) VALUES
 (1, 'Bjelovarsko-bilogorska'),
