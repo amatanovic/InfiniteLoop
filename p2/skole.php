@@ -1,7 +1,6 @@
 <?php 
 /*
-OVA DATOTEKA SLUŽI ZA PREUZIMANJE ŠKOLA 
-
+OVA DATOTEKA SLUŽI ZA PREUZIMANJE ŠKOLA
 header('Content-Type: text/html; charset=UTF-8');
 set_time_limit(500);
 include_once 'konfiguracija.php';
@@ -39,6 +38,11 @@ foreach ($nodeElement as $element) {
 		$rezultat = strpos($element->nodeValue, $uvjet);
 		if ($rezultat !== false) { 
 			$element->nodeValue =str_replace("Š","%A9",$element->nodeValue);	
+		}
+		$uvjet = " ";
+		$rezultat = strpos($element->nodeValue, $uvjet);
+		if ($rezultat !== false) { 
+			$element->nodeValue =str_replace(" ","+",$element->nodeValue);	
 		}
 		$zupanija = file_get_contents("http://www.skole.hr/skole/popis?mod_instance=229_1150_0&pu_zupanija=" . $element->nodeValue);
 		$newZ = new DomDocument('1.0', 'utf-8');
