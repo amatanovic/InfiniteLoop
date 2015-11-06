@@ -139,6 +139,7 @@ alter table uplatakorisnikprofesorrazred add foreign key(korisnikprofesorrazred)
 alter table ucenikroditelj add foreign key(ucenik) references korisnik(sifra);
 alter table ucenikroditelj add foreign key(roditelj) references korisnik(sifra);
 
+insert into status (status) values ("Ravnatelj"), ("Profesor"), ("Učenik"), ("Roditelj");
 
 INSERT INTO `zupanija` (`sifra`, `naziv`) VALUES
 (1, 'Bjelovarsko-bilogorska'),
