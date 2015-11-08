@@ -1107,7 +1107,6 @@ INSERT INTO `skola` (`sifra`, `naziv`, `grad`) VALUES
 (398, 'Osnovna škola Veli Vrh Pula', 98),
 (399, 'Osnovna škola Veruda Pula', 98),
 (400, 'Osnovna škola Vidikovac Pula', 98),
-(401, '', 98),
 (402, 'Privatna gimnazija Juraj Dobrila s pravom javnosti Pula', 98),
 (403, 'Prva privatna osnovna škola Juraj Dobrila s pravom javnosti Pula', 98),
 (404, 'Škola primijenjenih umjetnosti i dizajna Pula', 98),

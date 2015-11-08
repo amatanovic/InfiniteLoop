@@ -40,7 +40,7 @@ foreach ($zupanije as $zupanija):
       <select name="grad" class="selectGradovi">
       <option disabled selected> -- Izaberite grad -- </option>
       <?php
-$izraz=$veza->prepare("select * from grad");
+$izraz=$veza->prepare("select * from grad group by naziv ASC");
 $izraz->execute();
 $gradovi=$izraz->fetchALL(PDO::FETCH_OBJ);
 foreach ($gradovi as $grad): 
@@ -54,7 +54,7 @@ foreach ($gradovi as $grad):
       <select name="skola" class="selectSkole">
       <option disabled selected> -- Izaberite školu -- </option>
       <?php
-$izraz=$veza->prepare("select * from skola");
+$izraz=$veza->prepare("select * from skola group by naziv ASC");
 $izraz->execute();
 $skole=$izraz->fetchALL(PDO::FETCH_OBJ);
 foreach ($skole as $skola): 
@@ -138,8 +138,53 @@ $(".selectGradovi").change(function (){
         });
         }
       });
-        return false;
+      $.ajax({
+        type: "POST",
+        url: "selectZupaniju.php",
+        data: "grad=" + grad,
+        success: function(msg){
+            podatak=$.parseJSON(msg);
+            $(".zupanija option").each(function() {
+            if ($(this).attr("id") === podatak.zupanija) {
+              $(this).attr("selected", "selected");
+            }
+            })
+        }
       });
+        
+      });
+
+$(".selectSkole").change(function (){
+   var skola = $(".selectSkole").find(':selected').val();
+     $.ajax({
+        type: "POST",
+        url: "selectOdabranuSkolu.php",
+        data: "skola=" + skola,
+        success: function(msg){
+            podatak=$.parseJSON(msg);
+            $(".selectGradovi option").each(function() {
+            if ($(this).attr("id") === podatak.grad) {
+              $(this).attr("selected", "selected");
+                 $.ajax({
+                  type: "POST",
+                  url: "selectZupaniju.php",
+                 data: "grad=" + $(this).attr("id"),
+                 success: function(msg){
+            podatak=$.parseJSON(msg);
+            $(".zupanija option").each(function() {
+            if ($(this).attr("id") === podatak.zupanija) {
+              $(this).attr("selected", "selected");
+            }
+            })
+        }
+          
+       })
+     }
+    })
+  }
+      
+})
+});
 
 </script>
 </html>
