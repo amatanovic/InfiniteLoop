@@ -29,8 +29,17 @@ drop table IF EXISTS profesorrazred;
 create table profesorrazred (
 sifra int not null primary key auto_increment,
 razred int,
-odjeljenje int,
+skolarazred int,
 profesor int
+)engine=innodb;
+
+drop table IF EXISTS skolarazred;
+
+create table skolarazred (
+sifra int not null primary key auto_increment,
+skola int,
+razred int,
+odjeljenje int
 )engine=innodb;
 
 drop table IF EXISTS ucenikroditelj;
@@ -118,9 +127,11 @@ ALTER TABLE `skola`
 alter table cijena add foreign key(skola) references skola(sifra);
 alter table korisnik add foreign key(status) references status(sifra);
 alter table korisnik add foreign key(skola) references skola(sifra);
-alter table profesorrazred add foreign key(razred) references razred(sifra);
-alter table profesorrazred add foreign key(odjeljenje) references odjeljenje(sifra);
+alter table profesorrazred add foreign key(skolarazred) references skolarazred(sifra);
 alter table profesorrazred add foreign key(profesor) references korisnik(sifra);
+alter table skolarazred add foreign key(skola) references skola(sifra);
+alter table skolarazred add foreign key(razred) references razred(sifra);
+alter table skolarazred add foreign key(odjeljenje) references odjeljenje(sifra);
 alter table korisnikprofesorrazred add foreign key(ucenikroditelj) references ucenikroditelj(sifra);
 alter table korisnikprofesorrazred add foreign key(profesorrazred) references profesorrazred(sifra);
 alter table uplatakorisnikprofesorrazred add foreign key(uplata) references uplata(sifra);
@@ -128,7 +139,6 @@ alter table uplatakorisnikprofesorrazred add foreign key(korisnikprofesorrazred)
 alter table ucenikroditelj add foreign key(ucenik) references korisnik(sifra);
 alter table ucenikroditelj add foreign key(roditelj) references korisnik(sifra);
 
-insert into status (status) values ("Ravnatelj"), ("Profesor"), ("Učenik"), ("Roditelj");
 
 INSERT INTO `zupanija` (`sifra`, `naziv`) VALUES
 (1, 'Bjelovarsko-bilogorska'),
@@ -2056,3 +2066,34 @@ INSERT INTO `skola` (`sifra`, `naziv`, `grad`) VALUES
 (1347, 'Osnovna škola Antuna Augustinčića Zaprešić', 549),
 (1348, 'Osnovna škola Ljudevita Gaja Zaprešić', 549),
 (1349, 'Srednja škola Ban Josip Jelačić', 549);
+
+insert into status (status) values ("Ravnatelj"), ("Profesor"), ("Učenik"), ("Roditelj");
+insert into razred (razred) values (1), (2), (3), (4), (5), (6), (7), (8);
+insert into odjeljenje (odjeljenje) values ("a"), ("b"), ("c"), ("d"), ("e"), ("f");
+insert into korisnik (ime, prezime, email, lozinka, status, skola) values
+  ("Tena", "Vilček", "tvilcek@gmail.com", md5("123"), 1, 1140),
+  ("Manuela", "Mikulecki", "mmikulecki@gmail.com", md5("123"), 2, 1140),
+  ("Andrea", "Mihaljević", "mmihaljevic@gmail.com", md5("123"), 2, 1140),
+  ("Ana", "Leh", "aleh@gmail.com", md5("123"), 3, 1140),
+  ("Dajana", "Stojanović", "dstojanovic@gmail.com", md5("123"), 3, 1140),
+  ("Antun", "Matanović", "amatanovic@gmail.com", md5("123"), 4, 1140);
+
+insert into skolarazred (skola, razred, odjeljenje) values 
+  (1140, 1, 1),
+  (1140, 1, 2),
+  (1140, 3, 1);
+
+insert into profesorrazred (skolarazred, profesor) values 
+  (1, 2),
+  (2, 3);
+
+insert into cijena (iznos, skola) values 
+  (150.00, 1140);
+
+insert into ucenikroditelj (ucenik, roditelj) values
+  (4, 6),
+  (5, null);
+
+insert into korisnikprofesorrazred (ucenikroditelj, profesorrazred) values 
+  (1, 1),
+  (2, 1);
