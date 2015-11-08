@@ -65,7 +65,59 @@ foreach ($skole as $skola):
     </div>
      <div class="input-group">
       <span class="input-group-addon profil">STATUS</span>
-      <input type="password" name="skola" class="form-control" aria-describedby="basic-addon1" />
+       <select name="status" class="selectStatus">
+      <option disabled selected> -- Izaberite status -- </option>
+      <?php
+$izraz=$veza->prepare("select * from status group by status ASC");
+$izraz->execute();
+$statusi=$izraz->fetchALL(PDO::FETCH_OBJ);
+foreach ($statusi as $status): 
+  ?>
+<option value="<?php echo $status->sifra; ?>" class="skola" id="<?php echo $status->sifra; ?>"><?php echo $status->status; ?></option>
+<?php endforeach; ?>
+</select>
+    </div>
+    <div class="input-group statusProfesor" style="display:none">
+      <span class="input-group-addon profil">Odaberite razred prof</span>
+       <select name="status" class="selectSkole">
+      <option disabled selected> -- Izaberite svoj razred -- </option>
+      <?php
+$izraz=$veza->prepare("select * from status group by status ASC");
+$izraz->execute();
+$statusi=$izraz->fetchALL(PDO::FETCH_OBJ);
+foreach ($statusi as $status): 
+  ?>
+<option value="<?php echo $status->sifra; ?>" class="skola" id="<?php echo $status->sifra; ?>"><?php echo $status->status; ?></option>
+<?php endforeach; ?>
+</select>
+    </div>
+ <div class="input-group statusUcenik" style="display:none">
+      <span class="input-group-addon profil">Odaberite razred učenik</span>
+       <select name="status" class="selectSkole">
+      <option disabled selected> -- Izaberite svoj razred -- </option>
+      <?php
+$izraz=$veza->prepare("select * from status group by status ASC");
+$izraz->execute();
+$statusi=$izraz->fetchALL(PDO::FETCH_OBJ);
+foreach ($statusi as $status): 
+  ?>
+<option value="<?php echo $status->sifra; ?>" class="skola" id="<?php echo $status->sifra; ?>"><?php echo $status->status; ?></option>
+<?php endforeach; ?>
+</select>
+    </div>
+ <div class="input-group statusRoditelj" style="display:none">
+      <span class="input-group-addon profil">Odaberite razred roditelj</span>
+       <select name="status" class="selectSkole">
+      <option disabled selected> -- Izaberite svoj razred -- </option>
+      <?php
+$izraz=$veza->prepare("select * from status group by status ASC");
+$izraz->execute();
+$statusi=$izraz->fetchALL(PDO::FETCH_OBJ);
+foreach ($statusi as $status): 
+  ?>
+<option value="<?php echo $status->sifra; ?>" class="skola" id="<?php echo $status->sifra; ?>"><?php echo $status->status; ?></option>
+<?php endforeach; ?>
+</select>
     </div>
     <div class="row">
       <button type="submit" value="Registracija" name="registracija" class="btn btn-default">Registracija</button>
@@ -185,6 +237,44 @@ $(".selectSkole").change(function (){
       
 })
 });
+
+$(".selectStatus").change(function(){
+  $(".statusProfesor").css("display", "none");
+  $(".statusUcenik").css("display", "none");
+  $(".statusRoditelj").css("display", "none");
+
+  var status = $(this).find(':selected').val();
+  if (status == 2) {
+      $(".statusProfesor").css("display", "block");
+  }
+  if (status == 3) {
+      $(".statusUcenik").css("display", "block");
+  }
+  if (status == 4) {
+      $(".statusRoditelj").css("display", "block");
+  }
+     /* $.ajax({
+        type: "POST",
+        url: "selectGrad.php",
+        data: "zupanija=" + zupanija,
+        success: function(msg){
+          podatci=$.parseJSON(msg);
+          $(".selectGradovi").html("");
+          var i = 0;
+          $.each(podatci, function(i, item){
+          if (i == 0) {
+          $(".selectGradovi").append($('<option selected value=' + item.sifra + ' class="grad" id=' + item.sifra + '>' + item.naziv + '</option>'));
+        }
+        else if (i !== 0) {
+          $(".selectGradovi").append($('<option value=' + item.sifra + ' class="grad" id=' + item.sifra + '>' + item.naziv + '</option>'));
+        }
+        i++;
+        });
+          selectSkola();
+        }
+      });*/
+        
+      });
 
 </script>
 </html>
