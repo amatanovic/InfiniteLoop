@@ -28,7 +28,6 @@ drop table IF EXISTS profesorrazred;
 
 create table profesorrazred (
 sifra int not null primary key auto_increment,
-razred int,
 skolarazred int,
 profesor int
 )engine=innodb;
@@ -2085,7 +2084,8 @@ insert into skolarazred (skola, razred, odjeljenje) values
 
 insert into profesorrazred (skolarazred, profesor) values 
   (1, 2),
-  (2, 3);
+  (2, 3),
+  (3, null);
 
 insert into cijena (iznos, skola) values 
   (150.00, 1140);

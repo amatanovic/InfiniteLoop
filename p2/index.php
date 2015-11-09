@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php include "head.php"; ?>
 <body class="bodyIndex">
 <div class="container-fluid">
@@ -7,6 +8,50 @@
   <div class="col-md-12">
     <h2>Registracija</h2>
 <form method="POST" action="">
+=======
+<?php
+include "head.php";
+if(isset($_POST['registracija'])){
+  if ($_POST['status'] != 1 && $_POST['profesor'] || $_POST['roditelj'] || $_POST['ucenik']) {
+$izraz=$veza->prepare("insert into korisnik (ime, prezime, email, lozinka, status, skola) values (:ime, :prezime, :email, :lozinka, :status, :skola)");
+$izraz->bindValue(":ime", $_POST['ime']); 
+$izraz->bindValue(":prezime", $_POST['prezime']);
+$izraz->bindValue(":email", $_POST['email']);
+$izraz->bindValue(":lozinka", md5($_POST['lozinka']));
+$izraz->bindValue(":status", $_POST['status']);
+$izraz->bindValue(":skola", $_POST['skola']);
+$izraz->execute();
+$id = $veza->lastInsertId();
+if($_POST['profesor']){
+$izraz=$veza->prepare("update profesorrazred set profesor=$id where sifra=:profesor");
+$izraz->bindValue(":profesor", $_POST['profesor']);
+$izraz->execute(); 
+}
+if($_POST['ucenik']){
+$izraz=$veza->prepare("insert into ucenikroditelj (ucenik) values ($id)");
+$izraz->execute(); 
+$id = $veza->lastInsertId();
+$izraz=$veza->prepare("insert into korisnikprofesorrazred (ucenikroditelj, profesorrazred) values ($id, :ucenik)");
+$izraz->bindValue(":ucenik", $_POST['ucenik']);
+$izraz->execute(); 
+}
+if($_POST['roditelj']){
+$izraz=$veza->prepare("update ucenikroditelj set roditelj=$id where sifra=:roditelj");
+$izraz->bindValue(":roditelj", $_POST['roditelj']);
+$izraz->execute(); 
+}
+header ("location: index.php?uspjesnaRegistracija");
+}
+else {
+header ("location: index.php?porukaPogreske");
+}
+
+}
+
+?>
+<body>
+<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+>>>>>>> origin/master
     <div class="form-group input-group">
      	<div class="input-group">
   		<span class="input-group-addon profil">ime</span>
@@ -21,6 +66,7 @@
   		<input type="password" name="lozinka" class="form-control" aria-describedby="basic-addon1" />
 		</div>
 		<div class="input-group">
+<<<<<<< HEAD
   		<span class="input-group-addon profil">email</span>
   		<input type="password" name="email" class="form-control" aria-describedby="basic-addon1" />
 		</div>
@@ -28,6 +74,15 @@
     <div class="input-group">
       <span class="input-group-addon profil">županija</span>
       <select name="zupanija" class="zupanija">
+=======
+  		<span class="input-group-addon profil">EMAIL</span>
+  		<input type="email" name="email" class="form-control" aria-describedby="basic-addon1" />
+		</div>
+
+    <div class="input-group">
+      <span class="input-group-addon profil">ŽUPANIJA</span>
+      <select class="zupanija">
+>>>>>>> origin/master
        <!-- ovaj option ispod gdje piše izaberite županije mora ostati. isto je tako i za gradove i skole -->
       <option disabled selected></option>
       <?php
@@ -41,9 +96,15 @@ foreach ($zupanije as $zupanija):
 </select>
     </div>
      <div class="input-group">
+<<<<<<< HEAD
       <span class="input-group-addon profil">grad</span>
       <select name="grad" class="selectGradovi">
       <option disabled selected></option>
+=======
+      <span class="input-group-addon profil">GRAD</span>
+      <select class="selectGradovi">
+      <option disabled selected> -- Izaberite grad -- </option>
+>>>>>>> origin/master
       <?php
 $izraz=$veza->prepare("select * from grad group by naziv ASC");
 $izraz->execute();
@@ -68,10 +129,17 @@ foreach ($skole as $skola):
 <?php endforeach; ?>
 </select>
     </div>
+<<<<<<< HEAD
      <div class="input-group">
       <span class="input-group-addon profil">status</span>
        <select name="status" class="selectStatus">
       <option disabled selected></option>
+=======
+     <div class="input-group status" style="display: none">
+      <span class="input-group-addon profil">STATUS</span>
+       <select name="status" class="selectStatus">
+      <option disabled selected> -- Izaberite status u pripadajućoj školi -- </option>
+>>>>>>> origin/master
       <?php
 $izraz=$veza->prepare("select * from status group by status ASC");
 $izraz->execute();
@@ -83,56 +151,44 @@ foreach ($statusi as $status):
 </select>
     </div>
     <div class="input-group statusProfesor" style="display:none">
-      <span class="input-group-addon profil">Odaberite razred prof</span>
-       <select name="status" class="selectSkole">
-      <option disabled selected> -- Izaberite svoj razred -- </option>
-      <?php
-$izraz=$veza->prepare("select * from status group by status ASC");
-$izraz->execute();
-$statusi=$izraz->fetchALL(PDO::FETCH_OBJ);
-foreach ($statusi as $status): 
-  ?>
-<option value="<?php echo $status->sifra; ?>" class="skola" id="<?php echo $status->sifra; ?>"><?php echo $status->status; ?></option>
-<?php endforeach; ?>
-</select>
+      <span class="input-group-addon profil">Odaberite svoj razred</span>
+       <select name="profesor" class="selectProfesor">
+    
+      </select>
     </div>
  <div class="input-group statusUcenik" style="display:none">
-      <span class="input-group-addon profil">Odaberite razred učenik</span>
-       <select name="status" class="selectSkole">
-      <option disabled selected> -- Izaberite svoj razred -- </option>
-      <?php
-$izraz=$veza->prepare("select * from status group by status ASC");
-$izraz->execute();
-$statusi=$izraz->fetchALL(PDO::FETCH_OBJ);
-foreach ($statusi as $status): 
-  ?>
-<option value="<?php echo $status->sifra; ?>" class="skola" id="<?php echo $status->sifra; ?>"><?php echo $status->status; ?></option>
-<?php endforeach; ?>
-</select>
+      <span class="input-group-addon profil">Odaberi svoj razred</span>
+       <select name="ucenik" class="selectUcenik">
+     
+      </select>
     </div>
  <div class="input-group statusRoditelj" style="display:none">
-      <span class="input-group-addon profil">Odaberite razred roditelj</span>
-       <select name="status" class="selectSkole">
-      <option disabled selected> -- Izaberite svoj razred -- </option>
-      <?php
-$izraz=$veza->prepare("select * from status group by status ASC");
-$izraz->execute();
-$statusi=$izraz->fetchALL(PDO::FETCH_OBJ);
-foreach ($statusi as $status): 
-  ?>
-<option value="<?php echo $status->sifra; ?>" class="skola" id="<?php echo $status->sifra; ?>"><?php echo $status->status; ?></option>
-<?php endforeach; ?>
+      <span class="input-group-addon profil">Odaberite svog učenika</span>
+       <select name="roditelj" class="selectRoditelj">
+     
 </select>
     </div>
     <div class="row">
-      <button type="submit" value="Registracija" name="registracija" class="btn btn-default">Registracija</button>
+      <input type="submit" name="registracija" value="Registracija" class="btn btn-default" />
   </div>
   </div>
 	</form>
+<<<<<<< HEAD
 </div>
 </div>
 </body>
+=======
+  <p>
+    <?php if(isset($_GET['porukaPogreske'])) {
+      echo "Neuspješna registracija.";
+      } ?>
+    <?php if(isset($_GET['uspjesnaRegistracija'])) {
+      echo "Uspješno ste registrirani.";
+      } ?>
+  </p>
+>>>>>>> origin/master
 <?php include "footer.php"; ?>
+</body>
 <script>
 $(function(){
   selectGrad();
@@ -140,6 +196,10 @@ $(function(){
 
 function selectGrad() {
 $(".zupanija").change(function(){
+  $(".status").css("display", "none");
+  $(".statusProfesor").css("display", "none");
+  $(".statusUcenik").css("display", "none");
+  $(".statusRoditelj").css("display", "none");
   var zupanija = $(this).find(':selected').val();
       $.ajax({
         type: "POST",
@@ -147,16 +207,9 @@ $(".zupanija").change(function(){
         data: "zupanija=" + zupanija,
         success: function(msg){
           podatci=$.parseJSON(msg);
-          $(".selectGradovi").html("");
-          var i = 0;
+          $(".selectGradovi").html("<option disabled selected> -- Izaberite grad -- </option>");
           $.each(podatci, function(i, item){
-          if (i == 0) {
-          $(".selectGradovi").append($('<option selected value=' + item.sifra + ' class="grad" id=' + item.sifra + '>' + item.naziv + '</option>'));
-        }
-        else if (i !== 0) {
           $(".selectGradovi").append($('<option value=' + item.sifra + ' class="grad" id=' + item.sifra + '>' + item.naziv + '</option>'));
-        }
-        i++;
         });
           selectSkola();
         }
@@ -166,15 +219,15 @@ $(".zupanija").change(function(){
     
   } 
 
-  function selectSkola() {
-     var grad = $(".selectGradovi").find(':selected').val();
+ function selectSkola() {
+     var zupanija = $(".zupanija").find(':selected').val();
       $.ajax({
         type: "POST",
         url: "selectSkola.php",
-        data: "grad=" + grad,
+        data: "zupanija=" + zupanija,
         success: function(msg){
           podatci=$.parseJSON(msg);
-          $(".selectSkole").html("");
+          $(".selectSkole").html("<option disabled selected> -- Izaberite školu -- </option>");
           $.each(podatci, function(i, item){
           $(".selectSkole").append($('<option value=' + item.sifra + ' class="grad" id=' + item.sifra + '>' + item.naziv + '</option>'));
         });
@@ -183,14 +236,18 @@ $(".zupanija").change(function(){
     }
 
 $(".selectGradovi").change(function (){
+  $(".status").css("display", "none");
+  $(".statusProfesor").css("display", "none");
+  $(".statusUcenik").css("display", "none");
+  $(".statusRoditelj").css("display", "none");
    var grad = $(".selectGradovi").find(':selected').val();
       $.ajax({
         type: "POST",
-        url: "selectSkola.php",
+        url: "selectSkolaGrad.php",
         data: "grad=" + grad,
         success: function(msg){
           podatci=$.parseJSON(msg);
-          $(".selectSkole").html("");
+          $(".selectSkole").html("<option disabled selected> -- Izaberite školu -- </option>");
           $.each(podatci, function(i, item){
           $(".selectSkole").append($('<option value=' + item.sifra + ' class="grad" id=' + item.sifra + '>' + item.naziv + '</option>'));
         });
@@ -213,7 +270,17 @@ $(".selectGradovi").change(function (){
       });
 
 $(".selectSkole").change(function (){
+  $(".status").css("display", "block");
    var skola = $(".selectSkole").find(':selected').val();
+  $(".statusProfesor").css("display", "none");
+  $(".statusUcenik").css("display", "none");
+  $(".statusRoditelj").css("display", "none");
+  $(".status option").each(function() { 
+    if ($(this).val() == "-- Izaberite status u pripadajućoj školi --") {
+      $(this).attr("selected", "selected");
+    }
+  })
+ 
      $.ajax({
         type: "POST",
         url: "selectOdabranuSkolu.php",
@@ -250,35 +317,53 @@ $(".selectStatus").change(function(){
   $(".statusRoditelj").css("display", "none");
 
   var status = $(this).find(':selected').val();
+  var skola = $(".selectSkole").find(':selected').val();
   if (status == 2) {
       $(".statusProfesor").css("display", "block");
+      $(".selectProfesor").html("<option disabled selected> -- Izaberite svoj razred -- </option>");
+      $.ajax({
+        type: "POST",
+        url: "selectProfesorRazred.php",
+        data: "skola=" + skola,
+        success: function(msg){
+          podatci=$.parseJSON(msg);
+          $.each(podatci, function(i, item){
+          $(".selectProfesor").append($('<option selected value=' + item.sifra + ' class="profesor" id=' + item.sifra + '>' + item.razred + item.odjeljenje + '</option>'));
+        });
+        }
+      });
   }
   if (status == 3) {
       $(".statusUcenik").css("display", "block");
+      $(".selectUcenik").html("<option disabled selected> -- Izaberi svoj razred -- </option>");
+       $.ajax({
+        type: "POST",
+        url: "selectUcenikRazred.php",
+        data: "skola=" + skola,
+        success: function(msg){
+          podatci=$.parseJSON(msg);
+          $.each(podatci, function(i, item){
+          $(".selectUcenik").append($('<option selected value=' + item.sifra + '  id=' + item.sifra + '>' + item.razred + item.odjeljenje + '</option>'));
+        });
+        }
+      });
   }
   if (status == 4) {
       $(".statusRoditelj").css("display", "block");
-  }
-     /* $.ajax({
+      $(".selectRoditelj").html("<option disabled selected> -- Izaberite svog učenika -- </option>");
+      $.ajax({
         type: "POST",
-        url: "selectGrad.php",
-        data: "zupanija=" + zupanija,
+        url: "selectRoditelj.php",
+        data: "skola=" + skola,
         success: function(msg){
           podatci=$.parseJSON(msg);
-          $(".selectGradovi").html("");
-          var i = 0;
           $.each(podatci, function(i, item){
-          if (i == 0) {
-          $(".selectGradovi").append($('<option selected value=' + item.sifra + ' class="grad" id=' + item.sifra + '>' + item.naziv + '</option>'));
-        }
-        else if (i !== 0) {
-          $(".selectGradovi").append($('<option value=' + item.sifra + ' class="grad" id=' + item.sifra + '>' + item.naziv + '</option>'));
-        }
-        i++;
+          $(".selectRoditelj").append($('<option selected value=' + item.sifra + ' id=' + item.sifra + '>' + item.ime + " " + item.prezime + '</option>'));
         });
-          selectSkola();
         }
-      });*/
+      });
+  
+  }
         
       });
 
