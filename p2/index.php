@@ -1,30 +1,35 @@
 <?php include "head.php"; ?>
-<body>
-
+<body class="bodyIndex">
+<div class="container-fluid">
+  <header>
+    <h2>Prijava</h2>
+  </header>
+  <div class="col-md-12">
+    <h2>Registracija</h2>
 <form method="POST" action="">
     <div class="form-group input-group">
      	<div class="input-group">
-  		<span class="input-group-addon profil">IME</span>
+  		<span class="input-group-addon profil">ime</span>
   		<input type="text" name="ime" class="form-control" aria-describedby="basic-addon1" />
 		</div>
 		<div class="input-group">
-  		<span class="input-group-addon profil">PREZIME</span>
+  		<span class="input-group-addon profil">prezime</span>
   		<input type="text" name="prezime" class="form-control"aria-describedby="basic-addon1" />
 		</div>
 		<div class="input-group">
-  		<span class="input-group-addon profil">LOZINKA</span>
+  		<span class="input-group-addon profil">lozinka</span>
   		<input type="password" name="lozinka" class="form-control" aria-describedby="basic-addon1" />
 		</div>
 		<div class="input-group">
-  		<span class="input-group-addon profil">EMAIL</span>
+  		<span class="input-group-addon profil">email</span>
   		<input type="password" name="email" class="form-control" aria-describedby="basic-addon1" />
 		</div>
 
     <div class="input-group">
-      <span class="input-group-addon profil">ŽUPANIJA</span>
+      <span class="input-group-addon profil">županija</span>
       <select name="zupanija" class="zupanija">
        <!-- ovaj option ispod gdje piše izaberite županije mora ostati. isto je tako i za gradove i skole -->
-      <option disabled selected> -- Izaberite županiju -- </option>
+      <option disabled selected></option>
       <?php
 $izraz=$veza->prepare("select * from zupanija");
 $izraz->execute();
@@ -36,9 +41,9 @@ foreach ($zupanije as $zupanija):
 </select>
     </div>
      <div class="input-group">
-      <span class="input-group-addon profil">GRAD</span>
+      <span class="input-group-addon profil">grad</span>
       <select name="grad" class="selectGradovi">
-      <option disabled selected> -- Izaberite grad -- </option>
+      <option disabled selected></option>
       <?php
 $izraz=$veza->prepare("select * from grad group by naziv ASC");
 $izraz->execute();
@@ -50,9 +55,9 @@ foreach ($gradovi as $grad):
 </select>
     </div>
         <div class="input-group">
-      <span class="input-group-addon profil">ŠKOLA</span>
+      <span class="input-group-addon profil">škola</span>
       <select name="skola" class="selectSkole">
-      <option disabled selected> -- Izaberite školu -- </option>
+      <option disabled selected></option>
       <?php
 $izraz=$veza->prepare("select * from skola group by naziv ASC");
 $izraz->execute();
@@ -64,9 +69,9 @@ foreach ($skole as $skola):
 </select>
     </div>
      <div class="input-group">
-      <span class="input-group-addon profil">STATUS</span>
+      <span class="input-group-addon profil">status</span>
        <select name="status" class="selectStatus">
-      <option disabled selected> -- Izaberite status -- </option>
+      <option disabled selected></option>
       <?php
 $izraz=$veza->prepare("select * from status group by status ASC");
 $izraz->execute();
@@ -124,7 +129,8 @@ foreach ($statusi as $status):
   </div>
   </div>
 	</form>
-
+</div>
+</div>
 </body>
 <?php include "footer.php"; ?>
 <script>

@@ -1,0 +1,54 @@
+.bodyIndex {
+	text-align: center;
+}
+
+.form-group {
+	margin-right: auto;
+	margin-left: auto;
+	color: #B6B6B6;
+}
+
+.input-group {
+	padding: 10px;
+	width: 300px;
+}
+
+.form-control {
+	border: 0;
+	border-bottom: solid 1px #B6B6B6;
+}
+
+.input-group-addon {
+	border: 0;
+	border-bottom: solid 1px #B6B6B6;
+}
+
+select {
+	border: 0;
+	border-bottom: solid 1px #B6B6B6;
+}
+
+.zupanija {
+	width: 225px;
+}
+
+.selectGradovi {
+	width: 250px;
+}
+
+.selectSkole {
+	width: 247px;
+}
+
+.selectStatus {
+	width: 243px;
+}
+
+.btn-default {
+	color: #fff;
+	background-color: #0097A7;
+	border-radius: 0;
+	margin-top: 20px;
+	border: 0;
+	padding: 10px;
+}
