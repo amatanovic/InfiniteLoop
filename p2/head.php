@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?></title>
     <link href="<?php echo $putanja; ?>css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $putanja;?>css/jquery-ui.min.css" />
     <link href="<?php echo $putanja; ?>css/style.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="<?php echo $putanja;?>js/jquery-ui.min.js"></script>
   </head>

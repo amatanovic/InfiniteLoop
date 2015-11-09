@@ -34,30 +34,57 @@ header ("location: index.php?uspjesnaRegistracija");
 else {
 header ("location: index.php?porukaPogreske");
 }
-
+}
+if(isset($_POST['prijava'])){
+$izraz=$veza->prepare("select * from korisnik where email=:email and lozinka=:lozinka");
+$izraz->bindValue(":email", $_POST['email']);
+$izraz->bindValue(":lozinka", md5($_POST['lozinka']));
+$izraz->execute();
+$operater=$izraz->fetch(PDO::FETCH_OBJ); 
+if($operater!=null){
+  session_start();
+  $_SESSION['autoriziran']=$operater;
+  if ($_SESSION['autoriziran']->status == 1) {
+    header("location: nadzornaRavnatelj.php");
+  }
+    if ($_SESSION['autoriziran']->status == 2) {
+    header("location: nadzornaProfesor.php");
+  }
+    if ($_SESSION['autoriziran']->status == 3 || $_SESSION['autoriziran']->status == 4) {
+    header("location: nadzornaUcenikRoditelj.php");
+  }
+}
+else{
+  header("location: index.php?loginError");
 }
 
+}
 ?>
 <body class="bodyIndex">
   <div class="container-fluid">
   <header>
-    <form class="indexForma">
+    <form  method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="indexForma">
       <div class="trakaIndex"></div>
             <h2 class="indexH2">Prijava</h2>
             <div class="form-group input-group">
               <div class="input-group"> 
               <span class="input-group-addon logIn" style="background-color: #00BCD4">email</span>             
-              <input type="text" class="form-control logIn" id="email" aria-describedby="basic-addon1" style="background-color: #00BCD4">
+              <input type="text" class="form-control logIn" name="email" aria-describedby="basic-addon1" style="background-color: #00BCD4">
             </div>
             </div>
             <div class="form-group input-group">
               <div class="input-group">
                 <span class="input-group-addon logIn" style="background-color: #00BCD4">lozinka</span>
-              <input type="password" class="form-control logIn" id="lozinka" aria-describedby="basic-addon1" style="background-color: #00BCD4">
+              <input type="password" class="form-control logIn" name="lozinka" aria-describedby="basic-addon1" style="background-color: #00BCD4">
             </div>
             </div>
-            <a href="#" id="prijava" class="btn btn-default">Prijavi se</a>
+            <input type="submit" name="prijava" class="btn btn-default" value="Prijavi se" />
           </form>
+          <p>
+            <?php if(isset($_GET['loginError'])) {
+              echo "Neuspješna prijava.";
+              } ?>
+          </p>
   </header>
   <div class="col-md-12">
     <h2>Registracija</h2>
@@ -160,10 +187,7 @@ foreach ($statusi as $status):
   </div>
   </div>
 	</form>
-</div>
-</div>
-</body>
-  <p>
+    <p>
     <?php if(isset($_GET['porukaPogreske'])) {
       echo "Neuspješna registracija.";
       } ?>
@@ -171,6 +195,8 @@ foreach ($statusi as $status):
       echo "Uspješno ste registrirani.";
       } ?>
   </p>
+</div>
+</div>
 <?php include "footer.php"; ?>
 </body>
 <script>
