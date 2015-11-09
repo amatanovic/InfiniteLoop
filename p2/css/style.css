@@ -11,16 +11,19 @@
 .input-group {
 	padding: 10px;
 	width: 300px;
+	color: #B6B6B6;
 }
 
 .form-control {
 	border: 0;
 	border-bottom: solid 1px #B6B6B6;
+	border-radius: 0;
 }
 
 .input-group-addon {
 	border: 0;
 	border-bottom: solid 1px #B6B6B6;
+	color: #B6B6B6;
 }
 
 select {
@@ -51,4 +54,24 @@ select {
 	margin-top: 20px;
 	border: 0;
 	padding: 10px;
+}
+
+header {
+	background-color: #00BCD4;
+	color: #fff;
+	margin-left: -15px;
+	margin-right: -15px;
+	height: 380px;
+}
+
+.logIn {
+	color: #fff;
+	border-bottom-color: #fff;
+}
+
+.trakaIndex {
+	height: 50px;
+	background-color: #0097A7;
+	margin-left: -15px;
+	margin-right: -15px;
 }

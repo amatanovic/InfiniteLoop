@@ -38,7 +38,29 @@ header ("location: index.php?porukaPogreske");
 }
 
 ?>
-<body>
+<body class="bodyIndex">
+  <div class="container-fluid">
+  <header>
+    <form class="indexForma">
+      <div class="trakaIndex"></div>
+            <h2 class="indexH2">Prijava</h2>
+            <div class="form-group input-group">
+              <div class="input-group"> 
+              <span class="input-group-addon logIn" style="background-color: #00BCD4">email</span>             
+              <input type="text" class="form-control logIn" id="email" aria-describedby="basic-addon1" style="background-color: #00BCD4">
+            </div>
+            </div>
+            <div class="form-group input-group">
+              <div class="input-group">
+                <span class="input-group-addon logIn" style="background-color: #00BCD4">lozinka</span>
+              <input type="password" class="form-control logIn" id="lozinka" aria-describedby="basic-addon1" style="background-color: #00BCD4">
+            </div>
+            </div>
+            <a href="#" id="prijava" class="btn btn-default">Prijavi se</a>
+          </form>
+  </header>
+  <div class="col-md-12">
+    <h2>Registracija</h2>
 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <div class="form-group input-group">
      	<div class="input-group">
@@ -76,7 +98,7 @@ foreach ($zupanije as $zupanija):
      <div class="input-group">
       <span class="input-group-addon profil">grad</span>
       <select name="grad" class="selectGradovi">   
-      <option disabled selected> -- Izaberite grad -- </option>
+      <option disabled selected></option>
       <?php
 $izraz=$veza->prepare("select * from grad group by naziv ASC");
 $izraz->execute();
