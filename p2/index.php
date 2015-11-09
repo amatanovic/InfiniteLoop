@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<?php include "head.php"; ?>
-<body class="bodyIndex">
-<div class="container-fluid">
-  <header>
-    <h2>Prijava</h2>
-  </header>
-  <div class="col-md-12">
-    <h2>Registracija</h2>
-<form method="POST" action="">
-=======
 <?php
 include "head.php";
 if(isset($_POST['registracija'])){
@@ -51,7 +40,6 @@ header ("location: index.php?porukaPogreske");
 ?>
 <body>
 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
->>>>>>> origin/master
     <div class="form-group input-group">
      	<div class="input-group">
   		<span class="input-group-addon profil">ime</span>
@@ -66,7 +54,6 @@ header ("location: index.php?porukaPogreske");
   		<input type="password" name="lozinka" class="form-control" aria-describedby="basic-addon1" />
 		</div>
 		<div class="input-group">
-<<<<<<< HEAD
   		<span class="input-group-addon profil">email</span>
   		<input type="password" name="email" class="form-control" aria-describedby="basic-addon1" />
 		</div>
@@ -74,16 +61,7 @@ header ("location: index.php?porukaPogreske");
     <div class="input-group">
       <span class="input-group-addon profil">županija</span>
       <select name="zupanija" class="zupanija">
-=======
-  		<span class="input-group-addon profil">EMAIL</span>
-  		<input type="email" name="email" class="form-control" aria-describedby="basic-addon1" />
-		</div>
-
-    <div class="input-group">
-      <span class="input-group-addon profil">ŽUPANIJA</span>
-      <select class="zupanija">
->>>>>>> origin/master
-       <!-- ovaj option ispod gdje piše izaberite županije mora ostati. isto je tako i za gradove i skole -->
+  	       <!-- ovaj option ispod gdje piše izaberite županije mora ostati. isto je tako i za gradove i skole -->
       <option disabled selected></option>
       <?php
 $izraz=$veza->prepare("select * from zupanija");
@@ -96,15 +74,9 @@ foreach ($zupanije as $zupanija):
 </select>
     </div>
      <div class="input-group">
-<<<<<<< HEAD
       <span class="input-group-addon profil">grad</span>
-      <select name="grad" class="selectGradovi">
-      <option disabled selected></option>
-=======
-      <span class="input-group-addon profil">GRAD</span>
-      <select class="selectGradovi">
+      <select name="grad" class="selectGradovi">   
       <option disabled selected> -- Izaberite grad -- </option>
->>>>>>> origin/master
       <?php
 $izraz=$veza->prepare("select * from grad group by naziv ASC");
 $izraz->execute();
@@ -129,17 +101,10 @@ foreach ($skole as $skola):
 <?php endforeach; ?>
 </select>
     </div>
-<<<<<<< HEAD
-     <div class="input-group">
+     <div class="input-group status" style="display:none">
       <span class="input-group-addon profil">status</span>
-       <select name="status" class="selectStatus">
-      <option disabled selected></option>
-=======
-     <div class="input-group status" style="display: none">
-      <span class="input-group-addon profil">STATUS</span>
-       <select name="status" class="selectStatus">
+       <select name="status" class="selectStatus"> 
       <option disabled selected> -- Izaberite status u pripadajućoj školi -- </option>
->>>>>>> origin/master
       <?php
 $izraz=$veza->prepare("select * from status group by status ASC");
 $izraz->execute();
@@ -173,11 +138,9 @@ foreach ($statusi as $status):
   </div>
   </div>
 	</form>
-<<<<<<< HEAD
 </div>
 </div>
 </body>
-=======
   <p>
     <?php if(isset($_GET['porukaPogreske'])) {
       echo "Neuspješna registracija.";
@@ -186,7 +149,6 @@ foreach ($statusi as $status):
       echo "Uspješno ste registrirani.";
       } ?>
   </p>
->>>>>>> origin/master
 <?php include "footer.php"; ?>
 </body>
 <script>
