@@ -1,6 +1,6 @@
-<ion-tabs class="tabs-icon-only  tabs-color-active-energized">  
+<ion-tabs class="tabs-icon-only  tabs-color-active-energized" ng-class="{'tabs-item-hide': hideTabs}">  
 
-  <ion-tab icon-off="ion-log-in" icon-on="ion-log-in" href="#/tab/login">
+  <ion-tab icon-off="ion-log-in" icon-on="ion-log-in" href="#/tab/login" hidden="true">
     <ion-nav-view name="tab-login"></ion-nav-view>
   </ion-tab>
 
@@ -13,7 +13,7 @@
   </ion-tab>
 
 
-  <ion-tab icon-off="ion-log-out" icon-on="ion-log-out">
+  <ion-tab icon-off="ion-log-out" icon-on="ion-log-out" ng-click="odjava()">
   </ion-tab>
 
   

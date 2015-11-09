@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $rootScope, $ionicPush, $ionicUser) {
+.controller('AppCtrl', function($scope, $rootScope, $ionicPush, $ionicUser, $state) {
   $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
     alert('Got token' + data.token, data.platform);
   });
@@ -35,8 +35,20 @@ angular.module('starter.controllers', [])
     });
 
     $ionicUser.identify(user);
-    
   }
+
+$rootScope.$on('$ionicView.beforeEnter', function () {
+var stateName = $state.current.name;
+if (stateName === 'tab.login') {
+$rootScope.hideTabs = true;
+} else {
+$rootScope.hideTabs = false;
+}
+});
+$scope.odjava = function(){
+$state.go("tab.login");
+}
+
 })
 
 
@@ -50,7 +62,7 @@ $scope.submit = function () {
           template: '<ion-spinner></ion-spinner><br />Please wait...'
         });   
         $http({
-          url: "http://oziz.ffos.hr/OMS20142015/0122215735/hackathon/android/login.php",
+          url: $rootScope.server + "API/login.php",
           data: $scope.loginData,
           method: 'POST',
           headers: {

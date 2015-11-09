@@ -29,6 +29,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic.service.core',
       StatusBar.styleDefault();
     }
   });
+  $rootScope.server = "http://localhost/InfiniteLoop/p2/";
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
