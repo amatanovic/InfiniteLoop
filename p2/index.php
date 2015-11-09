@@ -1,7 +1,45 @@
-<?php include "head.php"; ?>
-<body>
+<?php
+include "head.php";
+if(isset($_POST['registracija'])){
+  if ($_POST['status'] != 1 && $_POST['profesor'] || $_POST['roditelj'] || $_POST['ucenik']) {
+$izraz=$veza->prepare("insert into korisnik (ime, prezime, email, lozinka, status, skola) values (:ime, :prezime, :email, :lozinka, :status, :skola)");
+$izraz->bindValue(":ime", $_POST['ime']); 
+$izraz->bindValue(":prezime", $_POST['prezime']);
+$izraz->bindValue(":email", $_POST['email']);
+$izraz->bindValue(":lozinka", md5($_POST['lozinka']));
+$izraz->bindValue(":status", $_POST['status']);
+$izraz->bindValue(":skola", $_POST['skola']);
+$izraz->execute();
+$id = $veza->lastInsertId();
+if($_POST['profesor']){
+$izraz=$veza->prepare("update profesorrazred set profesor=$id where sifra=:profesor");
+$izraz->bindValue(":profesor", $_POST['profesor']);
+$izraz->execute(); 
+}
+if($_POST['ucenik']){
+$izraz=$veza->prepare("insert into ucenikroditelj (ucenik) values ($id)");
+$izraz->execute(); 
+$id = $veza->lastInsertId();
+$izraz=$veza->prepare("insert into korisnikprofesorrazred (ucenikroditelj, profesorrazred) values ($id, :ucenik)");
+$izraz->bindValue(":ucenik", $_POST['ucenik']);
+$izraz->execute(); 
+}
+if($_POST['roditelj']){
+$izraz=$veza->prepare("update ucenikroditelj set roditelj=$id where sifra=:roditelj");
+$izraz->bindValue(":roditelj", $_POST['roditelj']);
+$izraz->execute(); 
+}
+header ("location: index.php?uspjesnaRegistracija");
+}
+else {
+header ("location: index.php?porukaPogreske");
+}
 
-<form method="POST" action="">
+}
+
+?>
+<body>
+<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <div class="form-group input-group">
      	<div class="input-group">
   		<span class="input-group-addon profil">IME</span>
@@ -17,12 +55,12 @@
 		</div>
 		<div class="input-group">
   		<span class="input-group-addon profil">EMAIL</span>
-  		<input type="password" name="email" class="form-control" aria-describedby="basic-addon1" />
+  		<input type="email" name="email" class="form-control" aria-describedby="basic-addon1" />
 		</div>
 
     <div class="input-group">
       <span class="input-group-addon profil">ŽUPANIJA</span>
-      <select name="zupanija" class="zupanija">
+      <select class="zupanija">
        <!-- ovaj option ispod gdje piše izaberite županije mora ostati. isto je tako i za gradove i skole -->
       <option disabled selected> -- Izaberite županiju -- </option>
       <?php
@@ -37,7 +75,7 @@ foreach ($zupanije as $zupanija):
     </div>
      <div class="input-group">
       <span class="input-group-addon profil">GRAD</span>
-      <select name="grad" class="selectGradovi">
+      <select class="selectGradovi">
       <option disabled selected> -- Izaberite grad -- </option>
       <?php
 $izraz=$veza->prepare("select * from grad group by naziv ASC");
@@ -96,13 +134,20 @@ foreach ($statusi as $status):
 </select>
     </div>
     <div class="row">
-      <button type="submit" value="Registracija" name="registracija" class="btn btn-default">Registracija</button>
+      <input type="submit" name="registracija" value="Registracija" class="btn btn-default" />
   </div>
   </div>
 	</form>
-
-</body>
+  <p>
+    <?php if(isset($_GET['porukaPogreske'])) {
+      echo "Neuspješna registracija.";
+      } ?>
+    <?php if(isset($_GET['uspjesnaRegistracija'])) {
+      echo "Uspješno ste registrirani.";
+      } ?>
+  </p>
 <?php include "footer.php"; ?>
+</body>
 <script>
 $(function(){
   selectGrad();
@@ -257,7 +302,7 @@ $(".selectStatus").change(function(){
         success: function(msg){
           podatci=$.parseJSON(msg);
           $.each(podatci, function(i, item){
-          $(".selectUcenik").append($('<option selected value=' + item.sifra + ' class="profesor" id=' + item.sifra + '>' + item.razred + item.odjeljenje + '</option>'));
+          $(".selectUcenik").append($('<option selected value=' + item.sifra + '  id=' + item.sifra + '>' + item.razred + item.odjeljenje + '</option>'));
         });
         }
       });
@@ -272,7 +317,7 @@ $(".selectStatus").change(function(){
         success: function(msg){
           podatci=$.parseJSON(msg);
           $.each(podatci, function(i, item){
-          $(".selectRoditelj").append($('<option selected value=' + item.sifra + ' class="profesor" id=' + item.sifra + '>' + item.ime + " " + item.prezime + '</option>'));
+          $(".selectRoditelj").append($('<option selected value=' + item.sifra + ' id=' + item.sifra + '>' + item.ime + " " + item.prezime + '</option>'));
         });
         }
       });
