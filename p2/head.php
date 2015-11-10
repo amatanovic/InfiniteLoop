@@ -12,5 +12,5 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="<?php echo $putanja;?>js/jquery-ui.min.js"></script>
-    <link rel="icon" href="<?php echo $putanja;?>/slike/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="<?php echo $putanja;?>slike/favicon.ico" type="image/x-icon"/>
   </head>

@@ -18,7 +18,7 @@ if (!isset($_SESSION['autoriziran']->status) == 1) {
     </div>
     <div class="row tablica">
       <div class="col-md-12">
-        <h3><span aria-hidden="true" class=
+        <h3 id="dodajNovi"><span aria-hidden="true" class=
         "glyphicon glyphicon-plus"></span>Dodaj novi razred</h3>
         <div class="form-group input-group">
           <div class="input-group">
@@ -40,32 +40,90 @@ if (!isset($_SESSION['autoriziran']->status) == 1) {
             <th>ODJELJENJE</th>
           </tr>
           <?php 
-  $izraz=$veza->prepare("select a.razred, b.odjeljenje, e.ime, e.prezime, d.sifra from razred a inner join skolarazred c on a.sifra=c.razred inner join odjeljenje b on b.sifra=c.odjeljenje inner join profesorrazred d on c.sifra=d.skolarazred inner join korisnik e on d.profesor=e.sifra where c.skola=:skola and d.profesor is not null");
+  $izraz=$veza->prepare("select a.razred, b.odjeljenje, d.profesor, d.sifra from razred a inner join skolarazred c on a.sifra=c.razred inner join odjeljenje b on b.sifra=c.odjeljenje inner join profesorrazred d on c.sifra=d.skolarazred where c.skola=:skola group by a.razred ASC");
   $izraz->bindValue(":skola", $_SESSION['autoriziran']->skola);
   $izraz->execute();
   $podaci=$izraz->fetchALL(PDO::FETCH_OBJ); 
   foreach ($podaci as $podatak):
+
    ?>
-<tr><td>
-<input type="hidden" value="<?php echo $podatak->sifra ?>" /><input type="text" value="<?php echo $podatak->ime . " " . $podatak->prezime; ?>" class="form-control" /></td><td><?php echo $podatak->razred; ?></td><td><?php echo $podatak->odjeljenje; ?></td></tr>
+<tr>
+<td>
+ <?php 
+ if ($podatak->profesor==null) { ?>
+ <input type="hidden" value="<?php echo $podatak->sifra ?>" />
+ <input type="text" placeholder="Ukoliko ne možete pronaći profesora, on još uvijek nije registriran" class="form-control" />
+
+<?php  }
+ else {
+  $izraz=$veza->prepare("select a.ime, a.prezime from korisnik a inner join profesorrazred b on a.sifra=b.profesor where profesor=:profesor");
+  $izraz->bindValue(":profesor", $podatak->profesor);
+  $izraz->execute();
+  $profesor=$izraz->fetch(PDO::FETCH_OBJ); 
+  ?>
+<input type="hidden" value="<?php echo $podatak->sifra ?>" />
+<input type="text" value="<?php echo $profesor->ime . " " . $profesor->prezime; ?>" class="form-control" />
+<?php } ?>
+</td>
+<td><?php echo $podatak->razred; ?></td><td><?php echo $podatak->odjeljenje; ?></td></tr>
 <?php endforeach; ?>
+  <tr><td></td><td class="pokaziNovi" style="visibility:hidden"><select class="razred">
+     <?php 
+  $izraz=$veza->prepare("select * from razred");
+  $izraz->execute();
+  $razredi=$izraz->fetchALL(PDO::FETCH_OBJ); 
+  foreach ($razredi as $razred): ?>
+  <option value="<?php echo $razred->sifra; ?>"><?php echo $razred->razred; ?></option>
+<?php endforeach; ?>
+  </select>
+  <td class="pokaziNovi" style="visibility:hidden">
+   <select class="odjeljenje">
+     <?php 
+  $izraz=$veza->prepare("select * from odjeljenje");
+  $izraz->execute();
+  $odjeljenja=$izraz->fetchALL(PDO::FETCH_OBJ); 
+  foreach ($odjeljenja as $odjeljenje): ?>
+  <option value="<?php echo $odjeljenje->sifra; ?>"><?php echo $odjeljenje->odjeljenje; ?></option>
+<?php endforeach; ?>
+  </select> 
+  </td>
+  </tr>
         </table>
     <p>
      <?php if(isset($_GET['uspjesanUpdate'])) {
       echo "Uspješno ste izmijenili profesora.";
       } ?>
    </p>
-<input class="btn btn-default pull-right" name="promjeni" type="submit" value="Pohrani razrede" style="display:none">
+    <p id="errorRazred"></p>
+  <a class="btn btn-default pull-right" style="display:none" id="pohrana">Pohrani razrede</a>
       </div>
     </div>
     <div class="row"></div>
   </div><?php include "footer.php"; ?>
   <script>
   $(function(){
-  $(".glyphicon-plus").click(function() {
+  $("#dodajNovi").click(function() {
     $(".pull-right").css("display", "block");
-    $(".table").append("<tr><td></td><td>1</td><td>b</td></tr>");
+    $(".pokaziNovi").css("visibility", "visible");
   })
+  $("#pohrana").click(function() {
+    var razred = $(".razred").find(':selected').val();
+    var odjeljenje = $(".odjeljenje").find(':selected').val();
+    $.ajax({
+        type: "POST",
+        url: "insertRazred.php",
+        data: "razred=" + razred + "&odjeljenje=" + odjeljenje + "&skola=" + <?php echo $_SESSION['autoriziran']->skola; ?>,
+        success: function(msg){
+          if (msg=="OK") {
+            window.location="ravnatelj.php";
+          }
+          else {
+            $("#errorRazred").html("Ovaj razred već postoji.");
+          }
+        }
+      });
+  })
+
   $("#cijena").focusout(function() {
     $.ajax({
         type: "POST",

@@ -129,6 +129,9 @@ header {
 .glyphicon-plus {
   color: #0097A7;
 }
+#dodajNovi {
+  cursor: pointer;
+}
 
 th {
   color: #000;
