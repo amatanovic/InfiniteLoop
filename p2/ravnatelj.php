@@ -55,13 +55,17 @@ if (!isset($_SESSION['autoriziran']->status) == 1) {
       echo "Uspješno ste izmijenili profesora.";
       } ?>
    </p>
-<input class="btn btn-default pull-right" name="promjeni" type="submit" value="Pohrani promjene" style="display:none">
+<input class="btn btn-default pull-right" name="promjeni" type="submit" value="Pohrani razrede" style="display:none">
       </div>
     </div>
     <div class="row"></div>
   </div><?php include "footer.php"; ?>
   <script>
   $(function(){
+  $(".glyphicon-plus").click(function() {
+    $(".pull-right").css("display", "block");
+    $(".table").append("<tr><td></td><td>1</td><td>b</td></tr>");
+  })
   $("#cijena").focusout(function() {
     $.ajax({
         type: "POST",
