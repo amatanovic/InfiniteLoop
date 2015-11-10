@@ -1,195 +1,194 @@
 .bodyIndex {
-	text-align: center;
+  text-align: center;
 }
 
 .form-group {
-	margin-right: auto;
-	margin-left: auto;
-	color: #B6B6B6;
+  margin-right: auto;
+  margin-left: auto;
+  color: #B6B6B6;
 }
 
 .input-group {
-	padding: 10px;
-	width: 300px;
-	color: #B6B6B6;
+  padding: 10px;
+  width: 300px;
+  color: #B6B6B6;
 }
 
 .form-control {
-	border: 0;
-	border-bottom: solid 1px #B6B6B6;
-	border-radius: 0;
+  border: 0;
+  border-bottom: solid 1px #B6B6B6;
+  border-radius: 0;
 }
 
 .form-control:focus {
-	border: 0;
+  border: 0;
 }
 
 .input-group-addon {
-	border: 0;
-	border-bottom: solid 1px #B6B6B6;
-	color: #B6B6B6;
+  border: 0;
+  border-bottom: solid 1px #B6B6B6;
+  color: #B6B6B6;
 }
 
 select {
-	border: 0;
-	border-bottom: solid 1px #B6B6B6;
+  border: 0;
+  border-bottom: solid 1px #B6B6B6;
 }
 
 .zupanija {
-	width: 225px;
+  width: 225px;
 }
 
 .selectGradovi {
-	width: 250px;
+  width: 250px;
 }
 
 .selectSkole {
-	width: 247px;
+  width: 247px;
 }
 
 .selectStatus {
-	width: 243px;
+  width: 243px;
 }
 
 .btn-default {
-	color: #fff;
-	background-color: #0097A7;
-	border-radius: 0;
-	margin-top: 20px;
-	border: 0;
-	padding: 10px;
+  color: #fff;
+  background-color: #0097A7;
+  border-radius: 0;
+  margin-top: 20px;
+  border: 0;
+  padding: 10px;
 }
 
 header {
-	background-color: #00BCD4;
-	color: #fff;
-	margin-left: -15px;
-	margin-right: -15px;
-	height: 380px;
+  background-color: #00BCD4;
+  color: #fff;
+  margin-left: -15px;
+  margin-right: -15px;
+  height: 380px;
 }
 
 .logIn {
-	color: #fff;
-	border-bottom-color: #fff;
+  color: #fff;
+  border-bottom-color: #fff;
 }
 
 .trakaIndex {
-	height: 50px;
-	background-color: #0097A7;
-	margin-left: -15px;
+  height: 50px;
+  background-color: #0097A7;
+  margin-left: -15px;
 }
 
 .imeRavnatelja {
-	text-align: right;
-	margin-top: -43px;
-	margin-right: 120px;
+  text-align: right;
+  margin-top: -43px;
+  margin-right: 120px;
 }
 
 .ravnateljBtn {
-	margin-top: -47px;
-	margin-right: 15px;
+  margin-top: -47px;
+  margin-right: 15px;
 }
 
 .headerRavnatelj {
-	margin-top: -20px;
-	padding-top: 15px;
-	padding-left: 15px;
-	height: 80px;
+  margin-top: -20px;
+  padding-top: 15px;
+  padding-left: 15px;
+  height: 80px;
 }
 
 .tablica {
-	height: 95%;
-	width: 95%;
-	background-color: #fff;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 40px;
-	padding-bottom: 40px;
-	color: #B6B6B6;
+  height: 95%;
+  width: 95%;
+  background-color: #fff;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  color: #B6B6B6;
 }
 
 .bodyRavnatelj {
-	background-color: #EDECEC;
+  background-color: #EDECEC;
 }
 
 .glyphicon-plus {
-	color: #0097A7;
+  color: #0097A7;
 }
 
 th {
-	color: black;
+  color: #000;
 }
 
 .obavijest {
-	border: 1px solid #B6B6B6;
-	width: 47%;
-	margin-right: auto;
-	margin-left: auto;
+  border: 1px solid #B6B6B6;
+  width: 47%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .obavijestBtn {
-	margin-right: 330px;
+  margin-right: 330px;
 }
 
 .profesor {
-	height: 95%;
-	width: 95%;
-	background-color: #fff;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 40px;
-	padding-bottom: 40px;
-	color: #B6B6B6;
-	text-align: center;
+  height: 95%;
+  width: 95%;
+  background-color: #fff;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  color: #B6B6B6;
+  text-align: center;
 }
 
 .profesorUplate {
-	height: 95%;
-	width: 95%;
-	
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 40px;
-	padding-bottom: 40px;
-	color: black;
-	text-align: center;
+  height: 95%;
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  color: #000;
+  text-align: center;
 }
 
 .thumbnail {
-	border: 0;
-	border-radius: 0;
+  border: 0;
+  border-radius: 0;
 }
 
 .roditelj {
-	width: 40%;
-	margin-right: auto;
-	margin-left: auto;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .checkbox {
-	border-radius: 0;
-	background-color: inherit;
-	padding-top: 0;
-	margin-top: -30px;
+  border-radius: 0;
+  background-color: inherit;
+  padding-top: 0;
+  margin-top: -30px;
 }
 
 .imeProfesora {
-	text-align: right;
-	margin-top: -43px;
-	margin-right: 120px;
+  text-align: right;
+  margin-top: -43px;
+  margin-right: 120px;
 }
 
 .imeRoditelja {
-	text-align: right;
-	margin-top: -43px;
-	margin-right: 120px;
+  text-align: right;
+  margin-top: -43px;
+  margin-right: 120px;
 }
 
 .promjena {
-	margin-right: -150px;
-	margin-top: -40px;
+  margin-right: -150px;
+  margin-top: -40px;
 }
 
 .uplatnica {
-	margin-right: 200px;
+  margin-right: 200px;
 }
