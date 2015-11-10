@@ -21,7 +21,17 @@
 }
 
 .form-control:focus {
-  border: 0;
+  border: 0!important;
+  outline: none!important;
+  border-bottom: solid 1px #B6B6B6!important;
+  color: #B6B6B6!important;
+}
+
+.logIn:focus {
+  border: 0!important;
+  outline: none!important;
+  border-bottom: solid 1px #fff!important;
+  color: #fff!important;
 }
 
 .input-group-addon {
@@ -49,6 +59,10 @@ select {
 
 .selectStatus {
   width: 243px;
+}
+
+.selectProfesor {
+  width: 240px;
 }
 
 .btn-default {
@@ -191,4 +205,13 @@ th {
 
 .uplatnica {
   margin-right: 200px;
+}
+
+.status {
+  height: 40px;
+  width: 300px;
+}
+
+.odaberi-razred {
+  width: 1%;
 }

@@ -91,24 +91,24 @@ else{
 <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
     <div class="form-group input-group">
      	<div class="input-group">
-  		<span class="input-group-addon profil">ime</span>
+  		<span class="input-group-addon">ime</span>
   		<input type="text" name="ime" class="form-control" aria-describedby="basic-addon1" />
 		</div>
 		<div class="input-group">
-  		<span class="input-group-addon profil">prezime</span>
+  		<span class="input-group-addon">prezime</span>
   		<input type="text" name="prezime" class="form-control"aria-describedby="basic-addon1" />
 		</div>
 		<div class="input-group">
-  		<span class="input-group-addon profil">lozinka</span>
+  		<span class="input-group-addon">lozinka</span>
   		<input type="password" name="lozinka" class="form-control" aria-describedby="basic-addon1" />
 		</div>
 		<div class="input-group">
-  		<span class="input-group-addon profil">email</span>
+  		<span class="input-group-addon">email</span>
   		<input type="password" name="email" class="form-control" aria-describedby="basic-addon1" />
 		</div>
 
     <div class="input-group">
-      <span class="input-group-addon profil">županija</span>
+      <span class="input-group-addon">županija</span>
       <select name="zupanija" class="zupanija">
   	       <!-- ovaj option ispod gdje piše izaberite županije mora ostati. isto je tako i za gradove i skole -->
       <option disabled selected></option>
@@ -123,7 +123,7 @@ foreach ($zupanije as $zupanija):
 </select>
     </div>
      <div class="input-group">
-      <span class="input-group-addon profil">grad</span>
+      <span class="input-group-addon">grad</span>
       <select name="grad" class="selectGradovi">   
       <option disabled selected></option>
       <?php
@@ -137,7 +137,7 @@ foreach ($gradovi as $grad):
 </select>
     </div>
         <div class="input-group">
-      <span class="input-group-addon profil">škola</span>
+      <span class="input-group-addon">škola</span>
       <select name="skola" class="selectSkole">
       <option disabled selected></option>
       <?php
@@ -150,10 +150,10 @@ foreach ($skole as $skola):
 <?php endforeach; ?>
 </select>
     </div>
-     <div class="input-group status" style="display:none">
-      <span class="input-group-addon profil">status</span>
+     <div class="input-group status">
+      <span class="input-group-addon">status</span>
        <select name="status" class="selectStatus"> 
-      <option disabled selected> -- Izaberite status u pripadajućoj školi -- </option>
+      <option disabled selected></option>
       <?php
 $izraz=$veza->prepare("select * from status group by status ASC");
 $izraz->execute();
@@ -164,20 +164,20 @@ foreach ($statusi as $status):
 <?php endforeach; ?>
 </select>
     </div>
-    <div class="input-group statusProfesor" style="display:none">
-      <span class="input-group-addon profil">Odaberite svoj razred</span>
+    <div class="input-group statusProfesor">
+      <span class="input-group-addon odaberi-razred">razred</span>
        <select name="profesor" class="selectProfesor">
     
       </select>
     </div>
- <div class="input-group statusUcenik" style="display:none">
-      <span class="input-group-addon profil">Odaberi svoj razred</span>
+ <div class="input-group statusUcenik">
+      <span class="input-group-addon">razred</span>
        <select name="ucenik" class="selectUcenik">
      
       </select>
     </div>
- <div class="input-group statusRoditelj" style="display:none">
-      <span class="input-group-addon profil">Odaberite svog učenika</span>
+ <div class="input-group statusRoditelj">
+      <span class="input-group-addon">učenik</span>
        <select name="roditelj" class="selectRoditelj">
      
 </select>
