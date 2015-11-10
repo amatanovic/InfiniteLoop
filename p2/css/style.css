@@ -20,6 +20,10 @@
 	border-radius: 0;
 }
 
+.form-control:focus {
+	border: 0;
+}
+
 .input-group-addon {
 	border: 0;
 	border-bottom: solid 1px #B6B6B6;
@@ -73,4 +77,45 @@ header {
 	height: 50px;
 	background-color: #0097A7;
 	margin-left: -15px;
+}
+
+.imeRavnatelja {
+	text-align: right;
+	margin-top: -43px;
+	margin-right: 120px;
+}
+
+.ravnateljBtn {
+	margin-top: -47px;
+	margin-right: 15px;
+}
+
+.headerRavnatelj {
+	margin-top: -20px;
+	padding-top: 15px;
+	padding-left: 15px;
+	height: 80px;
+}
+
+.tablica {
+	height: 95%;
+	width: 95%;
+	background-color: #fff;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 40px;
+	padding-bottom: 40px;
+	color: #B6B6B6;
+}
+
+.bodyRavnatelj {
+	background-color: #EDECEC;
+}
+
+.glyphicon-plus {
+	color: #0097A7;
+}
+
+th {
+	color: black;
 }
