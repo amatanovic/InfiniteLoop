@@ -7,7 +7,7 @@ include "head.php"; ?>
   		<div class="col-md-12">
   <header class="headerRavnatelj">
   <h2>Dobrodošli</h2>      
-  <h2 class="imeRavnatelja">Profesor Profesorić</h2>
+  <h2 class="imeProfesora">Profesor Profesorić</h2>
   <input type="submit" name="registracija" value="Odjavi se" class="btn btn-default pull-right ravnateljBtn" />           
   </header>
 </div>
