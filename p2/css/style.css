@@ -119,3 +119,26 @@ header {
 th {
 	color: black;
 }
+
+.obavijest {
+	border: 1px solid #B6B6B6;
+	width: 47%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.obavijestBtn {
+	margin-right: 330px;
+}
+
+.profesor {
+	height: 95%;
+	width: 95%;
+	background-color: #fff;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 40px;
+	padding-bottom: 40px;
+	color: #B6B6B6;
+	text-align: center;
+}

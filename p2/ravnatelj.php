@@ -47,30 +47,11 @@ include "head.php"; ?>
 	</div>
 </div>
 
-
-     
-    <!-- <div class="input-group statusProfesor" style="display:none">
-      <span class="input-group-addon profil">Odaberite svoj razred</span>
-       <select name="profesor" class="selectProfesor">
-    
-      </select>
-    </div>
- <div class="input-group statusUcenik" style="display:none">
-      <span class="input-group-addon profil">Odaberi svoj razred</span>
-       <select name="ucenik" class="selectUcenik">
-     
-      </select>
-    </div>
- <div class="input-group statusRoditelj" style="display:none">
-      <span class="input-group-addon profil">Odaberite svog učenika</span>
-       <select name="roditelj" class="selectRoditelj">
-     
-</select>
-    </div> -->
     <div class="row">
       
   </div>
 
 </div>
 </div>
+<?php include "footer.php"; ?>
 </body>
