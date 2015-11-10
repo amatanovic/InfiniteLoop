@@ -45,13 +45,13 @@ if($operater!=null){
   session_start();
   $_SESSION['autoriziran']=$operater;
   if ($_SESSION['autoriziran']->status == 1) {
-    header("location: nadzornaRavnatelj.php");
+    header("location: ravnatelj.php");
   }
     if ($_SESSION['autoriziran']->status == 2) {
-    header("location: nadzornaProfesor.php");
+    header("location: profesor.php");
   }
     if ($_SESSION['autoriziran']->status == 3 || $_SESSION['autoriziran']->status == 4) {
-    header("location: nadzornaUcenikRoditelj.php");
+    header("location: roditelj.php");
   }
 }
 else{
