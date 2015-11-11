@@ -48,7 +48,7 @@ if($operater!=null){
     header("location: ravnatelj.php");
   }
     if ($_SESSION['autoriziran']->status == 2) {
-    header("location: profesor.php");
+    header("location: profesorUplate.php");
   }
     if ($_SESSION['autoriziran']->status == 3 || $_SESSION['autoriziran']->status == 4) {
     header("location: roditelj.php");

@@ -12,7 +12,7 @@ if (!isset($_SESSION['autoriziran']->status) == 1) {
         <header class="headerRavnatelj">
           <h2>Dobrodošli</h2>
           <h2 class="imeRavnatelja"><?php echo $_SESSION['autoriziran']->ime . " " . $_SESSION['autoriziran']->prezime; ?></h2>
-          <a class="btn btn-default pull-right ravnateljBtn" href="odjava.php">Odjavi se</a>
+          <a class="btn btn-default pull-right ravnateljBtn" href="odjava.php">Odjava</a>
         </header>
       </div>
     </div>

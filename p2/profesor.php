@@ -1,19 +1,18 @@
 <?php
-include "head.php"; ?>
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
+include "head.php"; 
+if (!isset($_SESSION['autoriziran']->status) == 2) {
+  header("location: odjava.php");
+}
+?>
 <body class="bodyRavnatelj">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
         <header class="headerRavnatelj">
           <h2>Dobrodošli</h2>
-          <h2 class="imeProfesora">Profesor Profesorić</h2><input class=
-          "btn btn-default pull-right ravnateljBtn" name="registracija" type=
-          "submit" value="Odjavi se">
+          <h2 class="imeProfesora" style="margin-right:200px">Profesor Profesorić</h2>
+          <a class="btn btn-default pull-right ravnateljBtn" href="odjava.php">Odjava</a>
+          <a class="btn btn-default pull-right ravnateljBtn povratak" href="profesorUplate.php">Povratak</a>
         </header>
       </div>
     </div>

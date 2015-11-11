@@ -202,7 +202,7 @@ th {
 }
 
 .promjena {
-  margin-right: -150px;
+  margin-right: -400px;
   margin-top: -40px;
 }
 
@@ -217,4 +217,9 @@ th {
 
 .odaberi-razred {
   width: 1%;
+}
+
+.povratak{
+  position:absolute;
+  left: 85em;
 }
