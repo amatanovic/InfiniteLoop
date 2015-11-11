@@ -14,7 +14,7 @@ color: #a94442;
 .card{
 border-radius: 10px;
 height: 50px;
-width: 300px;
+width: 100%;
 text-align: center;
 padding: 15px;
 }
@@ -26,6 +26,7 @@ font-weight: normal !important;
 
 .bar-balanced{
 background-color: #00BCD4 !important;
+border-color: #00BCD4 !important;
 }
 
 .button-dark{
