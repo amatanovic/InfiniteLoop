@@ -11,7 +11,7 @@ if (!isset($_SESSION['autoriziran']->status) == 2) {
       <div class="col-md-12">
         <header class="headerRavnatelj">
           <h2>Dobrodošli</h2>
-          <a href="profesor.php" style="color:white;text-decoration:none"><h2 class="imeProfesora">Profesor Profesorić</h2></a>
+          <a href="profesor.php" style="color:white;text-decoration:none"><h2 class="imeProfesora"><?php echo $_SESSION['autoriziran']->ime . " " . $_SESSION['autoriziran']->prezime; ?></h2></a>
           <a class="btn btn-default pull-right ravnateljBtn" href="odjava.php">Odjava</a>
         </header>
       </div>

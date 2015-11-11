@@ -10,7 +10,7 @@ if (!isset($_SESSION['autoriziran']->status) == 2) {
       <div class="col-md-12">
         <header class="headerRavnatelj">
           <h2>Dobrodošli</h2>
-          <h2 class="imeProfesora" style="margin-right:200px">Profesor Profesorić</h2>
+          <h2 class="imeProfesora" style="margin-right:200px"><?php echo $_SESSION['autoriziran']->ime . " " . $_SESSION['autoriziran']->prezime; ?></h2>
           <a class="btn btn-default pull-right ravnateljBtn" href="odjava.php">Odjava</a>
           <a class="btn btn-default pull-right ravnateljBtn povratak" href="profesorUplate.php">Povratak</a>
         </header>
@@ -18,8 +18,7 @@ if (!isset($_SESSION['autoriziran']->status) == 2) {
     </div>
     <div class="row profesor">
       <div class="col-md-12">
-        <h1 style="padding-bottom: 60px; color: black">Profesor Profesorić</h1>
-        <p>Ukoliko želite poslati obavijest o nelaćenim uplatnicama, unesite
+        <p style="padding-top:5%">Ukoliko želite poslati obavijest o neplaćenim uplatnicama, unesite
         obavijest i pritisnite 'Pošalji'.</p>
         <textarea class="form-control obavijest" cols="50" id="obavijest"
         maxlength="255" name="obavijest" placeholder="Unesite obavijest" rows=
