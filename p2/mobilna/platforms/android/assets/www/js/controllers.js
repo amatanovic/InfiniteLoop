@@ -55,17 +55,10 @@ $rootScope.loginData = {};
 })
 
 
-.controller('LoginCtrl', function($scope,  $rootScope, $ionicLoading, $http, $state, Camera) {
+.controller('LoginCtrl', function($scope,  $rootScope, $ionicLoading, $http, $state) {
 $scope.error = false;
 $scope.alert = false;
 $rootScope.uslikaj = false;
-$scope.picture = function () {
-  Camera.getPicture().then(function(imageURI) {
-      console.log(imageURI);
-    }, function(err) {
-      console.err(err);
-    });
-}
 
 $scope.submit = function () {
       $ionicLoading.show({
@@ -110,8 +103,15 @@ $scope.submit = function () {
 
 
 
-.controller('ProknjizeneUplateCtrl', function($scope) {
+.controller('ProknjizeneUplateCtrl', function($scope, Camera) {
 
+$scope.picture = function () {
+  Camera.getPicture().then(function(imageURI) {
+      alert(imageURI);
+    }, function(err) {
+      console.err(err);
+    });
+}
 });
 
 
