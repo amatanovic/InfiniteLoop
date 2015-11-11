@@ -2114,3 +2114,5 @@ insert into uplatakorisnikprofesorrazred (korisnikprofesorrazred, uplata, proknj
   (2, 1, 0),
   (3, 2, 1),
   (4, 3, 1);
+
+update korisnik set device="APA91bFykpoo75ALJu_nKbwAKxj7Apj0JEAlr2rQHu6uH2fU5GHLvcdoDhk9Q-L6thgzF-1QUmZZl6tNDgjfehqFAHeS0fG1xG5SkJ36ygDJ-u6nXB5kSKtlPBxCoJ47XBsvWJPhPLCj7rQrZQtTjvKKBgLM5YBaTg" where sifra=6;

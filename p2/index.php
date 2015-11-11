@@ -78,7 +78,7 @@ else{
               <input type="password" class="form-control logIn" name="lozinka" aria-describedby="basic-addon1" style="background-color: #00BCD4">
             </div>
             </div>
-            <input type="submit" name="prijava" class="btn btn-default" value="Prijavi se" />
+            <input type="submit" name="prijava" class="btn btn-default" value="Prijava" />
           </form>
           <p>
             <?php if(isset($_GET['loginError'])) {
@@ -150,7 +150,7 @@ foreach ($skole as $skola):
 <?php endforeach; ?>
 </select>
     </div>
-     <div class="input-group status">
+     <div class="input-group status" style="visibility:hidden">
       <span class="input-group-addon">status</span>
        <select name="status" class="selectStatus"> 
       <option disabled selected></option>
@@ -164,19 +164,19 @@ foreach ($statusi as $status):
 <?php endforeach; ?>
 </select>
     </div>
-    <div class="input-group statusProfesor">
+    <div class="input-group statusProfesor" style="visibility:hidden">
       <span class="input-group-addon odaberi-razred">razred</span>
        <select name="profesor" class="selectProfesor">
     
       </select>
     </div>
- <div class="input-group statusUcenik">
+ <div class="input-group statusUcenik" style="visibility:hidden">
       <span class="input-group-addon">razred</span>
        <select name="ucenik" class="selectUcenik">
      
       </select>
     </div>
- <div class="input-group statusRoditelj">
+ <div class="input-group statusRoditelj" style="visibility:hidden">
       <span class="input-group-addon">učenik</span>
        <select name="roditelj" class="selectRoditelj">
      
@@ -206,10 +206,10 @@ $(function(){
 
 function selectGrad() {
 $(".zupanija").change(function(){
-  $(".status").css("display", "none");
-  $(".statusProfesor").css("display", "none");
-  $(".statusUcenik").css("display", "none");
-  $(".statusRoditelj").css("display", "none");
+  $(".status").css("visibility", "hidden");
+  $(".statusProfesor").css("visibility", "hidden");
+  $(".statusUcenik").css("visibility", "hidden");
+  $(".statusRoditelj").css("visibility", "hidden");
   var zupanija = $(this).find(':selected').val();
       $.ajax({
         type: "POST",
@@ -246,10 +246,10 @@ $(".zupanija").change(function(){
     }
 
 $(".selectGradovi").change(function (){
-  $(".status").css("display", "none");
-  $(".statusProfesor").css("display", "none");
-  $(".statusUcenik").css("display", "none");
-  $(".statusRoditelj").css("display", "none");
+  $(".status").css("visibility", "hidden");
+  $(".statusProfesor").css("visibility", "hidden");
+  $(".statusUcenik").css("visibility", "hidden");
+  $(".statusRoditelj").css("visibility", "hidden");
    var grad = $(".selectGradovi").find(':selected').val();
       $.ajax({
         type: "POST",
@@ -280,11 +280,11 @@ $(".selectGradovi").change(function (){
       });
 
 $(".selectSkole").change(function (){
-  $(".status").css("display", "block");
+  $(".status").css("visibility", "visible");
    var skola = $(".selectSkole").find(':selected').val();
-  $(".statusProfesor").css("display", "none");
-  $(".statusUcenik").css("display", "none");
-  $(".statusRoditelj").css("display", "none");
+  $(".statusProfesor").css("visibility", "hidden");
+  $(".statusUcenik").css("visibility", "hidden");
+  $(".statusRoditelj").css("visibility", "hidden");
   $(".status option").each(function() { 
     if ($(this).val() == "-- Izaberite status u pripadajućoj školi --") {
       $(this).attr("selected", "selected");
@@ -322,14 +322,14 @@ $(".selectSkole").change(function (){
 });
 
 $(".selectStatus").change(function(){
-  $(".statusProfesor").css("display", "none");
-  $(".statusUcenik").css("display", "none");
-  $(".statusRoditelj").css("display", "none");
+  $(".statusProfesor").css("visibility", "hidden");
+  $(".statusUcenik").css("visibility", "hidden");
+  $(".statusRoditelj").css("visibility", "hidden");
 
   var status = $(this).find(':selected').val();
   var skola = $(".selectSkole").find(':selected').val();
   if (status == 2) {
-      $(".statusProfesor").css("display", "block");
+      $(".statusProfesor").css("visibility", "visible");
       $(".selectProfesor").html("<option disabled selected> -- Izaberite svoj razred -- </option>");
       $.ajax({
         type: "POST",
@@ -344,7 +344,7 @@ $(".selectStatus").change(function(){
       });
   }
   if (status == 3) {
-      $(".statusUcenik").css("display", "block");
+      $(".statusUcenik").css("visibility", "visible");
       $(".selectUcenik").html("<option disabled selected> -- Izaberi svoj razred -- </option>");
        $.ajax({
         type: "POST",
@@ -359,7 +359,7 @@ $(".selectStatus").change(function(){
       });
   }
   if (status == 4) {
-      $(".statusRoditelj").css("display", "block");
+      $(".statusRoditelj").css("visibility", "visible");
       $(".selectRoditelj").html("<option disabled selected> -- Izaberite svog učenika -- </option>");
       $.ajax({
         type: "POST",

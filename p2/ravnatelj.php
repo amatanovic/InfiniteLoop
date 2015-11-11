@@ -40,12 +40,11 @@ if (!isset($_SESSION['autoriziran']->status) == 1) {
             <th>ODJELJENJE</th>
           </tr>
           <?php 
-  $izraz=$veza->prepare("select a.razred, b.odjeljenje, d.profesor, d.sifra from razred a inner join skolarazred c on a.sifra=c.razred inner join odjeljenje b on b.sifra=c.odjeljenje inner join profesorrazred d on c.sifra=d.skolarazred where c.skola=:skola group by a.razred ASC");
+  $izraz=$veza->prepare("select a.razred, b.odjeljenje, d.profesor, d.sifra from razred a inner join skolarazred c on a.sifra=c.razred inner join odjeljenje b on b.sifra=c.odjeljenje inner join profesorrazred d on c.sifra=d.skolarazred where c.skola=:skola order by a.razred ASC");
   $izraz->bindValue(":skola", $_SESSION['autoriziran']->skola);
   $izraz->execute();
   $podaci=$izraz->fetchALL(PDO::FETCH_OBJ); 
   foreach ($podaci as $podatak):
-
    ?>
 <tr>
 <td>
@@ -59,7 +58,7 @@ if (!isset($_SESSION['autoriziran']->status) == 1) {
   $izraz=$veza->prepare("select a.ime, a.prezime from korisnik a inner join profesorrazred b on a.sifra=b.profesor where profesor=:profesor");
   $izraz->bindValue(":profesor", $podatak->profesor);
   $izraz->execute();
-  $profesor=$izraz->fetch(PDO::FETCH_OBJ); 
+  $profesor=$izraz->fetch(PDO::FETCH_OBJ);
   ?>
 <input type="hidden" value="<?php echo $podatak->sifra ?>" />
 <input type="text" value="<?php echo $profesor->ime . " " . $profesor->prezime; ?>" class="form-control" />
