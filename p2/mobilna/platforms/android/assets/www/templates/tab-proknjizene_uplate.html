@@ -1,8 +1,25 @@
 <ion-view>
-<ion-nav-title class="naslov">Proknjižene uplate</ion-nav-title>
-  <ion-content class="padding" class="naslov">
-  
+<ion-nav-title class="naslov">Uplate</ion-nav-title>
+<ion-content class="padding pozadina" >
 
 
-  </ion-content>
+<div class="row" ng-show="uslikaj">
+  <img alt="Uplatnica" src="{{userData.slika}}" class="slika" />
+</div> 
+
+<div class="row">
+ <div class="col" style="text-align:center;">
+  <h3>{{userData.proknjizeno}}</h3>
+ </div>
+</div> 
+
+
+ <div class="row" ng-hide="uslikaj">
+  <button class="button button-block icon ion-ios-camera-outline" type="submit" ng-click="picture()">
+  Uslikaj i priloži uplatnicu
+  </button>
+ </div>
+
+
+</ion-content>
 </ion-view>

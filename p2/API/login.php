@@ -18,10 +18,25 @@ if ($korisnik == null ){
 
 else {
 $vrijeme = date ("m");
-$izraz=$veza->prepare("select a.slika from uplata a inner join uplatakorisnikprofesorrazred b on b.uplata=a.sifra inner join korisnikprofesorrazred c on c.sifra=b.korisnikprofesorrazred inner join ucenikroditelj d on d.sifra=c.ucenikroditelj inner join korisnik e on e.sifra=d.ucenik where e.sifra=:sifra and month(a.vrijeme)='$vrijeme'");
+$izraz=$veza->prepare("select a.slika, b.proknjizeno from uplata a inner join uplatakorisnikprofesorrazred b on b.uplata=a.sifra inner join korisnikprofesorrazred c on c.sifra=b.korisnikprofesorrazred inner join ucenikroditelj d on d.sifra=c.ucenikroditelj inner join korisnik e on e.sifra=d.ucenik where e.sifra=:sifra and month(a.vrijeme)='$vrijeme'");
 $izraz->bindValue(":sifra", $korisnik->sifra); 
 $izraz->execute();
 $sifra=$izraz->fetch(PDO::FETCH_OBJ);
+if ($sifra!=null) {
 echo json_encode($sifra);
+}
+else {
+$vrijeme = date ("m");
+$izraz=$veza->prepare("select a.slika, b.proknjizeno from uplata a inner join uplatakorisnikprofesorrazred b on b.uplata=a.sifra inner join korisnikprofesorrazred c on c.sifra=b.korisnikprofesorrazred inner join ucenikroditelj d on d.sifra=c.ucenikroditelj inner join korisnik e on e.sifra=d.roditelj where e.sifra=:sifra and month(a.vrijeme)='$vrijeme'");
+$izraz->bindValue(":sifra", $korisnik->sifra); 
+$izraz->execute();
+$sifra=$izraz->fetch(PDO::FETCH_OBJ);	
+if ($sifra!=null) {
+	echo json_encode($sifra);
+} 
+else {
+	echo json_encode("prazno");
+}
+}
 }
 

@@ -1,12 +1,16 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $rootScope, $ionicPush, $ionicUser, $state) {
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+    $scope.identifyUser();
+}
   $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
-    alert('Got token' + data.token, data.platform);
+  $rootScope.loginData.device = data.token;
   });
   //Basic registration
   $scope.pushRegister = function() {
-    alert('Registering...');
 
     $ionicPush.register({
       canShowAlert: false,
@@ -16,12 +20,9 @@ angular.module('starter.controllers', [])
       }
     }).then(function(deviceToken) {
       $scope.token = deviceToken;
-      alert($scope.token);
     });
   }
   $scope.identifyUser = function() {
-    alert('Identifying');
-    console.log('Identifying user');
 
     var user = $ionicUser.get();
     if(!user.user_id) {
@@ -35,6 +36,7 @@ angular.module('starter.controllers', [])
     });
 
     $ionicUser.identify(user);
+    $scope.pushRegister();
   }
 
 $rootScope.$on('$ionicView.beforeEnter', function () {
@@ -48,15 +50,22 @@ $rootScope.hideTabs = false;
 $scope.odjava = function(){
 $state.go("tab.login");
 }
+$rootScope.loginData = {};
 
 })
 
 
-.controller('LoginCtrl', function($scope,  $rootScope, $ionicLoading, $http, $state) {
+.controller('LoginCtrl', function($scope,  $rootScope, $ionicLoading, $http, $state, Camera) {
 $scope.error = false;
 $scope.alert = false;
-$scope.loginData = {};
 $rootScope.uslikaj = false;
+$scope.picture = function () {
+  Camera.getPicture().then(function(imageURI) {
+      console.log(imageURI);
+    }, function(err) {
+      console.err(err);
+    });
+}
 
 $scope.submit = function () {
       $ionicLoading.show({
@@ -64,7 +73,7 @@ $scope.submit = function () {
         });   
         $http({
           url: $rootScope.server + "API/login.php",
-          data: $scope.loginData,
+          data: $rootScope.loginData,
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -74,11 +83,22 @@ $scope.submit = function () {
           if (data === false) {
             $scope.alert = true;
           }
-          else if (data !== false) {
+          else if (data.length != 1 && data !== "prazno") {
             $rootScope.userData = data;
+            if ($rootScope.userData.proknjizeno == 0) {
+              $rootScope.userData.proknjizeno = "Vaša uplata još uvijek nije proknjižena."
+            }
+            else if ($rootScope.userData.proknjizeno == 1) {
+              $rootScope.userData.proknjizeno = "Vaša uplata je proknjižena."
+            }
             $rootScope.uslikaj = true; 
             $state.go("tab.proknjizene_uplate");
           }
+          else if (data == "prazno") {
+            $rootScope.uslikaj = false; 
+            $state.go("tab.proknjizene_uplate");
+          }
+          
 
         }).error(function(err) {
           $ionicLoading.hide();

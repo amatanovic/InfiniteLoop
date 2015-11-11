@@ -1,19 +1,15 @@
-<ion-tabs class="tabs-icon-only  tabs-color-active-energized">  
+<ion-tabs class="tabs-striped tabs-top tabs-background-positive tabs-color-light" ng-class="{'tabs-item-hide': hideTabs}">  
 
-  <ion-tab icon-off="ion-log-in" icon-on="ion-log-in" href="#/tab/login">
+  <ion-tab icon-off="ion-log-in" icon-on="ion-log-in" href="#/tab/login" hidden="true" class="tab">
     <ion-nav-view name="tab-login"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab icon-off="ion-android-done-all" icon-on="ion-android-done-all" href="#/tab/proknjizene_uplate">
+  <ion-tab icon-off="ion-ios-compose-outline" icon-on="ion-ios-compose-outline" href="#/tab/proknjizene_uplate">
     <ion-nav-view name="tab-proknjizene_uplate"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab  icon-off="ion-information" icon-on="ion-information" href="#/tab/neproknjizene_uplate">
-    <ion-nav-view name="tab-neproknjizene_uplate"></ion-nav-view>
-  </ion-tab>
 
-
-  <ion-tab icon-off="ion-log-out" icon-on="ion-log-out">
+  <ion-tab icon-off="ion-log-out" icon-on="ion-log-out" ng-click="odjava()">
   </ion-tab>
 
   

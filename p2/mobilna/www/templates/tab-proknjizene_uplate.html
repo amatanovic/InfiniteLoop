@@ -9,13 +9,13 @@
 
 <div class="row">
  <div class="col" style="text-align:center;">
-  <h3>Proknjiženo/neproknjiženo</h3>
+  <h3>{{userData.proknjizeno}}</h3>
  </div>
 </div> 
 
 
  <div class="row" ng-hide="uslikaj">
-  <button class="button button-block icon ion-ios-camera-outline" type="submit" >
+  <button class="button button-block icon ion-ios-camera-outline" type="submit" ng-click="picture()">
   Uslikaj i priloži uplatnicu
   </button>
  </div>

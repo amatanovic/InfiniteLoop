@@ -6,12 +6,15 @@ if (!isset($_SESSION['autoriziran']->status) == 2) {
 if (isset($_POST['posaljiObavijest'])) {
 $poruka = $_POST['obavijest'];
 $vrijeme = date("m");
-  $izraz=$veza->prepare("select b.device from uplata a inner join uplatakorisnikprofesorrazred c on c.uplata=a.sifra inner join korisnikprofesorrazred d on d.sifra=c.korisnikprofesorrazred inner join ucenikroditelj e on e.sifra=d.ucenikroditelj inner join korisnik b on b.sifra=e.roditelj where c.proknjizeno=0
- and month(a.vrijeme)='$vrijeme'");
+  $izraz=$veza->prepare("select a.sifra from korisnikprofesorrazred a left join uplatakorisnikprofesorrazred b on a.sifra=b.korisnikprofesorrazred where b.uplata is null");
   $izraz->execute();
   $korisnici=$izraz->fetchALL(PDO::FETCH_OBJ);
   foreach ($korisnici as $korisnik) {
-    $device_token=$korisnik->device;
+     $izraz=$veza->prepare("select a.device from korisnik a inner join ucenikroditelj b on a.sifra=b.roditelj inner join korisnikprofesorrazred c on b.sifra=c.ucenikroditelj where b.sifra=:sifra");
+  $izraz->bindValue(":sifra", $korisnik->sifra); 
+  $izraz->execute();
+  $device=$izraz->fetch(PDO::FETCH_OBJ);
+    $device_token=$device->device;
 $url = 'http://push.ionic.io/api/v1/push';
 
 $data = array(
