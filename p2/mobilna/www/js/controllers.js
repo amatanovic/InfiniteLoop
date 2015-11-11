@@ -56,6 +56,7 @@ $state.go("tab.login");
 $scope.error = false;
 $scope.alert = false;
 $scope.loginData = {};
+$rootScope.uslikaj = false;
 
 $scope.submit = function () {
       $ionicLoading.show({
@@ -75,7 +76,7 @@ $scope.submit = function () {
           }
           else if (data !== false) {
             $rootScope.userData = data;
-            console.log($rootScope.userData);
+            $rootScope.uslikaj = true; 
             $state.go("tab.proknjizene_uplate");
           }
 

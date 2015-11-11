@@ -3,7 +3,7 @@
 <ion-content class="padding pozadina" >
 
 
-<div class="row">
+<div class="row" ng-show="uslikaj">
   <img alt="Uplatnica" src="{{userData.slika}}" class="slika" />
 </div> 
 
@@ -14,7 +14,7 @@
 </div> 
 
 
- <div class="row">
+ <div class="row" ng-hide="uslikaj">
   <button class="button button-block icon ion-ios-camera-outline" type="submit" >
   Uslikaj i priloži uplatnicu
   </button>
