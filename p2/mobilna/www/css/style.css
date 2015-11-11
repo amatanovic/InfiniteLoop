@@ -2,6 +2,7 @@
 border-color: #faebcc !important;
 background-color: #fcf8e3 !important;
 color: #8a6d3b !important;
+
 }
 
 .crvena{
@@ -13,9 +14,48 @@ color: #a94442;
 .card{
 border-radius: 10px;
 height: 50px;
+width: 300px;
 text-align: center;
 padding: 15px;
 }
 
-.naslov{color: silver !important;
-font-weight: normal !important;}
+.naslov{
+color: white !important;
+font-weight: normal !important;
+}
+
+.bar-balanced{
+background-color: #00BCD4 !important;
+}
+
+.button-dark{
+background-color: #0097A7  !important; 
+border-color: #0097A7  !important;
+width:60%;
+border-radius: 0%;
+}
+
+.prijava{
+background-color: #EDECEC !important;
+}
+
+
+.tabs-background-positive > .tabs {
+background-color: #00BCD4 !important;
+background-image: linear-gradient(0deg, #0c63ee, #0c63ee 50%, transparent 50%);
+border-color: #00BCD4 !important;}
+
+.button-block{
+background-color: #0097A7  !important; 
+border-color: #0097A7  !important;
+color: white !important;
+}    
+
+.slika{
+width: 100%;
+height: 100%;
+}
+
+.pozadina{
+background-color: #EDECEC !important;
+}

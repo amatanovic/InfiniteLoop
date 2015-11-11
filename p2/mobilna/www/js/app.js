@@ -65,16 +65,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic.service.core',
         controller: 'ProknjizeneUplateCtrl'
       }
     }
-  })
-
-.state('tab.neproknjizene_uplate', {
-    url: '/neproknjizene_uplate',
-    views: {
-      'tab-neproknjizene_uplate': {
-        templateUrl: 'templates/tab-neproknjizene_uplate.html',
-        controller: 'NeproknjizeneUplateCtrl'
-      }
-    }
   });
 
 

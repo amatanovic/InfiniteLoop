@@ -75,6 +75,7 @@ $scope.submit = function () {
           }
           else if (data !== false) {
             $rootScope.userData = data;
+            console.log($rootScope.userData);
             $state.go("tab.proknjizene_uplate");
           }
 
@@ -89,10 +90,6 @@ $scope.submit = function () {
 
 
 .controller('ProknjizeneUplateCtrl', function($scope) {
-
-})
-
-.controller('NeproknjizeneUplateCtrl', function($scope) {
 
 });
 
