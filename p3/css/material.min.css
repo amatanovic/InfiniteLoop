@@ -5863,7 +5863,6 @@ select[multiple].form-control,select[multiple].form-control:focus,select[multipl
 
 .form-control {
   border: 0;
-  background-image: linear-gradient(#009688,#009688),linear-gradient(#d2d2d2,#d2d2d2);
   background-size: 0 2px,100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom,center calc(100% - 1px);
@@ -5893,7 +5892,7 @@ fieldset[disabled] .form-control:disabled,.form-control-wrapper .form-control:di
 
 .form-control:focus,.form-control.focus {
   outline: none;
-  background-image: linear-gradient(#009688,#009688),linear-gradient(#d2d2d2,#d2d2d2);
+  
   background-size: 100% 2px,100% 1px;
   box-shadow: none;
   transition-duration: .3s;
@@ -5942,7 +5941,7 @@ fieldset[disabled] .form-control:disabled,.form-control-wrapper .form-control:di
 }
 
 .form-control-wrapper .form-control:focus~.floating-label {
-  color: #009688;
+  color: #c21e5c;
 }
 
 .form-control-wrapper .form-control:not(.empty):invalid~.floating-label,.form-control-wrapper .form-control.focus:invalid~.floating-label {
@@ -5988,7 +5987,7 @@ fieldset[disabled] .form-control:disabled,.form-control-wrapper .form-control:di
 }
 
 .form-group.has-warning .material-input:focus,.form-group.has-warning .form-control:focus,.form-group.has-warning .form-control.focus {
-  background-image: linear-gradient(#ff5722,#ff5722),linear-gradient(#d2d2d2,#d2d2d2);
+  
   box-shadow: none;
 }
 
@@ -6001,7 +6000,7 @@ fieldset[disabled] .form-control:disabled,.form-control-wrapper .form-control:di
 }
 
 .form-group.has-error .material-input:focus,.form-group.has-error .form-control:focus,.form-group.has-error .form-control.focus {
-  background-image: linear-gradient(#f44336,#f44336),linear-gradient(#d2d2d2,#d2d2d2);
+  
   box-shadow: none;
 }
 
@@ -6014,7 +6013,7 @@ fieldset[disabled] .form-control:disabled,.form-control-wrapper .form-control:di
 }
 
 .form-group.has-success .material-input:focus,.form-group.has-success .form-control:focus,.form-group.has-success .form-control.focus {
-  background-image: linear-gradient(#4caf50,#4caf50),linear-gradient(#d2d2d2,#d2d2d2);
+  
   box-shadow: none;
 }
 
@@ -6027,7 +6026,7 @@ fieldset[disabled] .form-control:disabled,.form-control-wrapper .form-control:di
 }
 
 .form-group.has-info .material-input:focus,.form-group.has-info .form-control:focus,.form-group.has-info .form-control.focus {
-  background-image: linear-gradient(#03a9f4,#03a9f4),linear-gradient(#d2d2d2,#d2d2d2);
+  
   box-shadow: none;
 }
 
@@ -6035,7 +6034,7 @@ fieldset[disabled] .form-control:disabled,.form-control-wrapper .form-control:di
   color: #03a9f4;
 }
 
-.form-group .form-control:focus,.form-group-default .form-control:focus {
+/*.form-group .form-control:focus,.form-group-default .form-control:focus {
   background-image: linear-gradient(#009688,#009688),linear-gradient(#d2d2d2,#d2d2d2);
 }
 
@@ -6257,7 +6256,7 @@ fieldset[disabled] .form-control:disabled,.form-control-wrapper .form-control:di
 
 .form-group-material-blue-grey .form-control.focus {
   background-image: linear-gradient(#607d8b,#607d8b),linear-gradient(#d2d2d2,#d2d2d2);
-}
+}*/
 
 .form-group .control-label,.form-group-default .control-label {
   color: rgba(0,0,0,.84);

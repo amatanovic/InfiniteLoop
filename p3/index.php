@@ -8,28 +8,21 @@
         <link href="css/material.min.css" rel="stylesheet">
         <link href="css/ripples.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
-        <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 
     </head>
 
     <body class="bodyIndex">
         <div class="container">
             <div class="rowIndex">
-                <div class="col-md-6">
-
+                <div class="col-md-6 divPozadina" style="background-image: url('slika.jpg')">
+                    <h1 style="margin-top:200px;">Frizeraj</h1>
+                    <h4>Trebaš novu frizuru? Dođi kod nas i dobit ćeš!</h4>
                 </div>
                 <div class="col-md-6 divForma">
                     <form class="form-horizontal indexForma">
                         <fieldset>
                             <h2 class="indexH2">Prijava</h2>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" value="salon"> salon
-                                </label>
-                                <label>
-                                    <input type="checkbox" value="korisnik"> korisnik
-                                </label>
-                            </div>
                             <div class="form-group">                                
                                 <input type="text" class="form-control" id="korisnickoIme" placeholder="korisničko ime">
                             </div>
