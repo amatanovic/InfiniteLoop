@@ -51,13 +51,8 @@ foreach ($mjesta as $mjesto):
                             <div class="form-group">
                                 <input type="password" class="form-control" id="lozinka" placeholder="lozinka">                        
                             </div>
-<<<<<<< HEAD
-                            <a href="#" id="prijava" class="btn btn-default btnKorisnik">Prijavi se</a>         
-=======
                             <input type="submit" name="registracija" class="btn btn-default" value="Registriraj salon" />  
-         
->>>>>>> origin/master
-                        </fieldset>
+                          </fieldset>
                     </form>
                 </div>
                 <div class="col-md-6 divRegKorisnika">
@@ -88,11 +83,8 @@ foreach ($mjesta as $mjesto):
                             <div class="form-group">
                                 <input type="password" class="form-control" name="lozinka" placeholder="lozinka">                        
                             </div>
-<<<<<<< HEAD
-                            <a href="#" id="prijava" class="btn btn-default btnKorisnik">Registriraj se</a>  
-=======
+
                              <input type="submit" name="registracija" class="btn btn-default" value="Registriraj se" />  
->>>>>>> origin/master
                             <?php include "facebook_login_graph_api/facebookRegistracija.php"; ?>
 <p><a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo $config['App_ID']; ?>&redirect_uri=<?php echo $config['callback_url']; ?>&scope=email">Sign up using Facebook</a><p>
 <p><?php if(isset($_GET['fbTrue']) || isset($_GET['true']))
