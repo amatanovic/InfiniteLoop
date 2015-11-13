@@ -26,7 +26,7 @@ header ("location: registracija.php?true");
                 <div class="col-md-6 divRegSalona">
                     <form class="form-horizontal indexForma">
                         <fieldset>
-                            <h2 class="indexH2">Registracija frizerskog salona</h2>
+                            <h2 class="indexH2">Registracija frizerskog</h2>
                             <div class="form-group">
                                 <input type="text" class="form-control registracija" id="naziv" placeholder="ime salona">                        
                             </div>
