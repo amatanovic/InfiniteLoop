@@ -65,16 +65,16 @@ header ("location: registracija.php?true");
                             <div class="form-group">                                
                                 <input type="text" class="form-control registracija" name="prezime" placeholder="prezime">
                             </div>
-                            <div class="form-group">                                
+                            <div class="form-group">                               
                                 <select name="grad">
-                                    <?php
-                            $izraz=$veza->prepare("select * from mjesto");
-                            $izraz->execute();
-                            $mjesta=$izraz->fetchALL(PDO::FETCH_OBJ);
-                            foreach ($mjesta as $mjesto): 
-                                    ?>
-                            <option value="<?php echo $mjesto->sifra; ?>" id="<?php echo $mjesto->sifra; ?>"><?php echo $mjesto->naziv; ?></option>
-                            <?php endforeach; ?>
+                                        <?php
+                                    $izraz=$veza->prepare("select * from mjesto");
+                                    $izraz->execute();
+                                    $mjesta=$izraz->fetchALL(PDO::FETCH_OBJ);
+                                    foreach ($mjesta as $mjesto): 
+                                        ?>
+                                        <option value="<?php echo $mjesto->sifra; ?>" id="<?php echo $mjesto->sifra; ?>"><?php echo $mjesto->naziv; ?></option>
+                                        <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">                                
@@ -86,7 +86,7 @@ header ("location: registracija.php?true");
 
                              <input type="submit" name="registracija" class="btn btn-default btnKorisnik" value="Registriraj se" />  
                             <?php include "facebook_login_graph_api/facebookRegistracija.php"; ?>
-<p><a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo $config['App_ID']; ?>&redirect_uri=<?php echo $config['callback_url']; ?>&scope=email" style="color: #fff">Sign up using Facebook</a><p>
+<p><a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo $config['App_ID']; ?>&redirect_uri=<?php echo $config['callback_url']; ?>&scope=email" style="color: #fff">Registriraj se putem facebook-a<img src="facebook-box.png" style="padding-left: 10px"></a><p>
 <p><?php if(isset($_GET['fbTrue']) || isset($_GET['true']))
 {
   echo "Uspješno ste se registrirali.";
