@@ -5,8 +5,19 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ionic.service.core','ionic.service.push'])
+.config(['$ionicAppProvider', function($ionicAppProvider) {
+  // Identify app
+  $ionicAppProvider.identify({
+    // Your App ID
+    app_id: 'dd0dffc6',
+    // The public API key services will use for this app
+    api_key: '3b9b859bcd62b9f0719bc04c3ce6331e9cd40ece2d137cb8',
+    // Your GCM sender ID/project number (Uncomment if supporting Android)
+    gcm_id: '272779918008'
+  });
 
+}])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
