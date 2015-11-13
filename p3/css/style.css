@@ -1,0 +1,32 @@
+.bodyIndex {
+	background-color: #202020;
+	font-family: 'Roboto', sans-serif;
+}
+
+.rowIndex{
+	margin-top: 70px;
+	margin-left: 80px;
+	margin-right: 80px;
+}
+
+.indexForma {
+	margin-right: 50px;
+	margin-left: 50px;
+}
+
+.indexH2 {
+	text-align: center;
+	color: #c21e5c;
+}
+
+.indexP {
+	text-align: center;
+}
+
+.divForma {
+	background-color: #161616;
+}
+
+.checkbox {
+	border-color: #c21e5c;
+}
