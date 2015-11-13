@@ -18,7 +18,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 
 }])
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -32,6 +32,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.styleDefault();
     }
   });
+
+   $rootScope.server = "http://project.comuv.com/p3/";
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -46,51 +48,62 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs.html',
+    controller: 'LogoutCtrl'
   })
 
-  // Each tab has its own nav history stack:
-
-  .state('tab.dash', {
-    url: '/dash',
+.state('tab.login', {
+    url: '/login',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-login': {
+        templateUrl: 'templates/tab-login.html',
+        controller: 'LoginCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
+.state('tab.upload_slika', {
+    url: '/upload_slika',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-upload_slika': {
+        templateUrl: 'templates/tab-upload_slika.html',
+        controller: 'UploadslikaCtrl'
+      }
+    }
+  })
+
+.state('tab.termini', {
+    url: '/termini',
+    views: {
+      'tab-termini': {
+        templateUrl: 'templates/tab-termini.html',
+        controller: 'TerminiCtrl'
+      }
+    }
+  })
+
+.state('tab.moje_frizure', {
+    url: '/moje_frizure',
+    views: {
+      'tab-moje_frizure': {
+        templateUrl: 'templates/tab-moje_frizure.html',
+        controller: 'MojefrizureCtrl'
+      }
+    }
+  })
+
+.state('tab.trivije', {
+    url: '/trivije',
+    views: {
+      'tab-trivije': {
+        templateUrl: 'templates/tab-trivije.html',
+        controller: 'TrivijeCtrl'
       }
     }
   });
+  
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/login');
 
 });
