@@ -1,4 +1,35 @@
-﻿<?php include "head.php"; ?>
+﻿<?php include "head.php";
+if(isset($_GET['fbTrue']))
+{
+require 'facebook_login_graph_api/src/config.php';
+require 'facebook_login_graph_api/src/facebook.php';
+    $token_url = "https://graph.facebook.com/oauth/access_token?"
+       . "client_id=1086359581374842&redirect_uri=http://localhost/InfiniteLoop/p3/index.php?fbTrue=true&client_secret=a7ffd68ba532420febaf77507826f979&code=" . $_GET['code']; 
+
+     $response = file_get_contents($token_url);
+     $params = null;
+     parse_str($response, $params);
+
+     $graph_url = "https://graph.facebook.com/me?access_token=" 
+       . $params['access_token'];
+
+     $user = json_decode(file_get_contents($graph_url));
+     echo $user->id;
+$izraz=$veza->prepare("select * from korisnik where facebook=:sifra and ime=:ime");
+$izraz->bindValue(":sifra",$user->id);
+$izraz->bindValue(":ime", $user->name);
+$izraz->execute();
+$operater=$izraz->fetch(PDO::FETCH_OBJ); 
+if($operater!=null){
+  $_SESSION['autoriziran']=$operater;
+  header("location: nadzornaKorisnik.php");
+}
+else{
+  header("location: index.php?loginError");
+}
+
+}
+?>
     <body class="bodyIndex">
         <div class="container">
             <div class="rowIndex">
@@ -19,11 +50,16 @@
                             <a href="#" id="prijava" class="btn btn-default">Prijavi se</a>         
                         </fieldset>
                     </form>
-                    <p class="indexP">Prijavite se putem facebook-a</p>
+                    <p class="indexP"><a href="https://www.facebook.com/dialog/oauth?client_id=1086359581374842&redirect_uri=http://localhost/InfiniteLoop/p3/index.php?fbTrue=true&scope=email"><img src="facebook_login_graph_api/images/login-button.png" /></a></p>
                     <p class="indexP">Ukoliko nemate račun, <a href="registracija.php">registrirajte se</a></p>
                 </div>
             </div>
         </div>
+        <p>
+            <?php if(isset($_GET['loginError'])) {
+              echo "Neuspješna prijava.";
+              } ?>
+          </p>
 
     <?php include "scripts.php"; ?>
         <script>

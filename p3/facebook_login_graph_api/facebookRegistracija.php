@@ -33,7 +33,7 @@ if(isset($_GET['fbTrue']))
      $user = json_decode(file_get_contents($graph_url));
      $extra = "<a href='index.php?logout=1&tocken=".$params['access_token']."'>Logout</a><br>";     
      $content = $user;
-$izraz=$veza->prepare("insert into korisnik (sifra, ime) values (:sifra, :ime)");
+$izraz=$veza->prepare("insert into korisnik (facebook, ime) values (:sifra, :ime)");
 $izraz->bindValue(":sifra", $content->id); 
 $izraz->bindValue(":ime", $content->name); 
 $izraz->execute();

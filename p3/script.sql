@@ -51,7 +51,8 @@ kor_ime varchar(250),
 lozinka varchar(100),
 salon boolean,
 device varchar(250) default "unknown",
-avatar varchar(150)
+avatar varchar(150),
+facebook bigint
 )engine=innodb;
 
 drop table if exists mjesto;
