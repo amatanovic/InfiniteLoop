@@ -95,11 +95,10 @@ foreach ($mjesta as $mjesto):
 >>>>>>> origin/master
                             <?php include "facebook_login_graph_api/facebookRegistracija.php"; ?>
 <p><a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo $config['App_ID']; ?>&redirect_uri=<?php echo $config['callback_url']; ?>&scope=email">Sign up using Facebook</a><p>
- <p>
-<p><?php if(isset($_GET['fbTrue']))
+<p><?php if(isset($_GET['fbTrue']) || isset($_GET['true']))
 {
   echo "Uspješno ste se registrirali.";
-  } ?></p>       
+  } ?></p>      
                         </fieldset>
                     </form>                    
                 </div>
