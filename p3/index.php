@@ -1,17 +1,4 @@
-﻿<html>
-
-    <head>
-
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
-        <link href="css/roboto.css" rel="stylesheet">
-        <link href="css/material.min.css" rel="stylesheet">
-        <link href="css/ripples.min.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
-        <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
-
-    </head>
-
+﻿<?php include "head.php"; ?>
     <body class="bodyIndex">
         <div class="container">
             <div class="rowIndex">
@@ -40,18 +27,12 @@
                         </fieldset>
                     </form>
                     <p class="indexP">Prijavite se putem facebook-a</p>
-                    <p class="indexP">Ukoliko nemate račun, <a href="">registrirajte se</a></p>
+                    <p class="indexP">Ukoliko nemate račun, <a href="registracija.php">registrirajte se</a></p>
                 </div>
             </div>
         </div>
 
-        <!-- Your site ends -->
-
-        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-        <script src="js/ripples.min.js"></script>
-        <script src="js/material.min.js"></script>
+    <?php include "scripts.php"; ?>
         <script>
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly
