@@ -9,6 +9,12 @@
 	margin-right: 150px;
 }
 
+.rowIndexRegistracija {
+	margin-top: 40px;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
 .indexForma {
 	margin-right: 50px;
 	margin-left: 50px;
@@ -42,6 +48,17 @@
 	height: 530px;
 }
 
+.divRegSalona {
+	background-color: #161616;
+	color: #fff;
+	padding-bottom: 70px;
+	padding-top: 20px;
+	padding-right: 80px;
+	padding-left: 80px;
+	text-align: center;
+	height: 580px;
+}
+
 .divRegKorisnika {
 	background-color: #c21e5c;
 	color: #fff;
@@ -50,7 +67,7 @@
 	padding-right: 80px;
 	padding-left: 80px;
 	text-align: center;
-	height: 550px;
+	height: 580px;
 }
 
 .divPozadina {
@@ -78,6 +95,10 @@ a {
 .form-control {
 	border-bottom: 1px solid #c21e5c!important;
 	color: #fff;
+}
+
+.registracija {
+	border-bottom: 1px solid #fff!important;
 }
 
 .form-group {

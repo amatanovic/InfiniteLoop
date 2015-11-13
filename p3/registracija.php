@@ -22,34 +22,34 @@ header ("location: registracija.php?true");
 ?>
     <body class="bodyIndex">
         <div class="container">
-            <div class="rowIndex">
-                <div class="col-md-6 divForma">
+            <div class="rowIndexRegistracija">
+                <div class="col-md-6 divRegSalona">
                     <form class="form-horizontal indexForma">
                         <fieldset>
                             <h2 class="indexH2">Registracija frizerskog salona</h2>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="naziv" placeholder="ime salona">                        
+                                <input type="text" class="form-control registracija" id="naziv" placeholder="ime salona">                        
                             </div>
                             <div class="form-group">
-    <select name="grad">
-                   <?php
-$izraz=$veza->prepare("select * from mjesto");
-$izraz->execute();
-$mjesta=$izraz->fetchALL(PDO::FETCH_OBJ);
-foreach ($mjesta as $mjesto): 
-  ?>
-<option value="<?php echo $mjesto->sifra; ?>" id="<?php echo $mjesto->sifra; ?>"><?php echo $mjesto->naziv; ?></option>
-<?php endforeach; ?>
-             </select>                       
+                                <select name="grad">
+                                    <?php
+                            $izraz=$veza->prepare("select * from mjesto");
+                            $izraz->execute();
+                            $mjesta=$izraz->fetchALL(PDO::FETCH_OBJ);
+                            foreach ($mjesta as $mjesto): 
+                                    ?>
+                            <option value="<?php echo $mjesto->sifra; ?>" id="<?php echo $mjesto->sifra; ?>"><?php echo $mjesto->naziv; ?></option>
+                            <?php endforeach; ?>
+                                </select>                       
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="adresa" placeholder="adresa">                        
+                                <input type="text" class="form-control registracija" name="adresa" placeholder="adresa">                        
                             </div>
                             <div class="form-group">                                
-                                <input type="text" class="form-control" name="kor_ime" placeholder="korisničko ime">
+                                <input type="text" class="form-control registracija" name="kor_ime" placeholder="korisničko ime">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="lozinka" placeholder="lozinka">                        
+                                <input type="password" class="form-control registracija" id="lozinka" placeholder="lozinka">                        
                             </div>
                             <input type="submit" name="registracija" class="btn btn-default" value="Registriraj salon" />  
                           </fieldset>
@@ -60,33 +60,33 @@ foreach ($mjesta as $mjesto):
                         <fieldset>
                             <h2>Registracija korisnika</h2>
                             <div class="form-group">                                
-                                <input type="text" class="form-control" name="ime" placeholder="ime">
+                                <input type="text" class="form-control registracija" name="ime" placeholder="ime">
                             </div>
                             <div class="form-group">                                
-                                <input type="text" class="form-control" name="prezime" placeholder="prezime">
+                                <input type="text" class="form-control registracija" name="prezime" placeholder="prezime">
                             </div>
                             <div class="form-group">                                
-    <select name="grad">
-                   <?php
-$izraz=$veza->prepare("select * from mjesto");
-$izraz->execute();
-$mjesta=$izraz->fetchALL(PDO::FETCH_OBJ);
-foreach ($mjesta as $mjesto): 
-  ?>
-<option value="<?php echo $mjesto->sifra; ?>" id="<?php echo $mjesto->sifra; ?>"><?php echo $mjesto->naziv; ?></option>
-<?php endforeach; ?>
-             </select>
+                                <select name="grad">
+                                    <?php
+                            $izraz=$veza->prepare("select * from mjesto");
+                            $izraz->execute();
+                            $mjesta=$izraz->fetchALL(PDO::FETCH_OBJ);
+                            foreach ($mjesta as $mjesto): 
+                                    ?>
+                            <option value="<?php echo $mjesto->sifra; ?>" id="<?php echo $mjesto->sifra; ?>"><?php echo $mjesto->naziv; ?></option>
+                            <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="form-group">                                
-                                <input type="text" class="form-control" name="kor_ime" placeholder="korisničko ime">
+                                <input type="text" class="form-control registracija" name="kor_ime" placeholder="korisničko ime">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="lozinka" placeholder="lozinka">                        
+                                <input type="password" class="form-control registracija" name="lozinka" placeholder="lozinka">                        
                             </div>
 
-                             <input type="submit" name="registracija" class="btn btn-default" value="Registriraj se" />  
+                             <input type="submit" name="registracija" class="btn btn-default btnKorisnik" value="Registriraj se" />  
                             <?php include "facebook_login_graph_api/facebookRegistracija.php"; ?>
-<p><a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo $config['App_ID']; ?>&redirect_uri=<?php echo $config['callback_url']; ?>&scope=email">Sign up using Facebook</a><p>
+<p><a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo $config['App_ID']; ?>&redirect_uri=<?php echo $config['callback_url']; ?>&scope=email" style="color: #fff">Sign up using Facebook</a><p>
 <p><?php if(isset($_GET['fbTrue']) || isset($_GET['true']))
 {
   echo "Uspješno ste se registrirali.";
