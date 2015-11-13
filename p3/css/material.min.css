@@ -3441,8 +3441,7 @@ body .well-material-blue-grey,.container .well-material-blue-grey,.container-flu
   border: 0;
   margin: 10px 1px;
   cursor: pointer;
-  border-radius: 2px;
-  text-transform: uppercase;
+  border-radius: 0;
   text-decoration: none;
   color: rgba(255,255,255,.84);
   transition: background-color .2s ease,box-shadow .28s cubic-bezier(.4,0,.2,1);
@@ -4545,7 +4544,7 @@ body .well-material-blue-grey,.container .well-material-blue-grey,.container-flu
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 2px solid;
+  border: 2px solid #c21e5c;
   border-radius: 2px;
   overflow: hidden;
   z-index: 1;

@@ -8,7 +8,7 @@
         <link href="css/material.min.css" rel="stylesheet">
         <link href="css/ripples.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
-        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 
     </head>
 

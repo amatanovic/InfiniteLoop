@@ -1,6 +1,7 @@
 .bodyIndex {
 	background-color: #202020;
 	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
 }
 
 .rowIndex{
@@ -25,8 +26,14 @@
 
 .divForma {
 	background-color: #161616;
+	color: #fff;
 }
 
-.checkbox {
-	border-color: #c21e5c;
+a {
+	color: #c21e5c;
+}
+
+.btn-default {
+	background-color: #c21e5c!important;
+	color: #fff!important;
 }
