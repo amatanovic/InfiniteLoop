@@ -1,18 +1,28 @@
-create table korisnik (
+drop table if exists rezervacija;
+create table rezervacija (
 sifra int not null primary key auto_increment,
-mjesto int,
-kor_ime varchar(250),
-lozinka varchar(100),
-salon boolean,
-device varchar(250) default "unknown",
-avatar varchar(150)
+korisnik int,
+salon int,
+vrijeme_pocetka datetime,
+vrijeme_zavrsetka datetime,
+usluga int
 )engine=innodb;
 
-create table mjesto (
+drop table if exists usluga;
+create table usluga (
 sifra int not null primary key auto_increment,
-naziv varchar(250)
+naziv varchar(250),
+trajanje time
 )engine=innodb;
 
+drop table if exists check_in;
+create table check_in (
+sifra int not null primary key auto_increment,
+vrijeme datetime,
+korisnik int
+)engine=innodb;
+
+drop table if exists frizerski_salon;
 create table frizerski_salon (
 sifra int not null primary key auto_increment,
 adresa varchar(250),
@@ -22,17 +32,7 @@ naziv varchar(250),
 korisnik int
 )engine=innodb;
 
-create table check_in (
-sifra int not null primary key auto_increment,
-vrijeme datetime,
-korisnik int
-)engine=innodb;
-
-create table kategorija (
-sifra int not null primary key auto_increment,
-naziv varchar(250)
-)engine=innodb;
-
+drop table if exists slike;
 create table slike (
 sifra int not null primary key auto_increment,
 korisnik int,
@@ -41,20 +41,36 @@ djelatnik int,
 vrijeme datetime
 )engine=innodb;
 
-create table usluga (
+drop table if exists korisnik;
+create table korisnik (
 sifra int not null primary key auto_increment,
-naziv varchar(250),
-trajanje time
+mjesto int,
+ime varchar(250),
+prezime varchar (250),
+kor_ime varchar(250),
+lozinka varchar(100),
+salon boolean,
+device varchar(250) default "unknown",
+avatar varchar(150)
 )engine=innodb;
 
-create table rezervacija (
+drop table if exists mjesto;
+create table mjesto (
 sifra int not null primary key auto_increment,
-korisnik int,
-salon int,
-vrijeme_pocetka datetime,
-vrijeme_zavrsetka datetime,
-usluga int
+naziv varchar(250)
 )engine=innodb;
+
+
+
+drop table if exists kategorija;
+create table kategorija (
+sifra int not null primary key auto_increment,
+naziv varchar(250)
+)engine=innodb;
+
+
+
+
 
 alter table korisnik add foreign key (mjesto) references mjesto(sifra);
 alter table frizerski_salon add foreign key (korisnik) references korisnik(sifra);
