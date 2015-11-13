@@ -26,10 +26,12 @@ drop table if exists frizerski_salon;
 create table frizerski_salon (
 sifra int not null primary key auto_increment,
 adresa varchar(250),
+mjesto int,
+kor_ime varchar(250),
+lozinka varchar(100),
 kontakt varchar(250),
 facebook varchar(100),
-naziv varchar(250),
-korisnik int
+naziv varchar(250)
 )engine=innodb;
 
 drop table if exists slike;
@@ -49,7 +51,7 @@ ime varchar(250),
 prezime varchar (250),
 kor_ime varchar(250),
 lozinka varchar(100),
-salon boolean,
+salon int,
 device varchar(250) default "unknown",
 avatar varchar(150),
 facebook bigint
@@ -72,9 +74,9 @@ naziv varchar(250)
 
 
 
-
+alter table frizerski_salon add foreign key (mjesto) references mjesto(sifra);
 alter table korisnik add foreign key (mjesto) references mjesto(sifra);
-alter table frizerski_salon add foreign key (korisnik) references korisnik(sifra);
+alter table korisnik add foreign key (salon) references salon(sifra);
 alter table check_in add foreign key (korisnik) references korisnik(sifra);
 alter table slike add foreign key (korisnik) references korisnik(sifra);
 alter table slike add foreign key (djelatnik) references korisnik(sifra);
@@ -83,4 +85,15 @@ alter table rezervacija add foreign key (korisnik) references korisnik(sifra);
 alter table rezervacija add foreign key (salon) references frizerski_salon(sifra);
 alter table rezervacija add foreign key (usluga) references usluga(sifra);
 
+
 insert into mjesto (naziv) values ("Osijek");
+
+insert into frizerski_salon (adresa, mjesto, kontakt, facebook, naziv, kor_ime, lozinka) values ("Vukovarska 270", 1 ,"099/6564-547", "https://www.facebook.com/", "Frizerski salon Mata", "mata", md5("555"));
+
+insert into korisnik (ime, prezime, salon, avatar) values ("Antun", "Matanović", 1, "slike/avatar_1.jpg");
+insert into korisnik (ime, prezime, mjesto, kor_ime, lozinka) values ("Andrea", "Mihaljević", 1, "amihaljevic@gmail.com", md5("123"));
+
+insert into usluga (naziv, trajanje) values ("", "");	
+
+
+
