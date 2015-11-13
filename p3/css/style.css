@@ -78,7 +78,6 @@ header {
 
 .divInformacije {
 	background-color: #c21e5c;
-	margin-top: -20px;
 	color: #fff;
 }
 
@@ -96,4 +95,19 @@ header {
 
 .navbar-right {
 	margin-top: -50px;
+}
+
+.avatarNadzorna {
+	border-radius: 100%;
+}
+
+.thumbnail {
+	background-color: inherit;
+	width: 150px;
+	height: 150px;
+	margin-right: auto;
+	margin-left: auto;
+	color: #fff;
+	border: 0;
+	text-align: center;
 }

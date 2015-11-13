@@ -12,6 +12,17 @@
         			</ul>
     			</div>
  			</div>
+ 			<div class="row">
+ 				<p style="color: #fff; margin-left: 50px">Manuela Mikulecki</p>
+ 				<div class="thumbnail">
+ 					<img class="avatarNadzorna" src="avatar.jpg">
+ 					<div class="checkbox">
+ 						<label>
+                        	<input type="checkbox"><p>Manuela Mikulecki</p>
+                        </label>
+                	</div>
+ 				</div>
+ 			</div>
 		</header>
 		<div class="row">
 			<div class="col-md-8 divRaspored">
