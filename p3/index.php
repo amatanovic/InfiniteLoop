@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<html>
 
     <head>
@@ -12,6 +13,9 @@
 
     </head>
 
+=======
+﻿<?php include "head.php"; ?>
+>>>>>>> origin/master
     <body class="bodyIndex">
         <div class="container">
             <div class="rowIndex">
@@ -33,18 +37,12 @@
                         </fieldset>
                     </form>
                     <p class="indexP">Prijavite se putem facebook-a</p>
-                    <p class="indexP">Ukoliko nemate račun, <a href="">registrirajte se</a></p>
+                    <p class="indexP">Ukoliko nemate račun, <a href="registracija.php">registrirajte se</a></p>
                 </div>
             </div>
         </div>
 
-        <!-- Your site ends -->
-
-        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-        <script src="js/ripples.min.js"></script>
-        <script src="js/material.min.js"></script>
+    <?php include "scripts.php"; ?>
         <script>
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly
