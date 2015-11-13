@@ -22,14 +22,14 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" id="lozinka" placeholder="lozinka">                        
                             </div>
-                            <a href="#" id="prijava" class="btn btn-default">Prijavi se</a>         
+                            <a href="#" id="prijava" class="btn btn-default btnKorisnik">Prijavi se</a>         
                         </fieldset>
                     </form>
                 </div>
-                <div class="col-md-6">
-                    <form class="form-horizontal indexForma">
+                <div class="col-md-6 divRegKorisnika">
+                    <form class="form-horizontal regKorisnika">
                         <fieldset>
-                            <h2 class="indexH2">Registracija korisnika</h2>
+                            <h2>Registracija korisnika</h2>
                             <div class="form-group">                                
                                 <input type="text" class="form-control" id="ime" placeholder="ime">
                             </div>
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <input type="password" class="form-control" id="lozinka" placeholder="lozinka">                        
                             </div>
-                            <a href="#" id="prijava" class="btn btn-default">Registriraj se</a>  
+                            <a href="#" id="prijava" class="btn btn-default btnKorisnik">Registriraj se</a>  
                             <?php include "facebook_login_graph_api/facebookRegistracija.php"; ?>
 <p><a href="https://www.facebook.com/dialog/oauth?client_id=<?php echo $config['App_ID']; ?>&redirect_uri=<?php echo $config['callback_url']; ?>&scope=email">Sign up using Facebook</a><p>
  <p>

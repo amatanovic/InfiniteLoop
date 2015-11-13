@@ -14,6 +14,13 @@
 	margin-left: 50px;
 }
 
+.regKorisnika {
+	margin-right: 50px;
+	margin-left: 50px;
+	color: #fff;
+	background-color: #c21e5c;
+}
+
 .indexH2 {
 	text-align: center;
 	color: #c21e5c;
@@ -35,6 +42,17 @@
 	height: 530px;
 }
 
+.divRegKorisnika {
+	background-color: #c21e5c;
+	color: #fff;
+	padding-bottom: 70px;
+	padding-top: 20px;
+	padding-right: 80px;
+	padding-left: 80px;
+	text-align: center;
+	height: 550px;
+}
+
 .divPozadina {
 	background-image: url("slika.jpg");
 	height: 530px;
@@ -50,6 +68,11 @@ a {
 	background-color: #c21e5c!important;
 	color: #fff!important;
 	text-align: center;
+}
+
+.btnKorisnik {
+	background-color: #fff!important;
+	color: #c21e5c!important;
 }
 
 .form-control {
