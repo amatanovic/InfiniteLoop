@@ -60,3 +60,40 @@ a {
 .form-group {
 	padding-bottom: 20px;
 }
+
+.navbar-default {
+	background-color: #202020!important;
+	color: #c21e5c!important;
+}
+
+.indexNadzorna {
+	font-family: 'Open Sans', sans-serif;
+}
+
+header {
+	background-color: #202020!important;
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+.divInformacije {
+	background-color: #c21e5c;
+	margin-top: -20px;
+	color: #fff;
+}
+
+.divInformacije h2 {
+	text-align: center;
+}
+
+.divRaspored {
+	background-color: #fff;
+}
+
+.indexNadzorna {
+	background-color: #fff;
+}
+
+.navbar-right {
+	margin-top: -50px;
+}
