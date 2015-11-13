@@ -5,12 +5,12 @@ $izraz->bindValue(":ime", $_POST['ime']);
 $izraz->bindValue(":prezime", $_POST['prezime']);
 $izraz->bindValue(":kor_ime", $_POST['kor_ime']);
 $izraz->bindValue(":lozinka", md5($_POST['lozinka']));
-$izraz->bindValue(":mjesto", $_POST['mjesto']);
+$izraz->bindValue(":mjesto", $_POST['grad']);
 $izraz->execute();
 header ("location: registracija.php?true");
 }
 if(isset($_POST['registracijaSalona'])){
-$izraz=$veza->prepare("insert into frizerski_salon (naziv, grad, adresa, kor_ime, lozinka) values (:naziv, :grad, :adresa, :kor_ime, :lozinka)");
+$izraz=$veza->prepare("insert into frizerski_salon (naziv, mjesto, adresa, kor_ime, lozinka) values (:naziv, :grad, :adresa, :kor_ime, :lozinka)");
 $izraz->bindValue(":naziv", $_POST['naziv']); 
 $izraz->bindValue(":grad", $_POST['grad']);
 $izraz->bindValue(":adresa", $_POST['adresa']);
@@ -24,7 +24,7 @@ header ("location: registracija.php?true");
         <div class="container">
             <div class="rowIndex">
                 <div class="col-md-6 divForma">
-                    <form class="form-horizontal indexForma">
+                    <form class="form-horizontal indexForma"  method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <fieldset>
                             <h2 class="indexH2">Registracija frizerskog salona</h2>
                             <div class="form-group">
@@ -51,12 +51,12 @@ foreach ($mjesta as $mjesto):
                             <div class="form-group">
                                 <input type="password" class="form-control" id="lozinka" placeholder="lozinka">                        
                             </div>
-                            <input type="submit" name="registracija" class="btn btn-default" value="Registriraj salon" />  
+                            <input type="submit" name="registracijaSalona" class="btn btn-default" value="Registriraj salon" />  
                           </fieldset>
                     </form>
                 </div>
                 <div class="col-md-6 divRegKorisnika">
-                    <form class="form-horizontal regKorisnika">
+                    <form class="form-horizontal regKorisnika"  method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                         <fieldset>
                             <h2>Registracija korisnika</h2>
                             <div class="form-group">                                
