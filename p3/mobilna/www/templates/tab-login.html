@@ -3,15 +3,16 @@
   <ion-content  class="padding pozadina">
   
 <div class="list">
-<form>
+
+<form ng-submit="submit()">
   <label class="item item-input item-floating-label prijava">
     <span class="input-label">Email</span>
-    <input type="email"  class="slova" placeholder="E-mail">
+    <input type="email"  class="slova" placeholder="E-mail" ng-model="loginData.email">
   </label>
 
   <label class="item item-input item-floating-label prijava">
     <span class="input-label">Lozinka</span>
-    <input type="password" class="slova" placeholder="Lozinka" >
+    <input type="password" class="slova" placeholder="Lozinka" ng-model="loginData.lozinka">
   </label>
 
   <div class="row">

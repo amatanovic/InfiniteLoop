@@ -2,7 +2,41 @@ angular.module('starter.controllers', [])
 
 .controller ('LogoutCtrl', function($scope) {})
 
-.controller ('LoginCtrl', function($scope) {})
+.controller ('LoginCtrl', function($scope) {
+$scope.error = false;
+$scope.alert = false;
+
+$scope.submit = function () {
+      $ionicLoading.show({
+          template: '<ion-spinner></ion-spinner><br />Please wait...'
+        });   
+        $http({
+          url: $rootScope.server + "API/login.php",
+          data: $rootScope.loginData,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }).success(function(data) {
+          $ionicLoading.hide();
+          if (data === false) {
+            $scope.alert = true;
+          }
+          else if(data !== false) {
+            $rootScope.userData = data;
+            $state.go("tab.");
+            console.log($rootScope.userData);
+          }
+          
+
+        }).error(function(err) {
+          $ionicLoading.hide();
+          $scope.upozorenje = true;
+        });
+    }
+})
+
+
 
 .controller ('UploadslikaCtrl', function($scope) {})
 
