@@ -1,4 +1,4 @@
-<?php include "head.php"; ?>
+﻿<?php include "head.php"; ?>
 <body class="indexNadzorna">
 	<div class="container-fluid">
 		<header>
@@ -34,14 +34,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker12').datetimepicker({
-                inline: true,
-                sideBySide: true
-            });
-        });
-    </script>
 </div>
 			    <h2>Djelatnici</h2>		
 			    <div class="thumbnail">
@@ -55,4 +47,24 @@
 			</div>
 		</div>
 	</div>
-</body>
+ <?php include "scripts.php"; ?>
+  <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+ <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker12').datetimepicker({
+                inline: true,
+                sideBySide: true
+            });
+        });
+    </script>
+        <script>
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
+        </script>
+
+    </body>
+
+</html>
