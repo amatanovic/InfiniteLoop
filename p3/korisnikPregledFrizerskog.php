@@ -1,4 +1,4 @@
-<?php include "head.php"; ?>
+﻿<?php include "head.php"; ?>
 <body class="indexNadzorna">
 	<div class="container-fluid">
 		<header>
@@ -26,6 +26,7 @@
 				<address><span class="mdi-maps-place" style="color: black"></span>Gundulićeva 43b, Osijek</address>
 				<p><span class="mdi-maps-local-phone" style="color: black"></span>091/375-487</p>
 				<p><img src="facebook.png">http://facebook.com</p>
+<<<<<<< HEAD
 				<div style="overflow:hidden;">
 				    <div class="form-group">
 				        <div class="row">
@@ -43,6 +44,17 @@
 				        });
 				    </script>
 				</div>
+=======
+				<div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-8">
+                <div id="datetimepicker12"></div>
+            </div>
+        </div>
+    </div>
+</div>
+>>>>>>> origin/master
 			    <h2>Djelatnici</h2>		
 			    <div class="thumbnail">
  					<img class="avatarNadzorna" src="avatar.jpg">
@@ -55,4 +67,24 @@
 			</div>
 		</div>
 	</div>
-</body>
+ <?php include "scripts.php"; ?>
+  <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+ <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker12').datetimepicker({
+                inline: true,
+                sideBySide: false
+            });
+        });
+    </script>
+        <script>
+            $(document).ready(function() {
+                // This command is used to initialize some elements and make them work properly
+                $.material.init();
+            });
+        </script>
+
+    </body>
+
+</html>
