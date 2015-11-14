@@ -1,18 +1,35 @@
 angular.module('starter.controllers', [])
 
-.controller ('LogoutCtrl', function($scope) {})
+.controller('LogoutCtrl', function($scope, $rootScope, $state) {
+ $rootScope.$on('$ionicView.beforeEnter', function () {
+var stateName = $state.current.name;
+if (stateName === 'tab.login') {
+$rootScope.hideTabs = true;
+} else {
+$rootScope.hideTabs = false;
+}
+});
+$scope.odjava = function(){
+$state.go("tab.login");
+}
+$rootScope.loginData = {};
 
-.controller ('LoginCtrl', function($scope) {
+
+})
+
+.controller ('LoginCtrl', function($scope, $rootScope, $ionicLoading, $http, $state) {
 $scope.error = false;
 $scope.alert = false;
+$rootScope.userData = {};
+$scope.loginData = {};
 
 $scope.submit = function () {
       $ionicLoading.show({
           template: '<ion-spinner></ion-spinner><br />Please wait...'
         });   
         $http({
-          url: $rootScope.server + "API/login.php",
-          data: $rootScope.loginData,
+          url: $rootScope.server + "/API/login.php",
+          data: $scope.loginData,
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -24,7 +41,7 @@ $scope.submit = function () {
           }
           else if(data !== false) {
             $rootScope.userData = data;
-            $state.go("tab.");
+            $state.go("tab.upload_slika");
             console.log($rootScope.userData);
           }
           
@@ -38,9 +55,15 @@ $scope.submit = function () {
 
 
 
-.controller ('UploadslikaCtrl', function($scope) {})
+.controller ('UploadslikaCtrl', function($scope) {
+ 
 
-.controller ('TerminiCtrl', function($scope) {})
+})
+
+.controller ('TerminiCtrl', function($scope) {
+
+
+})
 
 .controller ('MojefrizureCtrl', function($scope) {})
 

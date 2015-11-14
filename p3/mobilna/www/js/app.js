@@ -33,7 +33,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   });
 
-   $rootScope.server = "http://project.comuv.com/p3/";
+   $rootScope.server = "http://localhost/InfiniteLoop/p3";
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
