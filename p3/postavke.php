@@ -86,8 +86,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 divInformacije">
-				<div class="thumbnail">
+			<div class="col-md-4 divInformacije" style="height: 100%">
+				<div class="thumbnail" style="padding-top: 40px">
 					<span class="mdi-navigation-close" style="color: black"></span>
  					<img class="avatarNadzorna" src="avatar.jpg">
  					<div class="checkbox">
