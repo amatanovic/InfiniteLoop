@@ -155,7 +155,32 @@ header {
 	border: 0;
 	text-align: center;
 }
-#map_canvas {
+
+.mdi-navigation-close {
+	margin-left: 50px;
+}
+
+.postavke {
+	border-bottom: 1px solid #B6B6B6!important;
+	padding: 5px;
+	color: #B6B6B6;
+}
+
+.divPostavke {
+	padding: 30px;
+}
+
+.dodajDjelatnika {
+	color: #c21e5c;
+}
+
+.dodajDjelatnika span {
+	padding-right: 15px;
+}
+
+.divPostavkeRed {
+	padding-bottom: 30px;
+}#map_canvas {
     width: 500px;
     height: 500px;
 }
