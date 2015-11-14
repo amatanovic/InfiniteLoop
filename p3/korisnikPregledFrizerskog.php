@@ -4,7 +4,7 @@
 		<header>
 			<div class="navbar navbar-default">
     			<div class="navbar-collapse collapse navbar-responsive-collapse">
-    				<h3>Korisnik Korisnik</h3>
+    				<h3><?php echo $_SESSION['autoriziran']->ime; ?></h3>
         			<ul class="nav navbar-nav navbar-right">
         				<li><a href="#">	Početna	|</a></li>
             			<li><a href="#">	Arhiva Slika	|</a></li>
@@ -14,9 +14,14 @@
     			</div>
  			</div>
 		</header>
+<?php 
+$izraz=$veza->prepare("select * from frizerski_salon where sifra=:sifra");
+$izraz->bindValue(":sifra", $_GET["sifra"]);
+$izraz->execute();
+$salon=$izraz->fetch(PDO::FETCH_OBJ); ?>
 		<div class="row">
 			<div class="col-md-8 divPostavke">	
-				<h3 style="color: #c21e5c; text-align: center">Frizerski salon Mata</h3>	
+				<h3 style="color: #c21e5c; text-align: center"><?php echo $salon->naziv; ?></h3>	
 				<h3 style="color: #c21e5c; text-align: center">Usluge</h3>
 				<ol>
 					<li>Šišanje kratke kose</li>

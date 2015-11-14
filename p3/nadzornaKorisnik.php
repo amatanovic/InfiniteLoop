@@ -9,7 +9,19 @@ if (isset($_SESSION['autoriziran']->salon) != null || !isset($_SESSION['autorizi
            <a href="">Kalendar</a><a href="odjava.php">Odjava</a> </p>
             <div class="rowIndex">
                     <div id="map_canvas"></div>
-             
+<div class="container indexh2">
+Frizerski saloni
+<ul>
+<?php 
+$izraz=$veza->prepare("select * from frizerski_salon");
+$izraz->execute();
+$saloni=$izraz->fetchALL(PDO::FETCH_OBJ); 
+foreach ($saloni as $salon):
+?>
+<li><a href="korisnikPregledFrizerskog.php?sifra=<?php echo $salon->sifra; ?>"><?php echo $salon->naziv; ?></a></li>
+<?php endforeach; ?>
+</ul>
+</div>          
 
 <?php include "scripts.php"; ?>
 <script src="http://maps.googleapis.com/maps/api/js"></script>
