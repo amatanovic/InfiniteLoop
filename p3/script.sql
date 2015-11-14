@@ -2,10 +2,16 @@ drop table if exists rezervacija;
 create table rezervacija (
 sifra int not null primary key auto_increment,
 korisnik int,
-salon int,
+uslugaSalon int,
 vrijeme_pocetka datetime,
-vrijeme_zavrsetka datetime,
-usluga int
+vrijeme_zavrsetka datetime
+)engine=innodb;
+
+drop table if exists uslugaSalon;
+create table uslugaSalon (
+sifra int not null primary key auto_increment,
+usluga int,
+salon int
 )engine=innodb;
 
 drop table if exists usluga;
@@ -15,23 +21,12 @@ naziv varchar(250),
 trajanje time
 )engine=innodb;
 
+
 drop table if exists check_in;
 create table check_in (
 sifra int not null primary key auto_increment,
 vrijeme datetime,
 korisnik int
-)engine=innodb;
-
-drop table if exists frizerski_salon;
-create table frizerski_salon (
-sifra int not null primary key auto_increment,
-adresa varchar(250),
-mjesto int,
-kor_ime varchar(250),
-lozinka varchar(100),
-kontakt varchar(250),
-facebook varchar(100),
-naziv varchar(250)
 )engine=innodb;
 
 drop table if exists slike;
@@ -56,6 +51,18 @@ salon int,
 device varchar(250) default "unknown",
 avatar varchar(150),
 facebook bigint
+)engine=innodb;
+
+drop table if exists frizerski_salon;
+create table frizerski_salon (
+sifra int not null primary key auto_increment,
+adresa varchar(250),
+mjesto int,
+kor_ime varchar(250),
+lozinka varchar(100),
+kontakt varchar(250),
+facebook varchar(100),
+naziv varchar(250)
 )engine=innodb;
 
 drop table if exists mjesto;
@@ -83,9 +90,9 @@ alter table slike add foreign key (korisnik) references korisnik(sifra);
 alter table slike add foreign key (djelatnik) references korisnik(sifra);
 alter table slike add foreign key (kategorija) references kategorija(sifra);
 alter table rezervacija add foreign key (korisnik) references korisnik(sifra);
-alter table rezervacija add foreign key (salon) references frizerski_salon(sifra);
-alter table rezervacija add foreign key (usluga) references usluga(sifra);
-
+alter table rezervacija add foreign key (uslugaSalon) references uslugaSalon(sifra);
+alter table uslugaSalon add foreign key (usluga) references usluga(sifra);
+alter table uslugaSalon add foreign key (salon) references frizerski_salon(sifra);
 
 insert into mjesto (naziv) values ("Osijek");
 
@@ -102,7 +109,9 @@ insert into usluga (naziv, trajanje) values ("šišanje kratke kose", "00:20:00"
 
 insert into kategorija (naziv) values ("Duga kosa"), ("Srednje duga kosa"), ("Kratka kosa");
 
-insert into rezervacija (korisnik, salon, usluga, vrijeme_pocetka, vrijeme_zavrsetka) values (2, 1, 4, "2015-11-14 14:00:00", "2015-11-14 14:45:00");
+insert into uslugaSalon (usluga, salon) values (1, 1), (2, 1), (3, 1), (4, 1); 
+
+insert into rezervacija (korisnik, uslugaSalon, vrijeme_pocetka, vrijeme_zavrsetka) values (2, 2, "2015-11-14 14:00:00", "2015-11-14 14:30:00");
 
 insert into check_in (vrijeme, korisnik) values ("2015-11-14 08:00:00", 1);
 

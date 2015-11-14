@@ -9,7 +9,7 @@
         				<li><a href="#">	Početna	|</a></li>
             			<li><a href="#">	Arhiva Slika	|</a></li>
             			<li><a href="#">	Kalendar	|</a></li>
-            			<li><a href="#">	Odjava	|</a></li>
+            			<li><a href="odjava.php">	Odjava	|</a></li>
         			</ul>
     			</div>
  			</div>
@@ -27,11 +27,15 @@ $salon=$izraz->fetch(PDO::FETCH_OBJ); ?>
 					<li>Šišanje kratke kose</li>
 				</ol>
 			</div>
+            <?php 
+$izraz=$veza->prepare("select naziv from mjesto where sifra=:sifra");
+$izraz->bindValue(":sifra", $salon->mjesto);
+$izraz->execute();
+$mjesto=$izraz->fetch(PDO::FETCH_OBJ); ?>
 			<div class="col-md-4 divInformacije" style="height: 100%; margin-top: -20px">
-				<address><span class="mdi-maps-place" style="color: black"></span>Gundulićeva 43b, Osijek</address>
-				<p><span class="mdi-maps-local-phone" style="color: black"></span>091/375-487</p>
-				<p><img src="facebook.png">http://facebook.com</p>
-<<<<<<< HEAD
+				<address><span class="mdi-maps-place" style="color: black"></span><?php echo $salon->adresa . ", " . $mjesto->naziv; ?></address>
+				<p><span class="mdi-maps-local-phone" style="color: black"></span><?php echo $salon->kontakt; ?></p>
+				<p><img src="facebook.png"><?php echo $salon->facebook; ?></p>
 				<div style="overflow:hidden;">
 				    <div class="form-group">
 				        <div class="row">
@@ -40,35 +44,26 @@ $salon=$izraz->fetch(PDO::FETCH_OBJ); ?>
 				            </div>
 				        </div>
 				    </div>
-				    <script type="text/javascript">
-				        $(function () {
-				            $('#datetimepicker12').datetimepicker({
-				                inline: true,
-				                sideBySide: true
-				            });
-				        });
-				    </script>
+				    
 				</div>
-=======
 				<div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-8">
-                <div id="datetimepicker12"></div>
-            </div>
-        </div>
-    </div>
-</div>
->>>>>>> origin/master
-			    <h2>Djelatnici</h2>		
+
+			    <h2>Djelatnici</h2>	
+<?php  $izraz=$veza->prepare("select * from korisnik where salon=:sifra");
+$izraz->bindValue(":sifra", $salon->sifra);
+$izraz->execute();
+$djelatnici=$izraz->fetchALL(PDO::FETCH_OBJ); 
+foreach ($djelatnici as $djelatnik):
+?>	
 			    <div class="thumbnail">
- 					<img class="avatarNadzorna" src="avatar.jpg">
+ 					<img class="avatarNadzorna" style="height:85px" src="<?php echo $djelatnik->avatar; ?>">
  					<div class="checkbox">
  						<label>
-                        	<input type="checkbox"><p>Manuela Mikulecki</p>
+                        	<input type="checkbox"><p><?php echo $djelatnik->ime . " " . $djelatnik->prezime; ?></p>
                         </label>
                 	</div>
- 				</div>        
+ 				</div> 
+                <?php endforeach; ?>       
 			</div>
 		</div>
 	</div>

@@ -1,10 +1,15 @@
-<?php include "head.php"; ?>
+﻿<?php include "head.php"; 
+if (isset($_SESSION['autoriziran']->naziv) == null) {
+	header("location: odjava.php");
+}
+?>
+
 <body class="indexNadzorna">
 	<div class="container-fluid">
 		<header>
 			<div class="navbar navbar-default">
     			<div class="navbar-collapse collapse navbar-responsive-collapse">
-    				<h3>Frizerski salon Mata<span class="mdi-hardware-keyboard-arrow-down" style="color: #fff"></h3>
+    				<h3><?php echo $_SESSION['autoriziran']->naziv; ?><span class="mdi-hardware-keyboard-arrow-down" style="color: #fff"></h3>
         			<ul class="nav navbar-nav navbar-right">
             			<li><a href="#">|	Arhiva Slika	|</a></li>
             			<li><a href="#">	Postavke	|</a></li>
@@ -18,7 +23,10 @@
  					<img class="avatarNadzorna" src="avatar.jpg">
  					<div class="checkbox">
  						<label>
-                        	<input type="checkbox"><p>Manuela Mikulecki</p>
+                        	<input type="checkbox">
+                        	<span class="checkbox-material">
+                        	<span class="check checkArhiva"></span><p>Manuela Mikulecki</p>
+                        	</span>
                         </label>
                 	</div>
  				</div>
@@ -46,10 +54,15 @@
 				</table>
 			</div>
 			<div class="col-md-4 divInformacije">
-				<h2>Frizerski salon Mata</h2>
-				<address><span class="mdi-maps-place" style="color: black"></span>Gundulićeva 43b, Osijek</address>
-				<p><span class="mdi-maps-local-phone" style="color: black"></span>091/375-487</p>
-				<p><img src="facebook.png">http://facebook.com</p>
+				<h2><?php echo $_SESSION['autoriziran']->naziv; ?></h2>
+<?php 
+$izraz=$veza->prepare("select naziv from mjesto where sifra=:sifra");
+$izraz->bindValue(":sifra", $_SESSION['autoriziran']->mjesto);
+$izraz->execute();
+$mjesto=$izraz->fetch(PDO::FETCH_OBJ); ?>
+				<address><span class="mdi-maps-place" style="color: black"></span><?php echo $_SESSION['autoriziran']->adresa . ", " . $mjesto->naziv; ?></address>
+				<p><span class="mdi-maps-local-phone" style="color: black"></span><?php echo $_SESSION['autoriziran']->kontakt; ?></p>
+				<p><img src="facebook.png"><?php echo $_SESSION['autoriziran']->facebook; ?></p>
 				<h2>Usluge</h2>
 				<ol>
 					<li>šišanje kratke kose</li>

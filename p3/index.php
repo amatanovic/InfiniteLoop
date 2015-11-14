@@ -47,7 +47,7 @@ $izraz->execute();
 $operater=$izraz->fetch(PDO::FETCH_OBJ); 
 if($operater!=null) {
    $_SESSION['autoriziran']=$operater;
-  header("location: nadzornaKorisnik.php");
+  header("location: nadzornaSalon.php");
 }
 else {
 header("location: index.php?loginError");
