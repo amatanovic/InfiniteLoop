@@ -54,7 +54,7 @@
         $(function () {
             $('#datetimepicker12').datetimepicker({
                 inline: true,
-                sideBySide: true
+                sideBySide: false
             });
         });
     </script>
