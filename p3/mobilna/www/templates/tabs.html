@@ -6,21 +6,21 @@
   </ion-tab>
 
 
-  <ion-tab title="Postavi slike" icon-off="ion-android-camera" icon-on="ion-android-camera" href="#/tab/upload_slika" ng-show="slike">
+  <ion-tab title="Postavi slike" icon-off="ion-android-camera" icon-on="ion-android-camera" href="#/tab/upload_slika" hidden="{{salon}}">
     <ion-nav-view name="tab-upload_slika"></ion-nav-view>
   </ion-tab>
 
 
-  <ion-tab title="Termini" icon-off="ion-calendar" icon-on="ion-calendar" href="#/tab/termini" ng-show="termini">
+  <ion-tab title="Termini" icon-off="ion-calendar" icon-on="ion-calendar" href="#/tab/termini" hidden="{{salon}}">
     <ion-nav-view name="tab-termini"></ion-nav-view>
   </ion-tab>
 
 
-<ion-tab title="Moje frizure" icon-off="ion-images" icon-on="ion-images" href="#/tab/moje_frizure">
+<ion-tab title="Moje frizure" icon-off="ion-images" icon-on="ion-images" href="#/tab/moje_frizure" hidden="{{korisnik}}">
     <ion-nav-view name="tab-moje_frizure"></ion-nav-view>
   </ion-tab>
 
-  <ion-tab title="Zanimljivosti" icon-off="ion-star" icon-on="ion-star" href="#/tab/trivije">
+  <ion-tab title="Zanimljivosti" icon-off="ion-star" icon-on="ion-star" href="#/tab/trivije" hidden="{{korisnik}}">
     <ion-nav-view name="tab-trivije"></ion-nav-view>
   </ion-tab>
 

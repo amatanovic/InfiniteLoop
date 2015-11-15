@@ -6,21 +6,13 @@
 
 <div class="row">
 <div class="col">
-<div class="item item-image slika">
-    <img src="img/friz.jpg" alt="" >
+<div class="item item-image slika" ng-repeat="item in frizure">
+    <img src="data:image/jpg;base64,{{item.putanja}}" alt="" >
 </div>
 </div>
 </div>
 
 
-
-<div class="row">
-<div class="col">
-<div class="item item-image slika">
-    <img src="img/friz_1.jpg" alt="" >
-</div>
-</div>
-</div>
 
 
 </ion-list>
